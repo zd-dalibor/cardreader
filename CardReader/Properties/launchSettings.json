@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "CardReader (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "CardReader (Unpackaged)": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
