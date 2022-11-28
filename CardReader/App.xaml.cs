@@ -92,6 +92,7 @@ namespace CardReader
                     {
                         var documentData = DocumentDataConverter.From(pDocumentData);
                         Debug.WriteLine($"Document data: {DebugUtil.Dump(documentData)}");
+                        await Task.Delay(600);
                     }
 
                     var pFixedPersonalData = new IdReaderLib.EID_FIXED_PERSONAL_DATA();
@@ -101,6 +102,7 @@ namespace CardReader
                     {
                         var fixedPersonalData = FixedPersonalDataConverter.From(pFixedPersonalData);
                         Debug.WriteLine($"Fixed personal data: {DebugUtil.Dump(fixedPersonalData)}");
+                        await Task.Delay(600);
                     }
 
                     var pVariablePersonalData = new IdReaderLib.EID_VARIABLE_PERSONAL_DATA();
@@ -110,6 +112,7 @@ namespace CardReader
                     {
                         var variablePersonalData = VariablePersonalDataConverter.From(pVariablePersonalData);
                         Debug.WriteLine($"Variable personal data: {DebugUtil.Dump(variablePersonalData)}");
+                        await Task.Delay(600);
                     }
 
                     var pPortrait = new IdReaderLib.EID_PORTRAIT();
@@ -119,6 +122,7 @@ namespace CardReader
                     {
                         var portraitData = PortraitDataConverer.From(pPortrait);
                         Debug.WriteLine($"Portrait: {portraitData.PortraitBase64}");
+                        await Task.Delay(600);
                     }
                 }
 
