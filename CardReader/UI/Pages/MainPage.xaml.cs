@@ -36,9 +36,10 @@ namespace CardReader.UI.Pages
 
         public MainPage()
         {
-            this.InitializeComponent();
             this.ViewModel = App.Current.Services.GetService<MainPageViewModel>();
             this.stringLoader = App.Current.Services.GetService<IStringLoader>();
+
+            this.InitializeComponent();
         }
 
         private void NavigationView_DisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
@@ -68,7 +69,10 @@ namespace CardReader.UI.Pages
 
         private void NavigationView_Loaded(object sender, RoutedEventArgs e)
         {
-            ((NavigationViewItem)((NavigationView)sender).SettingsItem).Content = stringLoader.GetString("SettingsMenuItem/Text");
+            var navigation = (NavigationView)sender;
+            var settingsItem = (NavigationViewItem)navigation.SettingsItem;
+
+            settingsItem.Content = stringLoader.GetString("SettingsMenuItem/Text");
         }
     }
 }
