@@ -1,4 +1,4 @@
-﻿using CardReader.Model.Data;
+﻿using CardReader.Model.Data.Eid;
 using CardReader.Util;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CardReader.Model.Converters
 {
-    public class FixedPersonalDataConverter
+    internal class FixedPersonalDataConverter
     {
         public static FixedPersonalData From(IdReaderLib.EID_FIXED_PERSONAL_DATA data)
         {

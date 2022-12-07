@@ -1,0 +1,58 @@
+<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+<!-- Licensed under the MIT License. -->
+
+<Page
+    x:Class="CardReader.UI.Pages.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CardReader.UI.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:CardReader.UI.ViewModel.MainPage"
+    xmlns:Converter="using:CardReader.UI.Converter"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <Converter:SymbolToIconElementConverter x:Key="SymbolToIconElementConverter"/>
+            
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SvgImageSource x:Key="WindowIcon" UriSource="/Assets/Light/WindowIcon.svg"/>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SvgImageSource x:Key="WindowIcon" UriSource="/Assets/Dark/WindowIcon.svg"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <Grid x:Name="AppTitleBar" x:FieldModifier="public"
+              VerticalAlignment="Top"
+              Height="46">
+            <Image Source="{ThemeResource WindowIcon}"
+                   HorizontalAlignment="Left" 
+                   Width="18" Height="18" 
+                   Margin="8,0"/>
+            <TextBlock x:Name="AppTitleTextBlock" x:FieldModifier="public" Text="{x:Bind ViewModel.AppTitleText}"
+                       TextWrapping="NoWrap"
+                       Style="{StaticResource CaptionTextBlockStyle}" 
+                       VerticalAlignment="Center"
+                       Margin="32,0,0,0"/>
+        </Grid>
+        <NavigationView MenuItemsSource="{x:Bind ViewModel.MenuItems}" IsTitleBarAutoPaddingEnabled="False"
+                        DisplayModeChanged="NavigationView_DisplayModeChanged" Loaded="NavigationView_Loaded">
+            <NavigationView.MenuItemTemplate>
+                <DataTemplate x:DataType="vm:MenuItemViewModel">
+                    <NavigationViewItem Tag="{x:Bind Tag}" Icon="{x:Bind Icon, Converter={StaticResource SymbolToIconElementConverter}}" Content="{x:Bind Name}" MenuItemsSource="{x:Bind Children}"/>
+                </DataTemplate>
+            </NavigationView.MenuItemTemplate>
+
+            <ScrollViewer Grid.Row="1">
+                <Frame x:Name="ContentFrame"/>
+            </ScrollViewer>
+        </NavigationView>
+    </Grid>
+</Page>

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CardReader.Model.Data
+namespace CardReader.Model.Data.Eid
 {
-    public class PortraitData
+    internal class PortraitData
     {
         public byte[] Portrait { get; set; }
         public string PortraitBase64 { get; set; }

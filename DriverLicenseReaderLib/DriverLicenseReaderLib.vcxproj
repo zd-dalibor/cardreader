@@ -24,7 +24,7 @@
     <ProjectGuid>{889884DA-2A70-49C5-B3B1-11CEC8D3BF64}</ProjectGuid>
     <Keyword>NetCoreCProj</Keyword>
     <RootNamespace>DriverLicenseReaderLib</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CardReader.Model.Data
+namespace CardReader.Model.Data.Eid
 {
-    public class DocumentData
+    internal class DocumentData
     {
         public string DocRegNo { get; set; }
         public string DocumentType { get; set; }

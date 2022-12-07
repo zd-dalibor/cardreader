@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CardReader.Model.Data
+namespace CardReader.Model.Data.Eid
 {
-    public class FixedPersonalData
+    internal class FixedPersonalData
     {
         public string PersonalNumber { get; set; }
         public string Surname { get; set; }

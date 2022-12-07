@@ -24,7 +24,7 @@
     <ProjectGuid>{9EA129DD-CC8B-4AC7-8538-1A3138863059}</ProjectGuid>
     <Keyword>NetCoreCProj</Keyword>
     <RootNamespace>IdReaderLib</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

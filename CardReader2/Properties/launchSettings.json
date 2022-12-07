@@ -4,7 +4,8 @@
       "commandName": "MsixPackage"
     },
     "CardReader (Unpackaged)": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "nativeDebugging": false
     }
   }
 }

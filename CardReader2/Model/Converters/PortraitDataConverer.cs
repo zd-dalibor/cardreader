@@ -1,4 +1,4 @@
-﻿using CardReader.Model.Data;
+﻿using CardReader.Model.Data.Eid;
 using CardReader.Util;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CardReader.Model.Converters
 {
-    public class PortraitDataConverer
+    internal class PortraitDataConverer
     {
         public static PortraitData From(IdReaderLib.EID_PORTRAIT data)
         {

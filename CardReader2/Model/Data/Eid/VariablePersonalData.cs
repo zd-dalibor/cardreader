@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CardReader.Model.Data
+namespace CardReader.Model.Data.Eid
 {
-    public class VariablePersonalData
+    internal class VariablePersonalData
     {
         public string State { get; set; }
         public string Community { get; set; }

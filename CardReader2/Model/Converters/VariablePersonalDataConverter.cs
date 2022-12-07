@@ -1,4 +1,4 @@
-﻿using CardReader.Model.Data;
+﻿using CardReader.Model.Data.Eid;
 using CardReader.Util;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CardReader.Model.Converters
 {
-    public class VariablePersonalDataConverter
+    internal class VariablePersonalDataConverter
     {
         public static VariablePersonalData From(IdReaderLib.EID_VARIABLE_PERSONAL_DATA data)
         {
