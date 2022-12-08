@@ -16,6 +16,17 @@
     <None Remove="Assets\WindowIcon.svg" />
     <None Remove="UI\Pages\MainPage.xaml" />
   </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="DriverLicenseReaderLib">
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>ce18ab4b-0703-4a4c-890d-6e997291578a</Guid>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
 
   <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
