@@ -84,7 +84,7 @@ extern "C"{
 /* interface __MIDL_itf_DriverLicenseReader_0000_0000 */
 /* [local] */ 
 
-typedef /* [version][uuid] */  DECLSPEC_UUID("d86dff3e-9be2-4680-aecf-79c78ccc163e") struct groupSD_REGISTRATION_DATAx
+typedef /* [version][uuid] */  DECLSPEC_UUID("d86dff3e-9be2-4680-aecf-79c78ccc163e") struct SD_REGISTRATION_DATAx
     {
     unsigned char registrationData[ 4096 ];
     long registrationDataSize;
@@ -94,7 +94,7 @@ typedef /* [version][uuid] */  DECLSPEC_UUID("d86dff3e-9be2-4680-aecf-79c78ccc16
     long issuingAuthoritySize;
     } 	SD_REGISTRATION_DATAx;
 
-typedef /* [version][uuid] */  DECLSPEC_UUID("96ee4bdf-7274-40ab-ad7a-f9f74717761e") struct groupSD_DOCUMENT_DATAx
+typedef /* [version][uuid] */  DECLSPEC_UUID("96ee4bdf-7274-40ab-ad7a-f9f74717761e") struct SD_DOCUMENT_DATAx
     {
     unsigned char stateIssuing[ 50 ];
     long stateIssuingSize;
@@ -112,7 +112,7 @@ typedef /* [version][uuid] */  DECLSPEC_UUID("96ee4bdf-7274-40ab-ad7a-f9f7471776
     long serialNumberSize;
     } 	SD_DOCUMENT_DATAx;
 
-typedef /* [version][uuid] */  DECLSPEC_UUID("d40503b8-305e-4c3e-9921-d6d63e014f82") struct groupSD_VEHICLE_DATAx
+typedef /* [version][uuid] */  DECLSPEC_UUID("d40503b8-305e-4c3e-9921-d6d63e014f82") struct SD_VEHICLE_DATAx
     {
     unsigned char dateOfFirstRegistration[ 16 ];
     long dateOfFirstRegistrationSize;
@@ -160,7 +160,7 @@ typedef /* [version][uuid] */  DECLSPEC_UUID("d40503b8-305e-4c3e-9921-d6d63e014f
     long vehicleLoadSize;
     } 	SD_VEHICLE_DATAx;
 
-typedef /* [version][uuid] */  DECLSPEC_UUID("037f84fb-6722-45af-b4fd-c17d414dfd9b") struct groupSD_PERSONAL_DATAx
+typedef /* [version][uuid] */  DECLSPEC_UUID("037f84fb-6722-45af-b4fd-c17d414dfd9b") struct SD_PERSONAL_DATAx
     {
     unsigned char ownersPersonalNo[ 20 ];
     long ownersPersonalNoSize;

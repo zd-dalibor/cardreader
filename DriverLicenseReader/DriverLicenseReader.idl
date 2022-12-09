@@ -12,11 +12,12 @@ import "ocidl.idl";
 #define SD_SIGNATURE_MAX_SIZE 1024
 #define SD_AUTHORITY_MAX_SIZE 4096
 
+typedef
 [
 	uuid(d86dff3e-9be2-4680-aecf-79c78ccc163e),
 	version(1.0)
 ]
-typedef struct groupSD_REGISTRATION_DATAx
+struct SD_REGISTRATION_DATAx
 {
 	char registrationData[SD_REGISDATA_MAX_SIZE];
 	long registrationDataSize;
@@ -26,11 +27,12 @@ typedef struct groupSD_REGISTRATION_DATAx
 	long issuingAuthoritySize;
 } SD_REGISTRATION_DATAx;
 
+typedef
 [
 	uuid(96ee4bdf-7274-40ab-ad7a-f9f74717761e),
 	version(1.0)
 ]
-typedef struct groupSD_DOCUMENT_DATAx
+struct SD_DOCUMENT_DATAx
 {
 	char stateIssuing[50];
 	long stateIssuingSize;
@@ -48,11 +50,12 @@ typedef struct groupSD_DOCUMENT_DATAx
 	long serialNumberSize;
 } SD_DOCUMENT_DATAx;
 
+typedef
 [
 	uuid(d40503b8-305e-4c3e-9921-d6d63e014f82),
 	version(1.0)
 ]
-typedef struct groupSD_VEHICLE_DATAx
+struct SD_VEHICLE_DATAx
 {
 	char dateOfFirstRegistration[16];
 	long dateOfFirstRegistrationSize;
@@ -100,11 +103,12 @@ typedef struct groupSD_VEHICLE_DATAx
 	long vehicleLoadSize;
 } SD_VEHICLE_DATAx;
 
+typedef
 [
 	uuid(037f84fb-6722-45af-b4fd-c17d414dfd9b),
 	version(1.0)
 ]
-typedef struct groupSD_PERSONAL_DATAx
+struct SD_PERSONAL_DATAx
 {
 	char ownersPersonalNo[20];
 	long ownersPersonalNoSize;
