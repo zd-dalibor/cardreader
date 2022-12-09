@@ -14,7 +14,7 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Generated Files">
-      <UniqueIdentifier>{c7adcd73-fd5b-42c1-a3ac-e7aa89e2ca26}</UniqueIdentifier>
+      <UniqueIdentifier>{4b617f95-961b-4904-afbc-4a617654bc73}</UniqueIdentifier>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
   </ItemGroup>
@@ -26,6 +26,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="xdlldata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DriverLicenseReader_i.h">
@@ -40,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DriverLicenseReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="xdlldata.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DriverLicenseReader_i.c">
