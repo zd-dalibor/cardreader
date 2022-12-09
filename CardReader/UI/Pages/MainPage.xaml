@@ -50,7 +50,7 @@
                 </DataTemplate>
             </NavigationView.MenuItemTemplate>
 
-            <ScrollViewer Grid.Row="1">
+            <ScrollViewer>
                 <Frame x:Name="ContentFrame"/>
             </ScrollViewer>
         </NavigationView>

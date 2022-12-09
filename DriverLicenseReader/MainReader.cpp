@@ -65,9 +65,9 @@ STDMETHODIMP CMainReader::sdReadRegistration(SD_REGISTRATION_DATAx* data, long i
     *res = ::sdReadRegistration(&tmp, index);
 
     if (res == S_OK) {
-        DATA_COPY(tmp, data, registrationData);
-        DATA_COPY(tmp, data, signatureData);
-        DATA_COPY(tmp, data, issuingAuthority);
+        DATA_COPY(tmp, data, registrationData)
+        DATA_COPY(tmp, data, signatureData)
+        DATA_COPY(tmp, data, issuingAuthority)
     }
 
     return S_OK;
