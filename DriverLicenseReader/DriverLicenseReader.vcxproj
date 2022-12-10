@@ -157,6 +157,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="DriverLicenseReader.rgs" />
+    <CopyFileToFolders Include="eVehicle_x86\eVehicleRegistrationAPI.dll">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
+    </CopyFileToFolders>
     <None Include="MainReader.rgs" />
   </ItemGroup>
   <ItemGroup>
