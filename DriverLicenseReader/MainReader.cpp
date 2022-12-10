@@ -64,7 +64,7 @@ STDMETHODIMP CMainReader::sdReadRegistration(SD_REGISTRATION_DATAx* data, long i
     SD_REGISTRATION_DATA tmp{};
     *res = ::sdReadRegistration(&tmp, index);
 
-    if (res == S_OK) {
+    if (*res == S_OK) {
         DATA_COPY(tmp, data, registrationData)
         DATA_COPY(tmp, data, signatureData)
         DATA_COPY(tmp, data, issuingAuthority)
@@ -79,7 +79,7 @@ STDMETHODIMP CMainReader::sdReadDocumentData(SD_DOCUMENT_DATAx* data, long* res)
     SD_DOCUMENT_DATA tmp{};
     *res = ::sdReadDocumentData(&tmp);
 
-    if (res == S_OK) {
+    if (*res == S_OK) {
         DATA_COPY(tmp, data, stateIssuing)
         DATA_COPY(tmp, data, competentAuthority)
         DATA_COPY(tmp, data, authorityIssuing)
@@ -98,7 +98,7 @@ STDMETHODIMP CMainReader::sdReadVehicleData(SD_VEHICLE_DATAx* data, long* res)
     SD_VEHICLE_DATA tmp{};
     *res = ::sdReadVehicleData(&tmp);
 
-    if (res == S_OK) {
+    if (*res == S_OK) {
         DATA_COPY(tmp, data, dateOfFirstRegistration)
         DATA_COPY(tmp, data, yearOfProduction)
         DATA_COPY(tmp, data, vehicleMake)
