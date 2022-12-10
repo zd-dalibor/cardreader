@@ -10,8 +10,8 @@ using namespace std;
 
 
 #define DATA_COPY(SRC, PDESC, FIELD) \
-    copy(begin(SRC.FIELD), end(SRC.FIELD), PDESC->FIELD); \
-    PDESC->FIELD ## Size = SRC.FIELD ## Size;
+    copy(begin((SRC).FIELD), end((SRC).FIELD), (PDESC)->FIELD); \
+    (PDESC)->FIELD ## Size = (SRC).FIELD ## Size;
 
 
 
