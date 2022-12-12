@@ -120,8 +120,14 @@
   <data name="AppTitle.Text" xml:space="preserve">
     <value>Card Reader</value>
   </data>
+  <data name="DriverLicenseReaderItem.Text" xml:space="preserve">
+    <value>Driver License</value>
+  </data>
   <data name="HomeMenuItem.Text" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="IdReaderItem.Text" xml:space="preserve">
+    <value>ID</value>
   </data>
   <data name="SettingsMenuItem.Text" xml:space="preserve">
     <value>Settings</value>

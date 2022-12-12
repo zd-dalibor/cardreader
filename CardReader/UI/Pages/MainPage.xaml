@@ -9,7 +9,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:CardReader.UI.ViewModel.MainPage"
+    xmlns:controls="using:CardReader.UI.Controls"
     xmlns:Converter="using:CardReader.UI.Converter"
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -29,7 +32,13 @@
     </Page.Resources>
 
     <Grid>
-        <Grid x:Name="AppTitleBar" x:FieldModifier="public"
+        <controls:AppTitleBar x:Name="AppTitleBar" x:FieldModifier="public"
+                              Text="{x:Bind ViewModel.AppTitleText, Mode=OneWay}"
+                              Icon="{ThemeResource WindowIcon}"
+                              IsActive="{x:Bind ViewModel.IsMainWindowActive, Mode=OneWay}"
+                              IsBackButtonVisible="{x:Bind NavigationView.IsBackButtonVisible, Mode=OneWay}"
+                              DisplayMode="{x:Bind NavigationView.DisplayMode, Mode=OneWay}"/>
+        <!--<Grid x:Name="AppTitleBar" x:FieldModifier="public"
               VerticalAlignment="Top"
               Height="46">
             <Image Source="{ThemeResource WindowIcon}"
@@ -40,13 +49,23 @@
                        TextWrapping="NoWrap"
                        Style="{StaticResource CaptionTextBlockStyle}" 
                        VerticalAlignment="Center"
-                       Margin="32,0,0,0"/>
-        </Grid>
-        <NavigationView MenuItemsSource="{x:Bind ViewModel.MenuItems}" IsTitleBarAutoPaddingEnabled="False"
-                        DisplayModeChanged="NavigationView_DisplayModeChanged" Loaded="NavigationView_Loaded">
+                       Margin="32,0,0,0">
+                <Interactivity:Interaction.Behaviors>
+                    <Core:DataTriggerBehavior Binding="{x:Bind ViewModel.IsMainWindowActive, Mode=OneWay}" ComparisonCondition="Equal" Value="true">
+                        <Core:ChangePropertyAction PropertyName="Foreground" Value="{ThemeResource WindowCaptionForeground}"/>
+                    </Core:DataTriggerBehavior>
+                    <Core:DataTriggerBehavior Binding="{x:Bind ViewModel.IsMainWindowActive, Mode=OneWay}" ComparisonCondition="Equal" Value="false">
+                        <Core:ChangePropertyAction PropertyName="Foreground" Value="{ThemeResource WindowCaptionForegroundDisabled}"/>
+                    </Core:DataTriggerBehavior>
+                </Interactivity:Interaction.Behaviors>
+            </TextBlock>
+        </Grid>-->
+        <NavigationView x:Name="NavigationView" MenuItemsSource="{x:Bind ViewModel.MenuItems, Mode=TwoWay}" SelectedItem="{x:Bind ViewModel.SelectedMenuItem}"
+                        IsTitleBarAutoPaddingEnabled="False" DisplayModeChanged="NavigationView_DisplayModeChanged" Loaded="NavigationView_Loaded">
             <NavigationView.MenuItemTemplate>
                 <DataTemplate x:DataType="vm:MenuItemViewModel">
-                    <NavigationViewItem Tag="{x:Bind Tag}" Icon="{x:Bind Icon, Converter={StaticResource SymbolToIconElementConverter}}" Content="{x:Bind Name}" MenuItemsSource="{x:Bind Children}"/>
+                    <NavigationViewItem Tag="{x:Bind Tag}" Icon="{x:Bind Icon, Mode=OneWay, Converter={StaticResource SymbolToIconElementConverter}}"
+                                        Content="{x:Bind Name, Mode=OneWay}" MenuItemsSource="{x:Bind Children, Mode=OneWay}"/>
                 </DataTemplate>
             </NavigationView.MenuItemTemplate>
 

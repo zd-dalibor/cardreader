@@ -25,6 +25,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Globalization;
+using CommunityToolkit.Mvvm.Messaging;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -57,8 +58,8 @@ namespace CardReader
         {
             InitLocale();
 
-            m_shell = new Shell();
-            m_shell.Init();
+            Shell = Services.GetService<Shell>();
+            Shell.Init();
         }
 
         private static void InitLocale()
@@ -80,14 +81,14 @@ namespace CardReader
         {
             var services = new ServiceCollection();
 
+            // services
+            services.AddSingleton<Shell>();
+            services.AddSingleton<AppState>();
             services.AddSingleton<IStringLoader, StringLoader>();
-            //services.AddSingleton<ISettingsService, SettingsService>();
-            //services.AddSingleton<IClipboardService, ClipboardService>();
-            //services.AddSingleton<IShareService, ShareService>();
-            //services.AddSingleton<IEmailService, EmailService>();
+            services.AddSingleton<IMessenger>(_ => WeakReferenceMessenger.Default);
 
             // view models
-            services.AddSingleton<MainPageViewModel>();
+            services.AddTransient<MainPageViewModel>();
 
             return services.BuildServiceProvider();
         }
@@ -96,6 +97,6 @@ namespace CardReader
 
         public IServiceProvider Services { get; }
 
-        private Shell m_shell;
+        public Shell Shell { get; private set; }
     }
 }

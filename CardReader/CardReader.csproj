@@ -13,6 +13,9 @@
 	<WindowsPackageType>None</WindowsPackageType>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\badge_FILL0_wght400_GRAD0_opsz48.svg" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Assets\WindowIcon.svg" />
     <None Remove="UI\Pages\MainPage.xaml" />
   </ItemGroup>
@@ -40,6 +43,7 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.221116.1" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.755" />
@@ -59,10 +63,6 @@
     <Page Update="UI\Pages\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Dark\" />
-    <Folder Include="Assets\Light\" />
   </ItemGroup>
 
   <!-- 

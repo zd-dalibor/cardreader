@@ -8,16 +8,61 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.WinUI.UI.Helpers;
 
 namespace CardReader.UI
 {
     public class Shell
     {
+        public AppState AppState { get; }
+
         public Window Window { get; private set; }
 
         public MainPage MainPage { get; private set; }
 
+        public Shell(AppState appState)
+        {
+            AppState = appState;
+        }
+
         public void Init()
+        {
+            //TestDriverLicenseReader();
+
+            var themeListener = new ThemeListener();
+            this.AppState.CurrentTheme = themeListener.CurrentTheme;
+            themeListener.ThemeChanged += ThemeListener_ThemeChanged;
+
+            this.MainPage = new MainPage();
+
+            this.Window = new Window();
+            this.Window.Activated += Window_Activated;
+
+            this.Window.Content = this.MainPage;
+            this.Window.ExtendsContentIntoTitleBar = true;
+            this.Window.SetTitleBar(this.MainPage.AppTitleBar);
+
+            this.Window.Activate();
+        }
+
+        private void ThemeListener_ThemeChanged(ThemeListener sender)
+        {
+            this.AppState.CurrentTheme = sender.CurrentTheme;
+        }
+
+        private void Window_Activated(object sender, WindowActivatedEventArgs args)
+        {
+            this.AppState.IsMainWindowActive = args.WindowActivationState != WindowActivationState.Deactivated;
+        }
+
+        //private void UpdateAppTitleTextForeground()
+        //{
+        //    this.MainPage.AppTitleTextBlock.Foreground = (SolidColorBrush)(this.AppState.IsMainWindowActive
+        //        ? App.Current.Resources["WindowCaptionForeground"]
+        //        : App.Current.Resources["WindowCaptionForegroundDisabled"]);
+        //}
+
+        private static void TestDriverLicenseReader()
         {
             var test = new DriverLicenseReaderLib.MainReader();
             var result = test.sdStartup(0);
@@ -71,31 +116,6 @@ namespace CardReader.UI
 
             result = test.sdCleanup();
             Debug.WriteLine($"Ovo je results: 0x{result:X}!!!");
-
-            this.MainPage = new MainPage();
-
-            this.Window = new Window();
-            this.Window.Activated += Window_Activated;
-
-            this.Window.Content = this.MainPage;
-            this.Window.ExtendsContentIntoTitleBar = true;
-            this.Window.SetTitleBar(this.MainPage.AppTitleBar);
-
-            this.Window.Activate();
-        }
-
-        private void Window_Activated(object sender, WindowActivatedEventArgs args)
-        {
-            if (args.WindowActivationState == WindowActivationState.Deactivated)
-            {
-                this.MainPage.AppTitleTextBlock.Foreground =
-                    (SolidColorBrush)App.Current.Resources["WindowCaptionForegroundDisabled"];
-            }
-            else
-            {
-                this.MainPage.AppTitleTextBlock.Foreground =
-                    (SolidColorBrush)App.Current.Resources["WindowCaptionForeground"];
-            }
         }
     }
 }

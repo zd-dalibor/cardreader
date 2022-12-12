@@ -40,31 +40,32 @@ namespace CardReader.UI.Pages
             this.stringLoader = App.Current.Services.GetService<IStringLoader>();
 
             this.InitializeComponent();
+            ViewModel.IsActive = true;
         }
 
         private void NavigationView_DisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
         {
-            var titleBarMargin = new Thickness(0, 0, 126, 0);
-            switch (args.DisplayMode)
-            {
-                case NavigationViewDisplayMode.Expanded:
-                case NavigationViewDisplayMode.Compact:
-                    titleBarMargin.Left = sender.IsBackButtonVisible switch
-                    {
-                        NavigationViewBackButtonVisible.Auto or NavigationViewBackButtonVisible.Visible => 48,
-                        _ => 0
-                    };
-                    break;
-                case NavigationViewDisplayMode.Minimal:
-                    titleBarMargin.Left = sender.IsBackButtonVisible switch
-                    {
-                        NavigationViewBackButtonVisible.Auto or NavigationViewBackButtonVisible.Visible => 84,
-                        _ => 0
-                    };
-                    break;
-            }
+            //var titleBarMargin = new Thickness(0, 0, 126, 0);
+            //switch (args.DisplayMode)
+            //{
+            //    case NavigationViewDisplayMode.Expanded:
+            //    case NavigationViewDisplayMode.Compact:
+            //        titleBarMargin.Left = sender.IsBackButtonVisible switch
+            //        {
+            //            NavigationViewBackButtonVisible.Auto or NavigationViewBackButtonVisible.Visible => 48,
+            //            _ => 0
+            //        };
+            //        break;
+            //    case NavigationViewDisplayMode.Minimal:
+            //        titleBarMargin.Left = sender.IsBackButtonVisible switch
+            //        {
+            //            NavigationViewBackButtonVisible.Auto or NavigationViewBackButtonVisible.Visible => 84,
+            //            _ => 0
+            //        };
+            //        break;
+            //}
 
-            AppTitleBar.Margin = titleBarMargin;
+            //AppTitleBar.Margin = titleBarMargin;
         }
 
         private void NavigationView_Loaded(object sender, RoutedEventArgs e)

@@ -15,7 +15,7 @@ namespace CardReader.UI.ViewModel.MainPage
         private string tag;
 
         [ObservableProperty]
-        private Symbol icon;
+        private object icon;
 
         [ObservableProperty]
         private string name;

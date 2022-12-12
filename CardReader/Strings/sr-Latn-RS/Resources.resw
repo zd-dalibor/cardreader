@@ -120,8 +120,14 @@
   <data name="AppTitle.Text" xml:space="preserve">
     <value>ID Čitač</value>
   </data>
+  <data name="DriverLicenseReaderItem.Text" xml:space="preserve">
+    <value>Vozačka dozvola</value>
+  </data>
   <data name="HomeMenuItem.Text" xml:space="preserve">
     <value>Početna</value>
+  </data>
+  <data name="IdReaderItem.Text" xml:space="preserve">
+    <value>Lična karta</value>
   </data>
   <data name="SettingsMenuItem.Text" xml:space="preserve">
     <value>Podešavanja</value>
