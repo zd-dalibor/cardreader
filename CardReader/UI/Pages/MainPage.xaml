@@ -17,49 +17,16 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
-        <ResourceDictionary>
-            <Converter:SymbolToIconElementConverter x:Key="SymbolToIconElementConverter"/>
-            
-            <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary x:Key="Light">
-                    <SvgImageSource x:Key="WindowIcon" UriSource="/Assets/Light/WindowIcon.svg"/>
-                </ResourceDictionary>
-                <ResourceDictionary x:Key="Dark">
-                    <SvgImageSource x:Key="WindowIcon" UriSource="/Assets/Dark/WindowIcon.svg"/>
-                </ResourceDictionary>
-            </ResourceDictionary.ThemeDictionaries>
-        </ResourceDictionary>
+        <Converter:SymbolToIconElementConverter x:Key="SymbolToIconElementConverter"/>
     </Page.Resources>
 
     <Grid>
         <controls:AppTitleBar x:Name="AppTitleBar" x:FieldModifier="public"
                               Text="{x:Bind ViewModel.AppTitleText, Mode=OneWay}"
-                              Icon="{ThemeResource WindowIcon}"
+                              Icon="ms-appx:///Assets/WindowIcon.svg"
                               IsActive="{x:Bind ViewModel.IsMainWindowActive, Mode=OneWay}"
                               IsBackButtonVisible="{x:Bind NavigationView.IsBackButtonVisible, Mode=OneWay}"
                               DisplayMode="{x:Bind NavigationView.DisplayMode, Mode=OneWay}"/>
-        <!--<Grid x:Name="AppTitleBar" x:FieldModifier="public"
-              VerticalAlignment="Top"
-              Height="46">
-            <Image Source="{ThemeResource WindowIcon}"
-                   HorizontalAlignment="Left" 
-                   Width="18" Height="18" 
-                   Margin="8,0"/>
-            <TextBlock x:Name="AppTitleTextBlock" x:FieldModifier="public" Text="{x:Bind ViewModel.AppTitleText}"
-                       TextWrapping="NoWrap"
-                       Style="{StaticResource CaptionTextBlockStyle}" 
-                       VerticalAlignment="Center"
-                       Margin="32,0,0,0">
-                <Interactivity:Interaction.Behaviors>
-                    <Core:DataTriggerBehavior Binding="{x:Bind ViewModel.IsMainWindowActive, Mode=OneWay}" ComparisonCondition="Equal" Value="true">
-                        <Core:ChangePropertyAction PropertyName="Foreground" Value="{ThemeResource WindowCaptionForeground}"/>
-                    </Core:DataTriggerBehavior>
-                    <Core:DataTriggerBehavior Binding="{x:Bind ViewModel.IsMainWindowActive, Mode=OneWay}" ComparisonCondition="Equal" Value="false">
-                        <Core:ChangePropertyAction PropertyName="Foreground" Value="{ThemeResource WindowCaptionForegroundDisabled}"/>
-                    </Core:DataTriggerBehavior>
-                </Interactivity:Interaction.Behaviors>
-            </TextBlock>
-        </Grid>-->
         <NavigationView x:Name="NavigationView" MenuItemsSource="{x:Bind ViewModel.MenuItems, Mode=TwoWay}" SelectedItem="{x:Bind ViewModel.SelectedMenuItem}"
                         IsTitleBarAutoPaddingEnabled="False" DisplayModeChanged="NavigationView_DisplayModeChanged" Loaded="NavigationView_Loaded">
             <NavigationView.MenuItemTemplate>

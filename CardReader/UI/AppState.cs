@@ -15,9 +15,6 @@ namespace CardReader.UI
         [ObservableProperty]
         private bool isMainWindowActive;
 
-        [ObservableProperty]
-        private ApplicationTheme currentTheme;
-
         public AppState(IMessenger messenger) : base(messenger)
         {
         }
@@ -25,11 +22,6 @@ namespace CardReader.UI
         partial void OnIsMainWindowActiveChanged(bool value)
         {
             NotifyPropertyChangedRecipients(nameof(IsMainWindowActive));
-        }
-
-        partial void OnCurrentThemeChanged(ApplicationTheme value)
-        {
-            NotifyPropertyChangedRecipients(nameof(CurrentTheme));
         }
 
         private void NotifyPropertyChangedRecipients(string propertyName)

@@ -16,6 +16,10 @@
     <Content Remove="Assets\badge_FILL0_wght400_GRAD0_opsz48.svg" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Assets\theme-dark\badge_FILL0_wght400_GRAD0_opsz48.svg" />
+    <None Remove="Assets\theme-dark\WindowIcon.svg" />
+    <None Remove="Assets\theme-light\badge_FILL0_wght400_GRAD0_opsz48.svg" />
+    <None Remove="Assets\theme-light\WindowIcon.svg" />
     <None Remove="Assets\WindowIcon.svg" />
     <None Remove="UI\Pages\MainPage.xaml" />
   </ItemGroup>

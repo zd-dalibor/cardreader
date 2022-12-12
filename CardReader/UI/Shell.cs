@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CommunityToolkit.WinUI.UI.Helpers;
 
 namespace CardReader.UI
 {
@@ -29,10 +28,6 @@ namespace CardReader.UI
         {
             //TestDriverLicenseReader();
 
-            var themeListener = new ThemeListener();
-            this.AppState.CurrentTheme = themeListener.CurrentTheme;
-            themeListener.ThemeChanged += ThemeListener_ThemeChanged;
-
             this.MainPage = new MainPage();
 
             this.Window = new Window();
@@ -45,22 +40,10 @@ namespace CardReader.UI
             this.Window.Activate();
         }
 
-        private void ThemeListener_ThemeChanged(ThemeListener sender)
-        {
-            this.AppState.CurrentTheme = sender.CurrentTheme;
-        }
-
         private void Window_Activated(object sender, WindowActivatedEventArgs args)
         {
             this.AppState.IsMainWindowActive = args.WindowActivationState != WindowActivationState.Deactivated;
         }
-
-        //private void UpdateAppTitleTextForeground()
-        //{
-        //    this.MainPage.AppTitleTextBlock.Foreground = (SolidColorBrush)(this.AppState.IsMainWindowActive
-        //        ? App.Current.Resources["WindowCaptionForeground"]
-        //        : App.Current.Resources["WindowCaptionForegroundDisabled"]);
-        //}
 
         private static void TestDriverLicenseReader()
         {

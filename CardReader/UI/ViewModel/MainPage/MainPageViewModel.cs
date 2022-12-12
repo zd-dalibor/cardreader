@@ -22,9 +22,6 @@ namespace CardReader.UI.ViewModel.MainPage
         private MenuItemViewModel selectedMenuItem;
 
         [ObservableProperty]
-        private ApplicationTheme currentTheme;
-
-        [ObservableProperty]
         private bool isMainWindowActive;
 
         #region strings
@@ -39,7 +36,6 @@ namespace CardReader.UI.ViewModel.MainPage
         {
             this.stringLoader = stringLoader;
 
-            CurrentTheme = appState.CurrentTheme;
             IsMainWindowActive = appState.IsMainWindowActive;
 
             InitStrings();
@@ -48,16 +44,11 @@ namespace CardReader.UI.ViewModel.MainPage
 
         public void Receive(AppStateChangedMessage message)
         {
-            switch (message.PropertyName)
+            IsMainWindowActive = message.PropertyName switch
             {
-                case nameof(AppState.CurrentTheme):
-                    CurrentTheme = message.NewValue.CurrentTheme;
-                    menuItemsDictionary["id_reader"].Icon = IdReaderMenuItemIcon();
-                    break;
-                case nameof(AppState.IsMainWindowActive):
-                    IsMainWindowActive = message.NewValue.IsMainWindowActive;
-                    break;
-            }
+                nameof(AppState.IsMainWindowActive) => message.NewValue.IsMainWindowActive,
+                _ => IsMainWindowActive
+            };
         }
 
         private void InitStrings()
@@ -82,7 +73,7 @@ namespace CardReader.UI.ViewModel.MainPage
                     {
                         Tag = "id_reader",
                         Name = stringLoader.GetString("IdReaderItem/Text"),
-                        Icon = IdReaderMenuItemIcon()
+                        Icon = "ms-appx:///Assets/badge_FILL0_wght400_GRAD0_opsz48.svg"
                     }
                 },
                 {
@@ -97,13 +88,6 @@ namespace CardReader.UI.ViewModel.MainPage
 
             MenuItems = new ObservableCollection<MenuItemViewModel>(menuItemsDictionary.Values);
             SelectedMenuItem = MenuItems[0];
-        }
-
-        private string IdReaderMenuItemIcon()
-        {
-            return CurrentTheme == ApplicationTheme.Light
-                ? "ms-appx:///Assets/Light/badge_FILL0_wght400_GRAD0_opsz48.svg"
-                : "ms-appx:///Assets/Dark/badge_FILL0_wght400_GRAD0_opsz48.svg";
         }
     }
 }
