@@ -10,14 +10,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:CardReader.UI.ViewModel.MainPage"
     xmlns:controls="using:CardReader.UI.Controls"
-    xmlns:Converter="using:CardReader.UI.Converter"
-    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:converter="using:CardReader.UI.Converter"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
-        <Converter:SymbolToIconElementConverter x:Key="SymbolToIconElementConverter"/>
+        <converter:SymbolToIconElementConverter x:Key="SymbolToIconElementConverter"/>
     </Page.Resources>
 
     <Grid>
@@ -28,7 +26,7 @@
                               IsBackButtonVisible="{x:Bind NavigationView.IsBackButtonVisible, Mode=OneWay}"
                               DisplayMode="{x:Bind NavigationView.DisplayMode, Mode=OneWay}"/>
         <NavigationView x:Name="NavigationView" MenuItemsSource="{x:Bind ViewModel.MenuItems, Mode=TwoWay}" SelectedItem="{x:Bind ViewModel.SelectedMenuItem}"
-                        IsTitleBarAutoPaddingEnabled="False" DisplayModeChanged="NavigationView_DisplayModeChanged" Loaded="NavigationView_Loaded">
+                        IsTitleBarAutoPaddingEnabled="False" Loaded="NavigationView_Loaded">
             <NavigationView.MenuItemTemplate>
                 <DataTemplate x:DataType="vm:MenuItemViewModel">
                     <NavigationViewItem Tag="{x:Bind Tag}" Icon="{x:Bind Icon, Mode=OneWay, Converter={StaticResource SymbolToIconElementConverter}}"
