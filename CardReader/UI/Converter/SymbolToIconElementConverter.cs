@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Text;
+using Microsoft.UI.Text;
+using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 
 namespace CardReader.UI.Converter
@@ -14,20 +17,31 @@ namespace CardReader.UI.Converter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (targetType == typeof(IconElement))
+            if (targetType != typeof(IconElement)) return DependencyProperty.UnsetValue;
+            
+            return value switch
             {
-                return value switch
+                Symbol sym => new SymbolIcon(sym),
+                string str when str.StartsWith("mso#") => new FontIcon
                 {
-                    Symbol obj => new SymbolIcon(obj),
-                    string obj => new ImageIcon
-                    {
-                        Source = obj.EndsWith(".svg") ? new SvgImageSource(new Uri(obj)) : new BitmapImage(new Uri(obj))
-                    },
-                    _ => DependencyProperty.UnsetValue
-                };
-            }
-
-            return DependencyProperty.UnsetValue;
+                    FontFamily = App.Current.Resources["MaterialSymbolsOutlined"] as FontFamily, Glyph = str[4..]
+                },
+                string str when str.StartsWith("fab#") => new FontIcon
+                {
+                    FontFamily = App.Current.Resources["FontAwesomeBrands"] as FontFamily, Glyph = str[4..]
+                },
+                string str when str.StartsWith("far#") => new FontIcon
+                {
+                    FontFamily = App.Current.Resources["FontAwesomeRegular"] as FontFamily, Glyph = str[4..]
+                },
+                string str when str.StartsWith("fas#") => new FontIcon
+                {
+                    FontFamily = App.Current.Resources["FontAwesomeSolid"] as FontFamily, Glyph = str[4..]
+                },
+                string str when str.EndsWith(".svg") => new ImageIcon { Source = new SvgImageSource(new Uri(str)) },
+                string str => new ImageIcon { Source = new BitmapImage(new Uri(str)) },
+                _ => DependencyProperty.UnsetValue
+            };
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

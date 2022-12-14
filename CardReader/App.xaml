@@ -17,6 +17,15 @@
             <SolidColorBrush x:Key="WindowCaptionBackgroundDisabled">Transparent</SolidColorBrush>
             <!--<SolidColorBrush x:Key="WindowCaptionForeground">Transparent</SolidColorBrush>
             <SolidColorBrush x:Key="WindowCaptionForegroundDisabled">Transparent</SolidColorBrush>-->
+
+            <!-- ReSharper disable Xaml.UnexpectedTextToken -->
+            <!-- ReSharper disable Xaml.ConstructorWarning -->
+            <FontFamily x:Key="MaterialSymbolsOutlined">ms-appx:///Assets/Fonts/MaterialSymbolsOutlined.ttf#Material Symbols Outlined</FontFamily>
+            <FontFamily x:Key="FontAwesomeBrands">ms-appx:///Assets/Fonts/FontAwesomeBrands.otf#Font Awesome 6 Brands</FontFamily>
+            <FontFamily x:Key="FontAwesomeRegular">ms-appx:///Assets/Fonts/FontAwesomeRegular.otf#Font Awesome 6 Free</FontFamily>
+            <FontFamily x:Key="FontAwesomeSolid">ms-appx:///Assets/Fonts/FontAwesomeSolid.otf#Font Awesome 6 Free Solid</FontFamily>
+            <!-- ReSharper restore Xaml.ConstructorWarning -->
+            <!-- ReSharper restore Xaml.UnexpectedTextToken -->
         </ResourceDictionary>
     </Application.Resources>
 </Application>
