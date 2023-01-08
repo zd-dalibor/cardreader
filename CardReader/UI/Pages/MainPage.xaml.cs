@@ -39,7 +39,13 @@ namespace CardReader.UI.Pages
             this.ViewModel = App.Current.Services.GetService<MainPageViewModel>();
             this.stringLoader = App.Current.Services.GetService<IStringLoader>();
 
+            this.Loaded += MainPage_Loaded;
+
             this.InitializeComponent();
+        }
+
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
             ViewModel.IsActive = true;
         }
 
@@ -49,6 +55,10 @@ namespace CardReader.UI.Pages
             var settingsItem = (NavigationViewItem)navigation.SettingsItem;
 
             settingsItem.Content = stringLoader.GetString("SettingsMenuItem/Text");
+
+            // quick fix for https://github.com/microsoft/microsoft-ui-xaml/issues/6518
+            navigation.PaneTitle = " ";
+            navigation.PaneTitle = "";
         }
     }
 }

@@ -1,0 +1,25 @@
+@font-face {font-family: "CardReader";
+  src: url('CardReader.eot?t=1673189401246'); /* IE9*/
+  src: url('CardReader.eot?t=1673189401246#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url("CardReader.woff2?t=1673189401246") format("woff2"),
+  url("CardReader.woff?t=1673189401246") format("woff"),
+  url('CardReader.ttf?t=1673189401246') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('CardReader.svg?t=1673189401246#CardReader') format('svg'); /* iOS 4.1- */
+}
+
+[class^="CardReader-"], [class*=" CardReader-"] {
+  font-family: 'CardReader' !important;
+  font-size: 16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.CardReader-car:before { content: "\ea01"; }
+.CardReader-home:before { content: "\ea02"; }
+.CardReader-id:before { content: "\ea03"; }
+
+$CardReader-car: "\ea01";
+$CardReader-home: "\ea02";
+$CardReader-id: "\ea03";
+

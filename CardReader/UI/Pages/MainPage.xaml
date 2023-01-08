@@ -35,10 +35,7 @@
             </NavigationView.MenuItemTemplate>
 
             <ScrollViewer>
-                <!--<Frame x:Name="ContentFrame"/>-->
-                <Grid>
-                    <FontIcon FontFamily="{StaticResource FontAwesomeBrands}" Glyph="&#xf17a;" FontSize="400"/>
-                </Grid>
+                <Frame x:Name="ContentFrame"/>
             </ScrollViewer>
         </NavigationView>
     </Grid>

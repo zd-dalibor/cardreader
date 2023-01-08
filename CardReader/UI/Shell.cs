@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.UI.Xaml.Controls;
 
 namespace CardReader.UI
 {
@@ -27,17 +28,31 @@ namespace CardReader.UI
         public void Init()
         {
             //TestDriverLicenseReader();
+            this.Window = new Window
+            {
+                ExtendsContentIntoTitleBar = true
+            };
 
-            this.MainPage = new MainPage();
+            var mainFrame = this.Window.Content as Frame;
+            if (mainFrame == null)
+            {
+                mainFrame = new Frame();
+                this.Window.Content = mainFrame;
+            }
+            mainFrame.Navigated += MainFrame_Navigated;
+            mainFrame.Navigate(typeof(MainPage));
 
-            this.Window = new Window();
             this.Window.Activated += Window_Activated;
-
-            this.Window.Content = this.MainPage;
-            this.Window.ExtendsContentIntoTitleBar = true;
-            this.Window.SetTitleBar(this.MainPage.AppTitleBar);
-
             this.Window.Activate();
+        }
+
+        private void MainFrame_Navigated(object sender, Microsoft.UI.Xaml.Navigation.NavigationEventArgs e)
+        {
+            MainPage = e.Content as MainPage;
+            if (MainPage != null)
+            {
+                this.Window.SetTitleBar(this.MainPage.AppTitleBar);
+            }
         }
 
         private void Window_Activated(object sender, WindowActivatedEventArgs args)

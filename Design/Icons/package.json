@@ -1,0 +1,24 @@
+{
+  "name": "card-reader-icons",
+  "version": "1.0.0",
+  "description": "Card reader icons.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "font": "svgtofont --sources ./dest --output ./font --fontName CardReader",
+    "optimize": "svgo --folder ./svg --output ./dest"
+  },
+  "author": "Dalibor Zdravković <zd.dalibor@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "svgo": "^3.0.2",
+    "svgtofont": "^3.22.0"
+  },
+  "svgtofont": {
+    "emptyDist": true,
+    "svgicons2svgfont": {
+      "fontHeight": 1024,
+      "normalize": true
+    }
+  }
+}

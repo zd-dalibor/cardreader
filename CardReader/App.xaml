@@ -20,10 +20,7 @@
 
             <!-- ReSharper disable Xaml.UnexpectedTextToken -->
             <!-- ReSharper disable Xaml.ConstructorWarning -->
-            <FontFamily x:Key="MaterialSymbolsOutlined">ms-appx:///Assets/Fonts/MaterialSymbolsOutlined.ttf#Material Symbols Outlined</FontFamily>
-            <FontFamily x:Key="FontAwesomeBrands">ms-appx:///Assets/Fonts/FontAwesomeBrands.otf#Font Awesome 6 Brands</FontFamily>
-            <FontFamily x:Key="FontAwesomeRegular">ms-appx:///Assets/Fonts/FontAwesomeRegular.otf#Font Awesome 6 Free</FontFamily>
-            <FontFamily x:Key="FontAwesomeSolid">ms-appx:///Assets/Fonts/FontAwesomeSolid.otf#Font Awesome 6 Free Solid</FontFamily>
+            <FontFamily x:Key="CardReader">ms-appx:///Assets/Fonts/CardReader.ttf#CardReader</FontFamily>
             <!-- ReSharper restore Xaml.ConstructorWarning -->
             <!-- ReSharper restore Xaml.UnexpectedTextToken -->
         </ResourceDictionary>

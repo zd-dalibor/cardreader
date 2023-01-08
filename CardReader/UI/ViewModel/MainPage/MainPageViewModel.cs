@@ -65,7 +65,7 @@ namespace CardReader.UI.ViewModel.MainPage
                     {
                         Tag = "home",
                         Name = stringLoader.GetString("HomeMenuItem/Text"),
-                        Icon = "fas#\xf015"
+                        Icon = "crr#\xea02"
                     }
                 },
                 {
@@ -73,7 +73,7 @@ namespace CardReader.UI.ViewModel.MainPage
                     {
                         Tag = "id_reader",
                         Name = stringLoader.GetString("IdReaderItem/Text"),
-                        Icon = "fas#\xf47f"
+                        Icon = "crr#\xea03"
                     }
                 },
                 {
@@ -81,7 +81,7 @@ namespace CardReader.UI.ViewModel.MainPage
                     {
                         Tag = "driver_license_reader",
                         Name = stringLoader.GetString("DriverLicenseReaderItem/Text"),
-                        Icon = "fas#\xf5e4"
+                        Icon = "crr#\xea01"
                     }
                 }
             };
