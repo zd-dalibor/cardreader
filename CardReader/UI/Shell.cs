@@ -28,31 +28,16 @@ namespace CardReader.UI
         public void Init()
         {
             //TestDriverLicenseReader();
+            this.MainPage = new MainPage();
             this.Window = new Window
             {
-                ExtendsContentIntoTitleBar = true
+                ExtendsContentIntoTitleBar = true,
+                Content = MainPage
             };
-
-            var mainFrame = this.Window.Content as Frame;
-            if (mainFrame == null)
-            {
-                mainFrame = new Frame();
-                this.Window.Content = mainFrame;
-            }
-            mainFrame.Navigated += MainFrame_Navigated;
-            mainFrame.Navigate(typeof(MainPage));
+            this.Window.SetTitleBar(this.MainPage.AppTitleBar);
 
             this.Window.Activated += Window_Activated;
             this.Window.Activate();
-        }
-
-        private void MainFrame_Navigated(object sender, Microsoft.UI.Xaml.Navigation.NavigationEventArgs e)
-        {
-            MainPage = e.Content as MainPage;
-            if (MainPage != null)
-            {
-                this.Window.SetTitleBar(this.MainPage.AppTitleBar);
-            }
         }
 
         private void Window_Activated(object sender, WindowActivatedEventArgs args)

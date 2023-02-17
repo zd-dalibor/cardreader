@@ -11,6 +11,7 @@
     xmlns:vm="using:CardReader.UI.ViewModel.MainPage"
     xmlns:controls="using:CardReader.UI.Controls"
     xmlns:converter="using:CardReader.UI.Converter"
+    xmlns:system="using:System"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -24,18 +25,24 @@
                               Icon="ms-appx:///Assets/WindowIcon.svg"
                               IsActive="{x:Bind ViewModel.IsMainWindowActive, Mode=OneWay}"
                               IsBackButtonVisible="{x:Bind NavigationView.IsBackButtonVisible, Mode=OneWay}"
-                              DisplayMode="{x:Bind NavigationView.DisplayMode, Mode=OneWay}"/>
-        <NavigationView x:Name="NavigationView" MenuItemsSource="{x:Bind ViewModel.MenuItems, Mode=TwoWay}" SelectedItem="{x:Bind ViewModel.SelectedMenuItem}"
-                        IsTitleBarAutoPaddingEnabled="False" Loaded="NavigationView_Loaded">
+                              DisplayMode="{x:Bind NavigationView.DisplayMode, Mode=OneWay}"
+                              PaneDisplayMode="{x:Bind NavigationView.PaneDisplayMode, Mode=OneWay}"/>
+        <NavigationView x:Name="NavigationView" MenuItemsSource="{x:Bind ViewModel.MenuItems, Mode=OneWay}" SelectedItem="{x:Bind ViewModel.SelectedMenuItem, Mode=OneWay}"
+                        IsTitleBarAutoPaddingEnabled="False" Loaded="NavigationView_Loaded" ItemInvoked="NavigationView_OnItemInvoked" BackRequested="NavigationView_OnBackRequested">
             <NavigationView.MenuItemTemplate>
                 <DataTemplate x:DataType="vm:MenuItemViewModel">
                     <NavigationViewItem Tag="{x:Bind Tag}" Icon="{x:Bind Icon, Mode=OneWay, Converter={StaticResource SymbolToIconElementConverter}}"
                                         Content="{x:Bind Name, Mode=OneWay}" MenuItemsSource="{x:Bind Children, Mode=OneWay}"/>
                 </DataTemplate>
             </NavigationView.MenuItemTemplate>
+            <NavigationView.HeaderTemplate>
+                <DataTemplate x:DataType="system:String">
+                    <TextBlock Margin="-36 0 0 10" Text="{Binding}"/>
+                </DataTemplate>
+            </NavigationView.HeaderTemplate>
 
             <ScrollViewer>
-                <Frame x:Name="ContentFrame"/>
+                <Frame x:Name="ContentFrame" Navigated="ContentFrame_OnNavigated"/>
             </ScrollViewer>
         </NavigationView>
     </Grid>

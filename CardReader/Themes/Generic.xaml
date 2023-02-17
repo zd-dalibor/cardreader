@@ -5,7 +5,7 @@
     xmlns:controls="using:CardReader.UI.Controls">
 
     <Style TargetType="controls:AppTitleBar">
-        <Setter Property="Height" Value="46"/>
+        <Setter Property="Height" Value="48"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="Template">
             <Setter.Value>

@@ -23,6 +23,9 @@
             <FontFamily x:Key="CardReader">ms-appx:///Assets/Fonts/CardReader.ttf#CardReader</FontFamily>
             <!-- ReSharper restore Xaml.ConstructorWarning -->
             <!-- ReSharper restore Xaml.UnexpectedTextToken -->
+
+            <!--<Thickness x:Key="NavigationViewHeaderMargin">20,44,0,0</Thickness>
+            <Thickness x:Key="NavigationViewMinimalHeaderMargin">-60,44,0,0</Thickness>-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -49,6 +49,12 @@ namespace CardReader.UI.Controls
             typeof(AppTitleBar),
             new PropertyMetadata(NavigationViewDisplayMode.Minimal, NavigationViewDisplayModeChangedCallback));
 
+        public static readonly DependencyProperty PaneDisplayModeProperty = DependencyProperty.Register(
+            nameof(DisplayMode),
+            typeof(NavigationViewPaneDisplayMode),
+            typeof(AppTitleBar),
+            new PropertyMetadata(NavigationViewPaneDisplayMode.Auto, PaneDisplayModeChangedCallback));
+
         private static void IsActiveChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctl = (AppTitleBar)d;
@@ -62,6 +68,12 @@ namespace CardReader.UI.Controls
         }
 
         private static void NavigationViewDisplayModeChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctl = (AppTitleBar)d;
+            ctl.UpdateStates(true);
+        }
+
+        private static void PaneDisplayModeChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctl = (AppTitleBar)d;
             ctl.UpdateStates(true);
@@ -97,6 +109,12 @@ namespace CardReader.UI.Controls
             set => SetValue(DisplayModeProperty, value);
         }
 
+        public NavigationViewPaneDisplayMode PaneDisplayMode
+        {
+            get => (NavigationViewPaneDisplayMode)GetValue(PaneDisplayModeProperty);
+            set => SetValue(PaneDisplayModeProperty, value);
+        }
+
         public AppTitleBar()
         {
             this.DefaultStyleKey = typeof(AppTitleBar);
@@ -112,23 +130,26 @@ namespace CardReader.UI.Controls
             VisualStateManager.GoToState(this, IsActive ? "Active" : "Inactive", useTransitions);
 
             var titleBarMargin = new Thickness(0, 0, 126, 0);
-            switch (DisplayMode)
+            if (PaneDisplayMode == NavigationViewPaneDisplayMode.Auto)
             {
-                case NavigationViewDisplayMode.Compact:
-                case NavigationViewDisplayMode.Expanded:
-                    titleBarMargin.Left = IsBackButtonVisible switch
-                    {
-                        NavigationViewBackButtonVisible.Collapsed => 0,
-                        _ => 48
-                    };
-                    break;
-                case NavigationViewDisplayMode.Minimal:
-                    titleBarMargin.Left = IsBackButtonVisible switch
-                    {
-                        NavigationViewBackButtonVisible.Collapsed => 0,
-                        _ => 84
-                    };
-                    break;
+                switch (DisplayMode)
+                {
+                    case NavigationViewDisplayMode.Compact:
+                    case NavigationViewDisplayMode.Expanded:
+                        titleBarMargin.Left = IsBackButtonVisible switch
+                        {
+                            NavigationViewBackButtonVisible.Collapsed => 0,
+                            _ => 48
+                        };
+                        break;
+                    case NavigationViewDisplayMode.Minimal:
+                        titleBarMargin.Left = IsBackButtonVisible switch
+                        {
+                            NavigationViewBackButtonVisible.Collapsed => 0,
+                            _ => 84
+                        };
+                        break;
+                }
             }
 
             Margin = titleBarMargin;

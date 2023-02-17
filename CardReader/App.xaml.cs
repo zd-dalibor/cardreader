@@ -25,6 +25,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Globalization;
+using CardReader.UI.ViewModel;
 using CommunityToolkit.Mvvm.Messaging;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -86,9 +87,11 @@ namespace CardReader
             services.AddSingleton<AppState>();
             services.AddSingleton<IStringLoader, StringLoader>();
             services.AddSingleton<IMessenger>(_ => WeakReferenceMessenger.Default);
+            services.AddSingleton<IMainNavigationService, MainNavigationService>();
 
             // view models
             services.AddTransient<MainPageViewModel>();
+            services.AddTransient<HomePageViewModel>();
 
             return services.BuildServiceProvider();
         }
