@@ -9,7 +9,7 @@ namespace CardReader.UI.Messages
 {
     public class AppStateChangedMessage : PropertyChangedMessage<AppState>
     {
-        public AppStateChangedMessage(object sender, string propertyName, AppState oldValue, AppState newValue) : base(sender, propertyName, oldValue, newValue)
+        public AppStateChangedMessage(AppState sender, string propertyName) : base(sender, propertyName, sender, sender)
         {
         }
     }

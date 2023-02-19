@@ -42,4 +42,24 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="controls:CardReader">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:CardReader">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <ComboBox x:Name="CardReaderCmb" Header="{TemplateBinding Header}" MinWidth="200"/>
+                        <Button x:Name="RefreshBtn" VerticalAlignment="Bottom">
+                            <ToolTipService.ToolTip>
+                                <ToolTip Content="{TemplateBinding RefreshTooltip}"></ToolTip>
+                            </ToolTipService.ToolTip>
+                            <Button.Content>
+                                <FontIcon FontSize="16" FontFamily="{StaticResource CardReader}" Glyph="&#xea04;"/>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

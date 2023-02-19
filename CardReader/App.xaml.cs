@@ -27,6 +27,8 @@ using Windows.Foundation.Collections;
 using Windows.Globalization;
 using CardReader.UI.ViewModel;
 using CommunityToolkit.Mvvm.Messaging;
+using AutoMapper;
+using Microsoft.Extensions.Options;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -82,16 +84,30 @@ namespace CardReader
         {
             var services = new ServiceCollection();
 
+            // auto mapper
+            services.Configure<MapperConfigurationExpression>(options => options.AddMaps(typeof(App).Assembly));
+            services.AddSingleton<IConfigurationProvider>(sp =>
+            {
+                var options = sp.GetRequiredService<IOptions<MapperConfigurationExpression>>();
+                var mc = new MapperConfiguration(options.Value);
+                mc.AssertConfigurationIsValid();
+                return mc;
+            });
+            services.AddTransient<IMapper>(sp =>
+                new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
+
             // services
             services.AddSingleton<Shell>();
             services.AddSingleton<AppState>();
             services.AddSingleton<IStringLoader, StringLoader>();
             services.AddSingleton<IMessenger>(_ => WeakReferenceMessenger.Default);
             services.AddSingleton<IMainNavigationService, MainNavigationService>();
+            services.AddSingleton<IAppSettingsService, AppSettingsService>();
 
             // view models
             services.AddTransient<MainPageViewModel>();
             services.AddTransient<HomePageViewModel>();
+            services.AddTransient<IdReaderPageViewModel>();
 
             return services.BuildServiceProvider();
         }

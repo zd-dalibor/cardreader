@@ -129,6 +129,12 @@
   <data name="IdReaderItem.Text" xml:space="preserve">
     <value>Lična karta</value>
   </data>
+  <data name="RefreshReaderTlp.Content" xml:space="preserve">
+    <value>Osvežite listu čitača.</value>
+  </data>
+  <data name="SelectReaderCbx.Header" xml:space="preserve">
+    <value>Čitač</value>
+  </data>
   <data name="SettingsMenuItem.Text" xml:space="preserve">
     <value>Podešavanja</value>
   </data>

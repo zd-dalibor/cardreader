@@ -1,10 +1,10 @@
 @font-face {font-family: "CardReader";
-  src: url('CardReader.eot?t=1673189401246'); /* IE9*/
-  src: url('CardReader.eot?t=1673189401246#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url("CardReader.woff2?t=1673189401246") format("woff2"),
-  url("CardReader.woff?t=1673189401246") format("woff"),
-  url('CardReader.ttf?t=1673189401246') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('CardReader.svg?t=1673189401246#CardReader') format('svg'); /* iOS 4.1- */
+  src: url('CardReader.eot?t=1676712294690'); /* IE9*/
+  src: url('CardReader.eot?t=1676712294690#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url("CardReader.woff2?t=1676712294690") format("woff2"),
+  url("CardReader.woff?t=1676712294690") format("woff"),
+  url('CardReader.ttf?t=1676712294690') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('CardReader.svg?t=1676712294690#CardReader') format('svg'); /* iOS 4.1- */
 }
 
 [class^="CardReader-"], [class*=" CardReader-"] {
@@ -18,8 +18,10 @@
 .CardReader-car:before { content: "\ea01"; }
 .CardReader-home:before { content: "\ea02"; }
 .CardReader-id:before { content: "\ea03"; }
+.CardReader-refresh:before { content: "\ea04"; }
 
 $CardReader-car: "\ea01";
 $CardReader-home: "\ea02";
 $CardReader-id: "\ea03";
+$CardReader-refresh: "\ea04";
 

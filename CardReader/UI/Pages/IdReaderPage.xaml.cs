@@ -15,6 +15,8 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using CardReader.UI.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -26,8 +28,12 @@ namespace CardReader.UI.Pages
     /// </summary>
     public sealed partial class IdReaderPage : Page
     {
+        public IdReaderPageViewModel ViewModel { get; set; }
+
         public IdReaderPage()
         {
+            ViewModel = App.Current.Services.GetService<IdReaderPageViewModel>();
+
             this.InitializeComponent();
         }
     }

@@ -123,6 +123,7 @@ namespace CardReader.UI.Controls
         protected override void OnApplyTemplate()
         {
             UpdateStates(false);
+            base.OnApplyTemplate();
         }
 
         private void UpdateStates(bool useTransitions)
