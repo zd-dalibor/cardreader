@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+//using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using System.Threading.Tasks;
@@ -106,10 +107,9 @@ namespace CardReader.UI.Controls
         private async void PullCardReadersAsync()
         {
             var cardReaderId = CardReaderId;
-
-            cardReaders.Clear();
             var devices = await DeviceInformation.FindAllAsync(SmartCardReader.GetDeviceSelector());
 
+            cardReaders.Clear();
             foreach (var device in devices)
             {
                 cardReaders.Add(new CardReaderInfo
@@ -119,8 +119,8 @@ namespace CardReader.UI.Controls
                 });
             }
 
-            var selected = devices.Select((x, i) => new { item = x, index = i})
-                .FirstOrDefault(x => x.item.Id.Equals(cardReaderId), devices.Count > 0 ? new { item = devices[0], index = 0 } : null);
+            var selected = cardReaders.Select((x, i) => new { item = x, index = i})
+                .FirstOrDefault(x => x.item.Id.Equals(cardReaderId), cardReaders.Count > 0 ? new { item = cardReaders[0], index = 0 } : null);
 
             if (selected == null)
             {

@@ -120,20 +120,29 @@
   <data name="AppTitle.Text" xml:space="preserve">
     <value>Card Reader</value>
   </data>
+  <data name="BeginReadBtn.Content" xml:space="preserve">
+    <value>Begin Read</value>
+  </data>
+  <data name="CardReaderCtl.Content" xml:space="preserve">
+    <value>Refresh readers list.</value>
+  </data>
+  <data name="CardReaderCtl.Header" xml:space="preserve">
+    <value>Reader</value>
+  </data>
   <data name="DriverLicenseReaderItem.Text" xml:space="preserve">
     <value>Driver License</value>
   </data>
   <data name="HomeMenuItem.Text" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="IdReader.ErrorMessage" xml:space="preserve">
+    <value>ID reader error: {0}</value>
+  </data>
   <data name="IdReaderItem.Text" xml:space="preserve">
     <value>ID</value>
   </data>
-  <data name="RefreshReaderTlp.Content" xml:space="preserve">
-    <value>Refresh readers list.</value>
-  </data>
-  <data name="SelectReaderCbx.Header" xml:space="preserve">
-    <value>Reader</value>
+  <data name="Message.ErrorTitle" xml:space="preserve">
+    <value>Error</value>
   </data>
   <data name="SettingsMenuItem.Text" xml:space="preserve">
     <value>Settings</value>

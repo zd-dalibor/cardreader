@@ -1,0 +1,37 @@
+// IdReader.idl : IDL source for IdReader
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (IdReader.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(964e82fb-0486-4e42-9e64-a126c7c69c47),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IMainReader : IDispatch
+{
+	[id(1)] HRESULT EidSetOption([in] int nOptionID, [in] UINT_PTR nOptionValue, [out, retval] int* result);
+};
+[
+	uuid(280de70d-0847-4e73-89c1-c3b43da1a0e8),
+	version(1.0),
+]
+library IdReaderLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(69d69136-49d2-4039-add3-14d220f6464a)
+	]
+	coclass MainReader
+	{
+		[default] interface IMainReader;
+	};
+};
+
+import "shobjidl.idl";

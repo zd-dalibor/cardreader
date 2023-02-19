@@ -120,20 +120,29 @@
   <data name="AppTitle.Text" xml:space="preserve">
     <value>ID Čitač</value>
   </data>
+  <data name="BeginReadBtn.Content" xml:space="preserve">
+    <value>Započni čitanje</value>
+  </data>
+  <data name="CardReaderCtl.Content" xml:space="preserve">
+    <value>Osvežite listu čitača.</value>
+  </data>
+  <data name="CardReaderCtl.Header" xml:space="preserve">
+    <value>Čitač</value>
+  </data>
   <data name="DriverLicenseReaderItem.Text" xml:space="preserve">
     <value>Vozačka dozvola</value>
   </data>
   <data name="HomeMenuItem.Text" xml:space="preserve">
     <value>Početna</value>
   </data>
+  <data name="IdReader.ErrorMessage" xml:space="preserve">
+    <value>Greška pri čitanju: {0}</value>
+  </data>
   <data name="IdReaderItem.Text" xml:space="preserve">
     <value>Lična karta</value>
   </data>
-  <data name="RefreshReaderTlp.Content" xml:space="preserve">
-    <value>Osvežite listu čitača.</value>
-  </data>
-  <data name="SelectReaderCbx.Header" xml:space="preserve">
-    <value>Čitač</value>
+  <data name="Message.ErrorTitle" xml:space="preserve">
+    <value>Greška</value>
   </data>
   <data name="SettingsMenuItem.Text" xml:space="preserve">
     <value>Podešavanja</value>

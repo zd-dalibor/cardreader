@@ -12,13 +12,20 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Margin="10">
+    <Grid Margin="10" RowSpacing="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <controls:CardReader Header="{x:Bind ViewModel.SelectReaderLbl}"
+        <InfoBar Grid.Row="0" IsOpen="{x:Bind ViewModel.ShowMessage, Mode=TwoWay}" Severity="{x:Bind ViewModel.MessageSeverity, Mode=TwoWay}"
+                 Title="{x:Bind ViewModel.MessageTitle, Mode=TwoWay}" Message="{x:Bind ViewModel.Message, Mode=TwoWay}"/>
+        <controls:CardReader Grid.Row="1" Header="{x:Bind ViewModel.SelectReaderLbl}"
                              RefreshTooltip="{x:Bind ViewModel.RefreshReaderHlp}"
                              CardReaderId="{x:Bind ViewModel.CardReaderId, Mode=TwoWay}"
                              CardReaderName="{x:Bind ViewModel.CardReaderName, Mode=TwoWay}"/>
+        <Button x:Uid="BeginReadBtn"  Grid.Row="3" Content="{x:Bind ViewModel.BeginReadLbl}"
+                Command="{x:Bind ViewModel.BeginReadCommand}"/>
     </Grid>
 </Page>

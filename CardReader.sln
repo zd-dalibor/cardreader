@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardReader", "CardReader\Ca
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DriverLicenseReader", "DriverLicenseReader\DriverLicenseReader.vcxproj", "{9DFFD933-921A-45B4-A871-EF95317C7CB4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IdReader", "IdReader\IdReader.vcxproj", "{81F5DBC3-EC1C-4ED0-911D-C6B478907A10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|arm64 = Debug|arm64
@@ -43,6 +45,18 @@ Global
 		{9DFFD933-921A-45B4-A871-EF95317C7CB4}.Release|x64.ActiveCfg = Release|Win32
 		{9DFFD933-921A-45B4-A871-EF95317C7CB4}.Release|x86.ActiveCfg = Release|Win32
 		{9DFFD933-921A-45B4-A871-EF95317C7CB4}.Release|x86.Build.0 = Release|Win32
+		{81F5DBC3-EC1C-4ED0-911D-C6B478907A10}.Debug|arm64.ActiveCfg = Debug|x64
+		{81F5DBC3-EC1C-4ED0-911D-C6B478907A10}.Debug|arm64.Build.0 = Debug|x64
+		{81F5DBC3-EC1C-4ED0-911D-C6B478907A10}.Debug|x64.ActiveCfg = Debug|x64
+		{81F5DBC3-EC1C-4ED0-911D-C6B478907A10}.Debug|x64.Build.0 = Debug|x64
+		{81F5DBC3-EC1C-4ED0-911D-C6B478907A10}.Debug|x86.ActiveCfg = Debug|Win32
+		{81F5DBC3-EC1C-4ED0-911D-C6B478907A10}.Debug|x86.Build.0 = Debug|Win32
+		{81F5DBC3-EC1C-4ED0-911D-C6B478907A10}.Release|arm64.ActiveCfg = Release|x64
+		{81F5DBC3-EC1C-4ED0-911D-C6B478907A10}.Release|arm64.Build.0 = Release|x64
+		{81F5DBC3-EC1C-4ED0-911D-C6B478907A10}.Release|x64.ActiveCfg = Release|x64
+		{81F5DBC3-EC1C-4ED0-911D-C6B478907A10}.Release|x64.Build.0 = Release|x64
+		{81F5DBC3-EC1C-4ED0-911D-C6B478907A10}.Release|x86.ActiveCfg = Release|Win32
+		{81F5DBC3-EC1C-4ED0-911D-C6B478907A10}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

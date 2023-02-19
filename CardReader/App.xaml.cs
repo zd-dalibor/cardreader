@@ -103,6 +103,7 @@ namespace CardReader
             services.AddSingleton<IMessenger>(_ => WeakReferenceMessenger.Default);
             services.AddSingleton<IMainNavigationService, MainNavigationService>();
             services.AddSingleton<IAppSettingsService, AppSettingsService>();
+            services.AddSingleton<IIdReaderService, IdReaderService>();
 
             // view models
             services.AddTransient<MainPageViewModel>();
