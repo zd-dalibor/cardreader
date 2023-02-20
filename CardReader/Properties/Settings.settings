@@ -8,5 +8,8 @@
     <Setting Name="DriverLicenseReaderCardReaderId" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="IdReaderApiVersion" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

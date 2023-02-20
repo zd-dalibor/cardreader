@@ -81,6 +81,58 @@ extern "C"{
 #endif 
 
 
+/* interface __MIDL_itf_IdReader_0000_0000 */
+/* [local] */ 
+
+typedef /* [version][uuid] */  DECLSPEC_UUID("8dd8d028-e7cd-48e2-a1cd-23fc37744083") struct EID_DOCUMENT_DATAx
+    {
+    unsigned char docRegNo[ 9 ];
+    int docRegNoSize;
+    unsigned char documentType[ 2 ];
+    int documentTypeSize;
+    unsigned char issuingDate[ 10 ];
+    int issuingDateSize;
+    unsigned char expiryDate[ 10 ];
+    int expiryDateSize;
+    unsigned char issuingAuthority[ 100 ];
+    int issuingAuthoritySize;
+    unsigned char documentSerialNumber[ 10 ];
+    int documentSerialNumberSize;
+    unsigned char chipSerialNumber[ 14 ];
+    int chipSerialNumberSize;
+    } 	EID_DOCUMENT_DATAx;
+
+typedef /* [version][uuid] */  DECLSPEC_UUID("dfb573e7-6324-4f75-8552-56b9d46e0310") struct EID_FIXED_PERSONAL_DATAx
+    {
+    unsigned char personalNumber[ 13 ];
+    int personalNumberSize;
+    unsigned char surname[ 200 ];
+    int surnameSize;
+    unsigned char givenName[ 200 ];
+    int givenNameSize;
+    unsigned char parentGivenName[ 200 ];
+    int parentGivenNameSize;
+    unsigned char sex[ 2 ];
+    int sexSize;
+    unsigned char placeOfBirth[ 200 ];
+    int placeOfBirthSize;
+    unsigned char stateOfBirth[ 200 ];
+    int stateOfBirthSize;
+    unsigned char dateOfBirth[ 10 ];
+    int dateOfBirthSize;
+    unsigned char communityOfBirth[ 200 ];
+    int communityOfBirthSize;
+    unsigned char statusOfForeigner[ 200 ];
+    int statusOfForeignerSize;
+    unsigned char nationalityFull[ 200 ];
+    int nationalityFullSize;
+    } 	EID_FIXED_PERSONAL_DATAx;
+
+
+
+extern RPC_IF_HANDLE __MIDL_itf_IdReader_0000_0000_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_IdReader_0000_0000_v0_0_s_ifspec;
+
 #ifndef __IMainReader_INTERFACE_DEFINED__
 #define __IMainReader_INTERFACE_DEFINED__
 
@@ -99,6 +151,29 @@ EXTERN_C const IID IID_IMainReader;
         virtual /* [id] */ HRESULT STDMETHODCALLTYPE EidSetOption( 
             /* [in] */ int nOptionID,
             /* [in] */ UINT_PTR nOptionValue,
+            /* [retval][out] */ int *result) = 0;
+        
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE EidStartup( 
+            /* [in] */ int nApiVersion,
+            /* [retval][out] */ int *result) = 0;
+        
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE EidCleanup( 
+            /* [retval][out] */ int *result) = 0;
+        
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE EidBeginRead( 
+            /* [in] */ LPCSTR szReader,
+            /* [defaultvalue][out] */ int *pnCardType,
+            /* [retval][out] */ int *result) = 0;
+        
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE EidEndRead( 
+            /* [retval][out] */ int *result) = 0;
+        
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE EidReadDocumentData( 
+            /* [out] */ EID_DOCUMENT_DATAx *pData,
+            /* [retval][out] */ int *result) = 0;
+        
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE EidReadFixedPersonalData( 
+            /* [out] */ EID_FIXED_PERSONAL_DATAx *pData,
             /* [retval][out] */ int *result) = 0;
         
     };
@@ -173,6 +248,41 @@ EXTERN_C const IID IID_IMainReader;
             /* [in] */ UINT_PTR nOptionValue,
             /* [retval][out] */ int *result);
         
+        DECLSPEC_XFGVIRT(IMainReader, EidStartup)
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *EidStartup )( 
+            IMainReader * This,
+            /* [in] */ int nApiVersion,
+            /* [retval][out] */ int *result);
+        
+        DECLSPEC_XFGVIRT(IMainReader, EidCleanup)
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *EidCleanup )( 
+            IMainReader * This,
+            /* [retval][out] */ int *result);
+        
+        DECLSPEC_XFGVIRT(IMainReader, EidBeginRead)
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *EidBeginRead )( 
+            IMainReader * This,
+            /* [in] */ LPCSTR szReader,
+            /* [defaultvalue][out] */ int *pnCardType,
+            /* [retval][out] */ int *result);
+        
+        DECLSPEC_XFGVIRT(IMainReader, EidEndRead)
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *EidEndRead )( 
+            IMainReader * This,
+            /* [retval][out] */ int *result);
+        
+        DECLSPEC_XFGVIRT(IMainReader, EidReadDocumentData)
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *EidReadDocumentData )( 
+            IMainReader * This,
+            /* [out] */ EID_DOCUMENT_DATAx *pData,
+            /* [retval][out] */ int *result);
+        
+        DECLSPEC_XFGVIRT(IMainReader, EidReadFixedPersonalData)
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *EidReadFixedPersonalData )( 
+            IMainReader * This,
+            /* [out] */ EID_FIXED_PERSONAL_DATAx *pData,
+            /* [retval][out] */ int *result);
+        
         END_INTERFACE
     } IMainReaderVtbl;
 
@@ -212,6 +322,24 @@ EXTERN_C const IID IID_IMainReader;
 #define IMainReader_EidSetOption(This,nOptionID,nOptionValue,result)	\
     ( (This)->lpVtbl -> EidSetOption(This,nOptionID,nOptionValue,result) ) 
 
+#define IMainReader_EidStartup(This,nApiVersion,result)	\
+    ( (This)->lpVtbl -> EidStartup(This,nApiVersion,result) ) 
+
+#define IMainReader_EidCleanup(This,result)	\
+    ( (This)->lpVtbl -> EidCleanup(This,result) ) 
+
+#define IMainReader_EidBeginRead(This,szReader,pnCardType,result)	\
+    ( (This)->lpVtbl -> EidBeginRead(This,szReader,pnCardType,result) ) 
+
+#define IMainReader_EidEndRead(This,result)	\
+    ( (This)->lpVtbl -> EidEndRead(This,result) ) 
+
+#define IMainReader_EidReadDocumentData(This,pData,result)	\
+    ( (This)->lpVtbl -> EidReadDocumentData(This,pData,result) ) 
+
+#define IMainReader_EidReadFixedPersonalData(This,pData,result)	\
+    ( (This)->lpVtbl -> EidReadFixedPersonalData(This,pData,result) ) 
+
 #endif /* COBJMACROS */
 
 
@@ -229,6 +357,8 @@ EXTERN_C const IID IID_IMainReader;
 
 /* library IdReaderLib */
 /* [version][uuid] */ 
+
+
 
 
 EXTERN_C const IID LIBID_IdReaderLib;

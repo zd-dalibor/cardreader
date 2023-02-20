@@ -20,6 +20,9 @@ namespace CardReader.UI
         private string idReaderCardReaderId;
 
         [ObservableProperty]
+        private int idReaderApiVersion;
+
+        [ObservableProperty]
         private string driverLicenseReaderCardReaderId;
 
         private readonly IAppSettingsService appSettings;
@@ -29,6 +32,7 @@ namespace CardReader.UI
             this.appSettings = appSettings;
 
             idReaderCardReaderId = appSettings.GetIdReaderCardReaderId();
+            idReaderApiVersion = appSettings.GetIdReaderApiVersion();
             driverLicenseReaderCardReaderId = appSettings.GetDriverLicenseReaderCardReaderId();
         }
 

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CardReader.Service;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.Logging;
 using Microsoft.UI.Xaml.Controls;
 
 namespace CardReader.UI.ViewModel
@@ -49,12 +50,14 @@ namespace CardReader.UI.ViewModel
         private readonly IStringLoader stringLoader;
         private readonly AppState appState;
         private readonly IIdReaderService idReaderService;
+        private readonly ILogger<IdReaderPageViewModel> logger;
 
-        public IdReaderPageViewModel(IStringLoader stringLoader, AppState appState, IIdReaderService idReaderService)
+        public IdReaderPageViewModel(IStringLoader stringLoader, AppState appState, IIdReaderService idReaderService, ILogger<IdReaderPageViewModel> logger)
         {
             this.stringLoader = stringLoader;
             this.appState = appState;
             this.idReaderService = idReaderService;
+            this.logger = logger;
 
             cardReaderId = appState.IdReaderCardReaderId;
 
@@ -82,12 +85,14 @@ namespace CardReader.UI.ViewModel
         private void BeginRead()
         {
             CanRead = false;
+            ShowMessage = false;
             try
             {
-                idReaderService.Read(CardReaderName);
+                idReaderService.Read(CardReaderName, appState.IdReaderApiVersion);
             }
             catch (IdReaderServiceException e)
             {
+                logger.LogError(e, "Failed to read data from ID card.");
                 MessageTitle = stringLoader.GetString("Message/ErrorTitle");
                 MessageSeverity = InfoBarSeverity.Error;
                 Message = string.Format(stringLoader.GetString("IdReader/ErrorMessage"), e.Message);

@@ -10,6 +10,7 @@ namespace CardReader.Service
     {
         public void SaveIdReaderCardReaderId(string value);
         public string GetIdReaderCardReaderId();
+        public int GetIdReaderApiVersion();
 
         public void SaveDriverLicenseReaderCardReaderId(string value);
         public string GetDriverLicenseReaderCardReaderId();

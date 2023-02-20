@@ -46,5 +46,14 @@ namespace CardReader.Properties {
                 this["DriverLicenseReaderCardReaderId"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int IdReaderApiVersion {
+            get {
+                return ((int)(this["IdReaderApiVersion"]));
+            }
+        }
     }
 }

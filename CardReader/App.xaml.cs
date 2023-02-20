@@ -28,7 +28,10 @@ using Windows.Globalization;
 using CardReader.UI.ViewModel;
 using CommunityToolkit.Mvvm.Messaging;
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Serilog;
+using Serilog.Events;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -51,6 +54,7 @@ namespace CardReader
             this.InitializeComponent();
 
             // App.Current.RequestedTheme = ApplicationTheme.Light;
+            UnhandledException += OnUnhandledException;
         }
 
         /// <summary>
@@ -80,9 +84,28 @@ namespace CardReader
             Windows.ApplicationModel.Resources.Core.ResourceContext.GetForViewIndependentUse().Reset();
         }
 
+        private static void OnUnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
+        {
+            Log.Logger.Error(e.Exception, e.Message);
+            Log.CloseAndFlush();
+        }
+
         private static IServiceProvider ConfigureServices()
         {
             var services = new ServiceCollection();
+
+            // logging
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Debug()
+                .WriteTo.File("logs.txt", restrictedToMinimumLevel: LogEventLevel.Error, fileSizeLimitBytes: 1_000_000)
+                .CreateLogger();
+
+            services.AddLogging(builder =>
+            {
+                builder.SetMinimumLevel(LogLevel.Debug)
+                    .AddSerilog();
+            });
 
             // auto mapper
             services.Configure<MapperConfigurationExpression>(options => options.AddMaps(typeof(App).Assembly));

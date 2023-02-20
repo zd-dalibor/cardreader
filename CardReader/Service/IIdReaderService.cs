@@ -11,6 +11,10 @@ namespace CardReader.Service
     {
         public const int EID_O_KEEP_CARD_CLOSED     = 1;
 
+        public const int EID_CARD_ID2008            = 1; // old card type
+        public const int EID_CARD_ID2014            = 2; // new card type
+        public const int EID_CARD_IF2020            = 3; // ID for foreigners
+
         // results
         public const int EID_OK                            =  0;
         public const int EID_E_GENERAL_ERROR               = -1;
@@ -29,6 +33,6 @@ namespace CardReader.Service
         public const int EID_E_INVALID_PASSWORD            = -14;
         public const int EID_E_PIN_BLOCKED                 = -15;
 
-        public IdReaderData Read(string cardReaderName);
+        public IdReaderData Read(string cardReaderName, int apiVersion);
     }
 }

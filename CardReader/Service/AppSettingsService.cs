@@ -22,6 +22,11 @@ namespace CardReader.Service
             return Properties.Settings.Default.IdReaderCardReaderId;
         }
 
+        public int GetIdReaderApiVersion()
+        {
+            return Properties.Settings.Default.IdReaderApiVersion;
+        }
+
         public void SaveDriverLicenseReaderCardReaderId(string value)
         {
             Properties.Settings.Default.DriverLicenseReaderCardReaderId = value;

@@ -54,6 +54,12 @@ public:
 
 
 	STDMETHOD(EidSetOption)(int nOptionID, UINT_PTR nOptionValue, int* result);
+	STDMETHOD(EidStartup)(int nApiVersion, int* result);
+	STDMETHOD(EidCleanup)(int* result);
+	STDMETHOD(EidBeginRead)(LPCSTR szReader, int* pnCardType, int* result);
+	STDMETHOD(EidEndRead)(int* result);
+	STDMETHOD(EidReadDocumentData)(EID_DOCUMENT_DATAx* pData, int* result);
+	STDMETHOD(EidReadFixedPersonalData)(EID_FIXED_PERSONAL_DATAx* pData, int* result);
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(MainReader), CMainReader)

@@ -7,6 +7,80 @@
 import "oaidl.idl";
 import "ocidl.idl";
 
+#define EID_MAX_DocRegNo 9
+#define EID_MAX_DocumentType 2
+#define EID_MAX_IssuingDate 10
+#define EID_MAX_ExpiryDate 10
+#define EID_MAX_IssuingAuthority 100
+#define EID_MAX_DocumentSerialNumber 10
+#define EID_MAX_ChipSerialNumber 14
+
+#define EID_MAX_PersonalNumber 13
+#define EID_MAX_Surname 200
+#define EID_MAX_GivenName 200
+#define EID_MAX_ParentGivenName 200
+#define EID_MAX_Sex 2
+#define EID_MAX_PlaceOfBirth 200
+#define EID_MAX_StateOfBirth 200
+#define EID_MAX_DateOfBirth 10
+#define EID_MAX_CommunityOfBirth 200
+#define EID_MAX_StatusOfForeigner 200
+#define EID_MAX_NationalityFull 200
+
+typedef
+[
+uuid(8dd8d028-e7cd-48e2-a1cd-23fc37744083),
+version(1.0)
+]
+struct EID_DOCUMENT_DATAx
+{
+	char docRegNo[EID_MAX_DocRegNo];
+	int docRegNoSize;
+	char documentType[EID_MAX_DocumentType];
+	int documentTypeSize;
+	char issuingDate[EID_MAX_IssuingDate];
+	int issuingDateSize;
+	char expiryDate[EID_MAX_ExpiryDate];
+	int expiryDateSize;
+	char issuingAuthority[EID_MAX_IssuingAuthority];
+	int issuingAuthoritySize;
+	char documentSerialNumber[EID_MAX_DocumentSerialNumber];
+	int documentSerialNumberSize;
+	char chipSerialNumber[EID_MAX_ChipSerialNumber];
+	int chipSerialNumberSize;
+} EID_DOCUMENT_DATAx;
+
+typedef
+[
+uuid(dfb573e7-6324-4f75-8552-56b9d46e0310),
+version(1.0)
+]
+struct EID_FIXED_PERSONAL_DATAx
+{
+	char personalNumber[EID_MAX_PersonalNumber];
+	int personalNumberSize;
+	char surname[EID_MAX_Surname];
+	int surnameSize;
+	char givenName[EID_MAX_GivenName];
+	int givenNameSize;
+	char parentGivenName[EID_MAX_ParentGivenName];
+	int parentGivenNameSize;
+	char sex[EID_MAX_Sex];
+	int sexSize;
+	char placeOfBirth[EID_MAX_PlaceOfBirth];
+	int placeOfBirthSize;
+	char stateOfBirth[EID_MAX_StateOfBirth];
+	int stateOfBirthSize;
+	char dateOfBirth[EID_MAX_DateOfBirth];
+	int dateOfBirthSize;
+	char communityOfBirth[EID_MAX_CommunityOfBirth];
+	int communityOfBirthSize;
+	char statusOfForeigner[EID_MAX_StatusOfForeigner];
+	int statusOfForeignerSize;
+	char nationalityFull[EID_MAX_NationalityFull];
+	int nationalityFullSize;
+} EID_FIXED_PERSONAL_DATAx;
+
 [
 	object,
 	uuid(964e82fb-0486-4e42-9e64-a126c7c69c47),
@@ -17,7 +91,14 @@ import "ocidl.idl";
 interface IMainReader : IDispatch
 {
 	[id(1)] HRESULT EidSetOption([in] int nOptionID, [in] UINT_PTR nOptionValue, [out, retval] int* result);
+	[id(2)] HRESULT EidStartup([in] int nApiVersion, [out, retval] int* result);
+	[id(3)] HRESULT EidCleanup([out, retval] int* result);
+	[id(4)] HRESULT EidBeginRead([in] LPCSTR szReader, [out, defaultvalue(0)] int* pnCardType, [out, retval] int* result);
+	[id(6)] HRESULT EidEndRead([out, retval] int* result);
+	[id(7)] HRESULT EidReadDocumentData([out] EID_DOCUMENT_DATAx* pData, [out, retval] int* result);
+	[id(8)] HRESULT EidReadFixedPersonalData([out] EID_FIXED_PERSONAL_DATAx* pData, [out, retval] int* result);
 };
+
 [
 	uuid(280de70d-0847-4e73-89c1-c3b43da1a0e8),
 	version(1.0),
@@ -25,6 +106,10 @@ interface IMainReader : IDispatch
 library IdReaderLib
 {
 	importlib("stdole2.tlb");
+
+	struct EID_DOCUMENT_DATAx;
+	struct EID_FIXED_PERSONAL_DATAx;
+
 	[
 		uuid(69d69136-49d2-4039-add3-14d220f6464a)
 	]
