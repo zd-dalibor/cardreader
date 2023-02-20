@@ -17,6 +17,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using CardReader.UI.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
+using IdReaderPageViewModel = CardReader.UI.ViewModel.IdReader.IdReaderPageViewModel;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.

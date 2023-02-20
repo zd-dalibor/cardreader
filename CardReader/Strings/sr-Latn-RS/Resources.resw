@@ -129,8 +129,32 @@
   <data name="CardReaderCtl.Header" xml:space="preserve">
     <value>Čitač</value>
   </data>
+  <data name="CardTypeCtl.Header" xml:space="preserve">
+    <value>Tip kartice</value>
+  </data>
+  <data name="ChipSerialNumberCtl.Header" xml:space="preserve">
+    <value>Serijski broj čipa</value>
+  </data>
+  <data name="ClearReaderDataBtn.Content" xml:space="preserve">
+    <value>Poništi</value>
+  </data>
+  <data name="DocRegNoCtl.Header" xml:space="preserve">
+    <value>Registracion broj dokumenta</value>
+  </data>
+  <data name="DocumentSerialNumberCtl.Header" xml:space="preserve">
+    <value>Serijski borj dokumenta</value>
+  </data>
+  <data name="DocumentTypeCtl.Header" xml:space="preserve">
+    <value>Tip dokumenta</value>
+  </data>
   <data name="DriverLicenseReaderItem.Text" xml:space="preserve">
     <value>Vozačka dozvola</value>
+  </data>
+  <data name="ExpiryDateCtl.Header" xml:space="preserve">
+    <value>Datum isteka</value>
+  </data>
+  <data name="GivenNameCtl.Header" xml:space="preserve">
+    <value>Ime</value>
   </data>
   <data name="HomeMenuItem.Text" xml:space="preserve">
     <value>Početna</value>
@@ -138,13 +162,40 @@
   <data name="IdReader.ErrorMessage" xml:space="preserve">
     <value>Greška pri čitanju: {0}</value>
   </data>
+  <data name="IdReaderCardType.Foreigner" xml:space="preserve">
+    <value>Lična karta za strance</value>
+  </data>
+  <data name="IdReaderCardType.New" xml:space="preserve">
+    <value>Nova lična karta</value>
+  </data>
+  <data name="IdReaderCardType.Old" xml:space="preserve">
+    <value>Stara lična karta</value>
+  </data>
+  <data name="IdReaderCardType.Unknown" xml:space="preserve">
+    <value>Nepoznato</value>
+  </data>
   <data name="IdReaderItem.Text" xml:space="preserve">
     <value>Lična karta</value>
+  </data>
+  <data name="IssuingAuthorityCtl.Header" xml:space="preserve">
+    <value>Izdavač</value>
+  </data>
+  <data name="IssuingDateCtl.Header" xml:space="preserve">
+    <value>Datum izdavanja</value>
   </data>
   <data name="Message.ErrorTitle" xml:space="preserve">
     <value>Greška</value>
   </data>
+  <data name="ParentGivenNameCtl.Header" xml:space="preserve">
+    <value>Ime oca</value>
+  </data>
+  <data name="PersonalNumberCtl.Header" xml:space="preserve">
+    <value>Lični broj</value>
+  </data>
   <data name="SettingsMenuItem.Text" xml:space="preserve">
     <value>Podešavanja</value>
+  </data>
+  <data name="SurnameCtl.Header" xml:space="preserve">
+    <value>Prezime</value>
   </data>
 </root>

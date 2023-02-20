@@ -25,7 +25,60 @@
                              RefreshTooltip="{x:Bind ViewModel.RefreshReaderHlp}"
                              CardReaderId="{x:Bind ViewModel.CardReaderId, Mode=TwoWay}"
                              CardReaderName="{x:Bind ViewModel.CardReaderName, Mode=TwoWay}"/>
-        <Button x:Uid="BeginReadBtn"  Grid.Row="3" Content="{x:Bind ViewModel.BeginReadLbl}"
-                Command="{x:Bind ViewModel.BeginReadCommand}"/>
+        <Grid Grid.Row="2" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical" Spacing="10">
+                <TextBox x:Uid="CardTypeCtl" Header="{x:Bind ViewModel.CardTypeLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.CardType, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="DocRegNoCtl" Header="{x:Bind ViewModel.DocRegNoLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.DocRegNo, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="DocumentTypeCtl" Header="{x:Bind ViewModel.DocumentTypeLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.DocumentType, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="IssuingDateCtl" Header="{x:Bind ViewModel.IssuingDateLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.IssuingDate, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="ExpiryDateCtl" Header="{x:Bind ViewModel.ExpiryDateLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.ExpiryDate, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="IssuingAuthorityCtl" Header="{x:Bind ViewModel.IssuingAuthorityLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.IssuingAuthority, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="DocumentSerialNumberCtl" Header="{x:Bind ViewModel.DocumentSerialNumberLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.DocumentSerialNumber, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="ChipSerialNumberCtl" Header="{x:Bind ViewModel.ChipSerialNumberLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.ChipSerialNumber, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical" Spacing="10">
+                <TextBox x:Uid="PersonalNumberCtl" Header="{x:Bind ViewModel.PersonalNumberLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.PersonalNumber, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="SurnameCtl" Header="{x:Bind ViewModel.SurnameLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.Surname, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="GivenNameCtl" Header="{x:Bind ViewModel.GivenNameLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.GivenName, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="ParentGivenNameCtl" Header="{x:Bind ViewModel.ParentGivenNameLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.ParentGivenName, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+            </StackPanel>
+        </Grid>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="10">
+            <Button x:Uid="BeginReadBtn" Style="{StaticResource AccentButtonStyle}"
+                    Content="{x:Bind ViewModel.BeginReadLbl}"
+                    Command="{x:Bind ViewModel.BeginReadCommand}"/>
+            <Button x:Uid="ClearReaderDataBtn"
+                    Content="{x:Bind ViewModel.ClearReaderDataLbl}"
+                    Command="{x:Bind ViewModel.ClearReaderDataCommand}"/>
+        </StackPanel>
+        
     </Grid>
 </Page>

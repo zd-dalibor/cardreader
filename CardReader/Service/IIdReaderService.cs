@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CardReader.Service
@@ -14,6 +15,10 @@ namespace CardReader.Service
         public const int EID_CARD_ID2008            = 1; // old card type
         public const int EID_CARD_ID2014            = 2; // new card type
         public const int EID_CARD_IF2020            = 3; // ID for foreigners
+
+        public const int EID_Cert_MoiIntermediateCA = 1;
+        public const int EID_Cert_User1             = 2;
+        public const int EID_Cert_User2             = 3;
 
         // results
         public const int EID_OK                            =  0;
@@ -34,5 +39,6 @@ namespace CardReader.Service
         public const int EID_E_PIN_BLOCKED                 = -15;
 
         public IdReaderData Read(string cardReaderName, int apiVersion);
+        public Task<IdReaderData> ReadAsync(string cardReaderName, int apiVersion, CancellationToken token = default);
     }
 }

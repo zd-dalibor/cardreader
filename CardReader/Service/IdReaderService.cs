@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using CardReader.Model;
 using IdReaderLib;
@@ -44,6 +45,34 @@ namespace CardReader.Service
                     data.CommunityOfBirth = SbyteToString(fixedPersonalData.communityOfBirth, fixedPersonalData.communityOfBirthSize);
                     data.StatusOfForeigner = SbyteToString(fixedPersonalData.statusOfForeigner, fixedPersonalData.statusOfForeignerSize);
                     data.NationalityFull = SbyteToString(fixedPersonalData.nationalityFull, fixedPersonalData.nationalityFullSize);
+
+                    var variablePersonalData = ReadVariablePersonalData(reader);
+                    data.State = SbyteToString(variablePersonalData.state, variablePersonalData.stateSize);
+                    data.Community = SbyteToString(variablePersonalData.community, variablePersonalData.communitySize);
+                    data.Place = SbyteToString(variablePersonalData.place, variablePersonalData.placeSize);
+                    data.Street = SbyteToString(variablePersonalData.street, variablePersonalData.streetSize);
+                    data.HouseNumber = SbyteToString(variablePersonalData.houseNumber, variablePersonalData.houseNumberSize);
+                    data.HouseLetter = SbyteToString(variablePersonalData.houseLetter, variablePersonalData.houseLetterSize);
+                    data.Entrance = SbyteToString(variablePersonalData.entrance, variablePersonalData.entranceSize);
+                    data.Floor = SbyteToString(variablePersonalData.floor, variablePersonalData.floorSize);
+                    data.ApartmentNumber = SbyteToString(variablePersonalData.apartmentNumber, variablePersonalData.apartmentNumberSize);
+                    data.AddressDate = SbyteToString(variablePersonalData.addressDate, variablePersonalData.addressDateSize);
+                    data.AddressLabel = SbyteToString(variablePersonalData.addressLabel, variablePersonalData.addressLabelSize);
+
+                    var portraitData = ReadPortrait(reader);
+                    data.Portrait = CopyBytes(portraitData.portrait, portraitData.portraitSize);
+
+                    //if (data.CardType == IIdReaderService.EID_CARD_ID2008)
+                    //{
+                    //    var certIntermediateCaData = ReadCertificate(reader, IIdReaderService.EID_Cert_MoiIntermediateCA);
+                    //    data.CertIntermediateCa = CopyBytes(certIntermediateCaData.certificate, certIntermediateCaData.certificateSize);
+
+                    //    var certUser1Data = ReadCertificate(reader, IIdReaderService.EID_Cert_User1);
+                    //    data.CertUser1 = CopyBytes(certUser1Data.certificate, certUser1Data.certificateSize);
+
+                    //    var certUser2Data = ReadCertificate(reader, IIdReaderService.EID_Cert_User2);
+                    //    data.CertUser2 = CopyBytes(certUser2Data.certificate, certUser2Data.certificateSize);
+                    //}
                 }
                 finally
                 {
@@ -56,6 +85,18 @@ namespace CardReader.Service
             }
 
             return data;
+        }
+
+        public Task<IdReaderData> ReadAsync(string cardReaderName, int apiVersion, CancellationToken token = default)
+        {
+            return Task.Factory.StartNew(() => Read(cardReaderName, apiVersion), token);
+        }
+
+        private static byte[] CopyBytes(byte[] data, int size)
+        {
+            var buff = new byte[size];
+            Buffer.BlockCopy(data, 0, buff, 0, size);
+            return buff;
         }
 
         private static string SbyteToString(IEnumerable<sbyte> data, int size)
@@ -98,6 +139,24 @@ namespace CardReader.Service
         private static EID_FIXED_PERSONAL_DATAx ReadFixedPersonalData(IMainReader reader)
         {
             VerifyResult(reader.EidReadFixedPersonalData(out var pData));
+            return pData;
+        }
+
+        private static EID_VARIABLE_PERSONAL_DATAx ReadVariablePersonalData(IMainReader reader)
+        {
+            VerifyResult(reader.EidReadVariablePersonalData(out var pData));
+            return pData;
+        }
+
+        private static EID_PORTRAITx ReadPortrait(IMainReader reader)
+        {
+            VerifyResult(reader.EidReadPortrait(out var pData));
+            return pData;
+        }
+
+        private static EID_CERTIFICATEx ReadCertificate(IMainReader reader, int certificateType)
+        {
+            VerifyResult(reader.EidReadCertificate(out var pData, certificateType));
             return pData;
         }
 

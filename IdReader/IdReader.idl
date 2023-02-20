@@ -27,6 +27,22 @@ import "ocidl.idl";
 #define EID_MAX_StatusOfForeigner 200
 #define EID_MAX_NationalityFull 200
 
+#define EID_MAX_State 100
+#define EID_MAX_Community 200
+#define EID_MAX_Place 200
+#define EID_MAX_Street 200
+#define EID_MAX_HouseNumber 20
+#define EID_MAX_HouseLetter 8
+#define EID_MAX_Entrance 10
+#define EID_MAX_Floor 6
+#define EID_MAX_ApartmentNumber 12
+#define EID_MAX_AddressDate 10
+#define EID_MAX_AddressLabel 60
+
+#define EID_MAX_Portrait 7700
+
+#define EID_MAX_Certificate 2048
+
 typedef
 [
 uuid(8dd8d028-e7cd-48e2-a1cd-23fc37744083),
@@ -81,6 +97,59 @@ struct EID_FIXED_PERSONAL_DATAx
 	int nationalityFullSize;
 } EID_FIXED_PERSONAL_DATAx;
 
+typedef
+[
+uuid(730c24c1-494b-47db-abde-fe0fab25b14a),
+version(1.0)
+]
+struct EID_VARIABLE_PERSONAL_DATAx
+{
+	char state[EID_MAX_State];
+	int stateSize;
+	char community[EID_MAX_Community];
+	int communitySize;
+	char place[EID_MAX_Place];
+	int placeSize;
+	char street[EID_MAX_Street];
+	int streetSize;
+	char houseNumber[EID_MAX_HouseNumber];
+	int houseNumberSize;
+	char houseLetter[EID_MAX_HouseLetter];
+	int houseLetterSize;
+	char entrance[EID_MAX_Entrance];
+	int entranceSize;
+	char floor[EID_MAX_Floor];
+	int floorSize;
+	char apartmentNumber[EID_MAX_ApartmentNumber];
+	int apartmentNumberSize;
+	char addressDate[EID_MAX_AddressDate];
+	int addressDateSize;
+	char addressLabel[EID_MAX_AddressLabel];
+	int addressLabelSize;
+} EID_VARIABLE_PERSONAL_DATAx;
+
+typedef
+[
+uuid(f2ac2748-2c33-45b6-8e62-8d84d38d6072),
+version(1.0)
+]
+struct EID_PORTRAITx
+{
+	BYTE portrait[EID_MAX_Portrait];
+	int portraitSize;
+} EID_PORTRAITx;
+
+typedef
+[
+uuid(32acceb0-a0e9-47a0-aa34-7970f3ddc51a),
+version(1.0)
+]
+struct EID_CERTIFICATEx
+{
+	BYTE certificate[EID_MAX_Certificate];
+	int certificateSize;
+} EID_CERTIFICATEx;
+
 [
 	object,
 	uuid(964e82fb-0486-4e42-9e64-a126c7c69c47),
@@ -97,6 +166,11 @@ interface IMainReader : IDispatch
 	[id(6)] HRESULT EidEndRead([out, retval] int* result);
 	[id(7)] HRESULT EidReadDocumentData([out] EID_DOCUMENT_DATAx* pData, [out, retval] int* result);
 	[id(8)] HRESULT EidReadFixedPersonalData([out] EID_FIXED_PERSONAL_DATAx* pData, [out, retval] int* result);
+	[id(9)] HRESULT EidReadVariablePersonalData([out] EID_VARIABLE_PERSONAL_DATAx* pData, [out, retval] int* result);
+	[id(10)] HRESULT EidReadPortrait([out] EID_PORTRAITx* pData, [out, retval] int* result);
+	[id(11)] HRESULT EidReadCertificate([out] EID_CERTIFICATEx* pData, [in] int certificateType, [out, retval] int* result);
+	[id(12)] HRESULT EidChangePassword([in] LPCSTR szOldPassword, [in] LPCSTR szNewPassword, [out] int* pnTriesLeft, [out, retval] int* result);
+	[id(13)] HRESULT EidVerifySignature([in] UINT nSignatureID, [out, retval] int* result);
 };
 
 [
@@ -109,6 +183,9 @@ library IdReaderLib
 
 	struct EID_DOCUMENT_DATAx;
 	struct EID_FIXED_PERSONAL_DATAx;
+	struct EID_VARIABLE_PERSONAL_DATAx;
+	struct EID_PORTRAITx;
+	struct EID_CERTIFICATEx;
 
 	[
 		uuid(69d69136-49d2-4039-add3-14d220f6464a)

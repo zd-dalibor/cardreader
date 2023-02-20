@@ -32,6 +32,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Serilog.Events;
+using IdReaderPageViewModel = CardReader.UI.ViewModel.IdReader.IdReaderPageViewModel;
+using CardReader.AutoMapper;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -118,6 +120,7 @@ namespace CardReader
             });
             services.AddTransient<IMapper>(sp =>
                 new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
+            services.AddTransient<IdReaderCardTypeResolver>();
 
             // services
             services.AddSingleton<Shell>();

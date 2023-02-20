@@ -94,3 +94,68 @@ STDMETHODIMP CMainReader::EidReadFixedPersonalData(EID_FIXED_PERSONAL_DATAx* pDa
 
 	return S_OK;
 }
+
+
+STDMETHODIMP CMainReader::EidReadVariablePersonalData(EID_VARIABLE_PERSONAL_DATAx* pData, int* result)
+{
+	EID_VARIABLE_PERSONAL_DATA data;
+	*result = ::EidReadVariablePersonalData(&data);
+	if (*result == EID_OK)
+	{
+		DATA_COPY(data, pData, state)
+		DATA_COPY(data, pData, community)
+		DATA_COPY(data, pData, place)
+		DATA_COPY(data, pData, street)
+		DATA_COPY(data, pData, houseNumber)
+		DATA_COPY(data, pData, houseLetter)
+		DATA_COPY(data, pData, entrance)
+		DATA_COPY(data, pData, floor)
+		DATA_COPY(data, pData, apartmentNumber)
+		DATA_COPY(data, pData, addressDate)
+		DATA_COPY(data, pData, addressLabel)
+	}
+
+	return S_OK;
+}
+
+
+STDMETHODIMP CMainReader::EidReadPortrait(EID_PORTRAITx* pData, int* result)
+{
+	EID_PORTRAIT data;
+	*result = ::EidReadPortrait(&data);
+	if (*result == EID_OK)
+	{
+		DATA_COPY(data, pData, portrait)
+	}
+
+	return S_OK;
+}
+
+
+STDMETHODIMP CMainReader::EidReadCertificate(EID_CERTIFICATEx* pData, int certificateType, int* result)
+{
+	EID_CERTIFICATE data;
+	*result = ::EidReadCertificate(&data, certificateType);
+	if (*result == EID_OK)
+	{
+		DATA_COPY(data, pData, certificate)
+	}
+
+	return S_OK;
+}
+
+
+STDMETHODIMP CMainReader::EidChangePassword(LPCSTR szOldPassword, LPCSTR szNewPassword, int* pnTriesLeft, int* result)
+{
+	*result = ::EidChangePassword(szOldPassword, szNewPassword, pnTriesLeft);
+
+	return S_OK;
+}
+
+
+STDMETHODIMP CMainReader::EidVerifySignature(UINT nSignatureID, int* result)
+{
+	*result = ::EidVerifySignature(nSignatureID);
+
+	return S_OK;
+}

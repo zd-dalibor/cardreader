@@ -60,6 +60,11 @@ public:
 	STDMETHOD(EidEndRead)(int* result);
 	STDMETHOD(EidReadDocumentData)(EID_DOCUMENT_DATAx* pData, int* result);
 	STDMETHOD(EidReadFixedPersonalData)(EID_FIXED_PERSONAL_DATAx* pData, int* result);
+	STDMETHOD(EidReadVariablePersonalData)(EID_VARIABLE_PERSONAL_DATAx* pData, int* result);
+	STDMETHOD(EidReadPortrait)(EID_PORTRAITx* pData, int* result);
+	STDMETHOD(EidReadCertificate)(EID_CERTIFICATEx* pData, int certificateType, int* result);
+	STDMETHOD(EidChangePassword)(LPCSTR szOldPassword, LPCSTR szNewPassword, int* pnTriesLeft, int* result);
+	STDMETHOD(EidVerifySignature)(UINT nSignatureID, int* result);
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(MainReader), CMainReader)

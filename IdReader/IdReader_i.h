@@ -128,6 +128,44 @@ typedef /* [version][uuid] */  DECLSPEC_UUID("dfb573e7-6324-4f75-8552-56b9d46e03
     int nationalityFullSize;
     } 	EID_FIXED_PERSONAL_DATAx;
 
+typedef /* [version][uuid] */  DECLSPEC_UUID("730c24c1-494b-47db-abde-fe0fab25b14a") struct EID_VARIABLE_PERSONAL_DATAx
+    {
+    unsigned char state[ 100 ];
+    int stateSize;
+    unsigned char community[ 200 ];
+    int communitySize;
+    unsigned char place[ 200 ];
+    int placeSize;
+    unsigned char street[ 200 ];
+    int streetSize;
+    unsigned char houseNumber[ 20 ];
+    int houseNumberSize;
+    unsigned char houseLetter[ 8 ];
+    int houseLetterSize;
+    unsigned char entrance[ 10 ];
+    int entranceSize;
+    unsigned char floor[ 6 ];
+    int floorSize;
+    unsigned char apartmentNumber[ 12 ];
+    int apartmentNumberSize;
+    unsigned char addressDate[ 10 ];
+    int addressDateSize;
+    unsigned char addressLabel[ 60 ];
+    int addressLabelSize;
+    } 	EID_VARIABLE_PERSONAL_DATAx;
+
+typedef /* [version][uuid] */  DECLSPEC_UUID("f2ac2748-2c33-45b6-8e62-8d84d38d6072") struct EID_PORTRAITx
+    {
+    BYTE portrait[ 7700 ];
+    int portraitSize;
+    } 	EID_PORTRAITx;
+
+typedef /* [version][uuid] */  DECLSPEC_UUID("32acceb0-a0e9-47a0-aa34-7970f3ddc51a") struct EID_CERTIFICATEx
+    {
+    BYTE certificate[ 2048 ];
+    int certificateSize;
+    } 	EID_CERTIFICATEx;
+
 
 
 extern RPC_IF_HANDLE __MIDL_itf_IdReader_0000_0000_v0_0_c_ifspec;
@@ -174,6 +212,29 @@ EXTERN_C const IID IID_IMainReader;
         
         virtual /* [id] */ HRESULT STDMETHODCALLTYPE EidReadFixedPersonalData( 
             /* [out] */ EID_FIXED_PERSONAL_DATAx *pData,
+            /* [retval][out] */ int *result) = 0;
+        
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE EidReadVariablePersonalData( 
+            /* [out] */ EID_VARIABLE_PERSONAL_DATAx *pData,
+            /* [retval][out] */ int *result) = 0;
+        
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE EidReadPortrait( 
+            /* [out] */ EID_PORTRAITx *pData,
+            /* [retval][out] */ int *result) = 0;
+        
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE EidReadCertificate( 
+            /* [out] */ EID_CERTIFICATEx *pData,
+            /* [in] */ int certificateType,
+            /* [retval][out] */ int *result) = 0;
+        
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE EidChangePassword( 
+            /* [in] */ LPCSTR szOldPassword,
+            /* [in] */ LPCSTR szNewPassword,
+            /* [out] */ int *pnTriesLeft,
+            /* [retval][out] */ int *result) = 0;
+        
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE EidVerifySignature( 
+            /* [in] */ UINT nSignatureID,
             /* [retval][out] */ int *result) = 0;
         
     };
@@ -283,6 +344,39 @@ EXTERN_C const IID IID_IMainReader;
             /* [out] */ EID_FIXED_PERSONAL_DATAx *pData,
             /* [retval][out] */ int *result);
         
+        DECLSPEC_XFGVIRT(IMainReader, EidReadVariablePersonalData)
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *EidReadVariablePersonalData )( 
+            IMainReader * This,
+            /* [out] */ EID_VARIABLE_PERSONAL_DATAx *pData,
+            /* [retval][out] */ int *result);
+        
+        DECLSPEC_XFGVIRT(IMainReader, EidReadPortrait)
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *EidReadPortrait )( 
+            IMainReader * This,
+            /* [out] */ EID_PORTRAITx *pData,
+            /* [retval][out] */ int *result);
+        
+        DECLSPEC_XFGVIRT(IMainReader, EidReadCertificate)
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *EidReadCertificate )( 
+            IMainReader * This,
+            /* [out] */ EID_CERTIFICATEx *pData,
+            /* [in] */ int certificateType,
+            /* [retval][out] */ int *result);
+        
+        DECLSPEC_XFGVIRT(IMainReader, EidChangePassword)
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *EidChangePassword )( 
+            IMainReader * This,
+            /* [in] */ LPCSTR szOldPassword,
+            /* [in] */ LPCSTR szNewPassword,
+            /* [out] */ int *pnTriesLeft,
+            /* [retval][out] */ int *result);
+        
+        DECLSPEC_XFGVIRT(IMainReader, EidVerifySignature)
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *EidVerifySignature )( 
+            IMainReader * This,
+            /* [in] */ UINT nSignatureID,
+            /* [retval][out] */ int *result);
+        
         END_INTERFACE
     } IMainReaderVtbl;
 
@@ -340,6 +434,21 @@ EXTERN_C const IID IID_IMainReader;
 #define IMainReader_EidReadFixedPersonalData(This,pData,result)	\
     ( (This)->lpVtbl -> EidReadFixedPersonalData(This,pData,result) ) 
 
+#define IMainReader_EidReadVariablePersonalData(This,pData,result)	\
+    ( (This)->lpVtbl -> EidReadVariablePersonalData(This,pData,result) ) 
+
+#define IMainReader_EidReadPortrait(This,pData,result)	\
+    ( (This)->lpVtbl -> EidReadPortrait(This,pData,result) ) 
+
+#define IMainReader_EidReadCertificate(This,pData,certificateType,result)	\
+    ( (This)->lpVtbl -> EidReadCertificate(This,pData,certificateType,result) ) 
+
+#define IMainReader_EidChangePassword(This,szOldPassword,szNewPassword,pnTriesLeft,result)	\
+    ( (This)->lpVtbl -> EidChangePassword(This,szOldPassword,szNewPassword,pnTriesLeft,result) ) 
+
+#define IMainReader_EidVerifySignature(This,nSignatureID,result)	\
+    ( (This)->lpVtbl -> EidVerifySignature(This,nSignatureID,result) ) 
+
 #endif /* COBJMACROS */
 
 
@@ -357,6 +466,9 @@ EXTERN_C const IID IID_IMainReader;
 
 /* library IdReaderLib */
 /* [version][uuid] */ 
+
+
+
 
 
 
