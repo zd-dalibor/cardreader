@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.UI.Xaml.Media.Imaging;
 
 namespace CardReader.UI.ViewModel.IdReader
 {
@@ -44,5 +45,8 @@ namespace CardReader.UI.ViewModel.IdReader
 
         [ObservableProperty]
         private string parentGivenName;
+
+        [ObservableProperty]
+        private BitmapImage portrait;
     }
 }

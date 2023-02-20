@@ -83,6 +83,9 @@
       <AdditionalDependencies>eVehicleRegistrationAPI.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <PerUserRedirection>true</PerUserRedirection>
     </Link>
+    <PreBuildEvent>
+      <Command>xcopy $(ProjectDir)eVehicle_x86\eVehicleRegistrationAPI.dll $(OutDir) /d</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -120,6 +123,9 @@
       <AdditionalDependencies>eVehicleRegistrationAPI.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <PerUserRedirection>true</PerUserRedirection>
     </Link>
+    <PreBuildEvent>
+      <Command>xcopy $(ProjectDir)eVehicle_x86\eVehicleRegistrationAPI.dll $(OutDir) /d</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DriverLicenseReader_i.h" />
@@ -157,13 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="DriverLicenseReader.rgs" />
-    <CopyFileToFolders Include="eVehicle_x86\eVehicleRegistrationAPI.dll">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
-      <FileType>Document</FileType>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
-    </CopyFileToFolders>
     <None Include="MainReader.rgs" />
   </ItemGroup>
   <ItemGroup>

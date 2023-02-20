@@ -121,6 +121,7 @@ namespace CardReader
             services.AddTransient<IMapper>(sp =>
                 new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
             services.AddTransient<IdReaderCardTypeResolver>();
+            services.AddTransient<IdReaderPortraitImageResolver>();
 
             // services
             services.AddSingleton<Shell>();

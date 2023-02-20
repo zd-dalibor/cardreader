@@ -9,7 +9,8 @@ namespace CardReader.AutoMapper
         public CardReaderProfile()
         {
             CreateMap<IdReaderData, IdReaderDataViewModel>()
-                .ForMember(dest => dest.CardType, opt => opt.MapFrom<IdReaderCardTypeResolver>());
+                .ForMember(dest => dest.CardType, opt => opt.MapFrom<IdReaderCardTypeResolver>())
+                .ForMember(dest => dest.Portrait, opt => opt.MapFrom<IdReaderPortraitImageResolver>());
         }
     }
 }

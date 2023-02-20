@@ -17,9 +17,6 @@
       <UniqueIdentifier>{4b617f95-961b-4904-afbc-4a617654bc73}</UniqueIdentifier>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
-    <Filter Include="Lib">
-      <UniqueIdentifier>{5779f44e-9b34-427f-a724-5f0ceccfa2d0}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -78,10 +75,5 @@
     <Midl Include="DriverLicenseReader.idl">
       <Filter>Source Files</Filter>
     </Midl>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="eVehicle_x86\eVehicleRegistrationAPI.dll">
-      <Filter>Lib</Filter>
-    </CopyFileToFolders>
   </ItemGroup>
 </Project>

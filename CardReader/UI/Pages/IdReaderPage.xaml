@@ -29,6 +29,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Vertical" Spacing="10">
                 <TextBox x:Uid="CardTypeCtl" Header="{x:Bind ViewModel.CardTypeLbl}"
@@ -70,6 +71,16 @@
                          Text="{x:Bind ViewModel.ReaderData.ParentGivenName, Mode=TwoWay}"
                          IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
             </StackPanel>
+            <Image Grid.Column="2" Stretch="Uniform" VerticalAlignment="Top" Height="240"
+                   DataContext="{x:Bind ViewModel.ReaderData, Mode=TwoWay}">
+                <Image.Source>
+                    <Binding Path="Portrait">
+                        <Binding.TargetNullValue>
+                            <ImageSource>/Assets/avatar.jpg</ImageSource>
+                        </Binding.TargetNullValue>
+                    </Binding>
+                </Image.Source>
+            </Image>
         </Grid>
         <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="10">
             <Button x:Uid="BeginReadBtn" Style="{StaticResource AccentButtonStyle}"
