@@ -7,7 +7,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using CardReader.Model;
 using IdReaderLib;
-using iText.Kernel.Geom;
 
 namespace CardReader.Service
 {
