@@ -17,16 +17,24 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <InfoBar Grid.Row="0" IsOpen="{x:Bind ViewModel.ShowMessage, Mode=TwoWay}" Severity="{x:Bind ViewModel.MessageSeverity, Mode=TwoWay}"
                  Title="{x:Bind ViewModel.MessageTitle, Mode=TwoWay}" Message="{x:Bind ViewModel.Message, Mode=TwoWay}"/>
-        <controls:CardReader Grid.Row="1" Header="{x:Bind ViewModel.SelectReaderLbl}"
-                             RefreshTooltip="{x:Bind ViewModel.RefreshReaderHlp}"
-                             CardReaderId="{x:Bind ViewModel.CardReaderId, Mode=TwoWay}"
-                             CardReaderName="{x:Bind ViewModel.CardReaderName, Mode=TwoWay}"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10">
+            <controls:CardReader Header="{x:Bind ViewModel.SelectReaderLbl}"
+                                 RefreshTooltip="{x:Bind ViewModel.RefreshReaderHlp}"
+                                 CardReaderId="{x:Bind ViewModel.CardReaderId, Mode=TwoWay}"
+                                 CardReaderName="{x:Bind ViewModel.CardReaderName, Mode=TwoWay}"/>
+            <Button x:Uid="BeginReadBtn" VerticalAlignment="Bottom" Style="{StaticResource AccentButtonStyle}"
+                    Content="{x:Bind ViewModel.BeginReadLbl}"
+                    Command="{x:Bind ViewModel.BeginReadCommand}"/>
+            <Button x:Uid="ClearReaderDataBtn" VerticalAlignment="Bottom"
+                    Content="{x:Bind ViewModel.ClearReaderDataLbl}"
+                    Command="{x:Bind ViewModel.ClearReaderDataCommand}"/>
+        </StackPanel>
         <Grid Grid.Row="2" ColumnSpacing="10">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -70,8 +78,64 @@
                 <TextBox x:Uid="ParentGivenNameCtl" Header="{x:Bind ViewModel.ParentGivenNameLbl}"
                          Text="{x:Bind ViewModel.ReaderData.ParentGivenName, Mode=TwoWay}"
                          IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="SexCtl" Header="{x:Bind ViewModel.SexLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.Sex, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="PlaceOfBirthCtl" Header="{x:Bind ViewModel.PlaceOfBirthLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.PlaceOfBirth, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="StateOfBirthCtl" Header="{x:Bind ViewModel.StateOfBirthLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.StateOfBirth, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="DateOfBirthCtl" Header="{x:Bind ViewModel.DateOfBirthLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.DateOfBirth, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="CommunityOfBirthCtl" Header="{x:Bind ViewModel.CommunityOfBirthLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.CommunityOfBirth, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="StatusOfForeignerCtl" Header="{x:Bind ViewModel.StatusOfForeignerLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.StatusOfForeigner, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="NationalityFullCtl" Header="{x:Bind ViewModel.NationalityFullLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.NationalityFull, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
             </StackPanel>
-            <Image Grid.Column="2" Stretch="Uniform" VerticalAlignment="Top" Height="240"
+            <StackPanel Grid.Column="2" Orientation="Vertical" Spacing="10">
+                <TextBox x:Uid="StateCtl" Header="{x:Bind ViewModel.StateLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.State, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="CommunityCtl" Header="{x:Bind ViewModel.CommunityLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.Community, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="PlaceCtl" Header="{x:Bind ViewModel.PlaceLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.Place, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="StreetCtl" Header="{x:Bind ViewModel.StreetLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.Street, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="HouseNumberCtl" Header="{x:Bind ViewModel.HouseNumberLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.HouseNumber, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="HouseLetterCtl" Header="{x:Bind ViewModel.HouseLetterLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.HouseLetter, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="EntranceCtl" Header="{x:Bind ViewModel.EntranceLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.Entrance, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="FloorCtl" Header="{x:Bind ViewModel.FloorLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.Floor, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="ApartmentNumberCtl" Header="{x:Bind ViewModel.ApartmentNumberLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.ApartmentNumber, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="AddressDateCtl" Header="{x:Bind ViewModel.AddressDateLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.AddressDate, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                <TextBox x:Uid="AddressLabelCtl" Header="{x:Bind ViewModel.AddressLabelLbl}"
+                         Text="{x:Bind ViewModel.ReaderData.AddressLabel, Mode=TwoWay}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+            </StackPanel>
+            <Image Grid.Column="3" Stretch="Uniform" VerticalAlignment="Top" Height="240"
                    DataContext="{x:Bind ViewModel.ReaderData, Mode=TwoWay}">
                 <Image.Source>
                     <Binding Path="Portrait">
@@ -82,14 +146,5 @@
                 </Image.Source>
             </Image>
         </Grid>
-        <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="10">
-            <Button x:Uid="BeginReadBtn" Style="{StaticResource AccentButtonStyle}"
-                    Content="{x:Bind ViewModel.BeginReadLbl}"
-                    Command="{x:Bind ViewModel.BeginReadCommand}"/>
-            <Button x:Uid="ClearReaderDataBtn"
-                    Content="{x:Bind ViewModel.ClearReaderDataLbl}"
-                    Command="{x:Bind ViewModel.ClearReaderDataCommand}"/>
-        </StackPanel>
-        
     </Grid>
 </Page>

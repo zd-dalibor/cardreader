@@ -47,6 +47,60 @@ namespace CardReader.UI.ViewModel.IdReader
         private string parentGivenName;
 
         [ObservableProperty]
+        private string sex;
+
+        [ObservableProperty]
+        private string placeOfBirth;
+
+        [ObservableProperty]
+        private string stateOfBirth;
+
+        [ObservableProperty]
+        private string dateOfBirth;
+
+        [ObservableProperty]
+        private string communityOfBirth;
+
+        [ObservableProperty]
+        private string statusOfForeigner;
+
+        [ObservableProperty]
+        private string nationalityFull;
+
+        [ObservableProperty]
+        private string state;
+
+        [ObservableProperty]
+        private string community;
+
+        [ObservableProperty]
+        private string place;
+
+        [ObservableProperty]
+        private string street;
+
+        [ObservableProperty]
+        private string houseNumber;
+
+        [ObservableProperty]
+        private string houseLetter;
+
+        [ObservableProperty]
+        private string entrance;
+
+        [ObservableProperty]
+        private string floor;
+
+        [ObservableProperty]
+        private string apartmentNumber;
+
+        [ObservableProperty]
+        private string addressDate;
+
+        [ObservableProperty]
+        private string addressLabel;
+
+        [ObservableProperty]
         private BitmapImage portrait;
     }
 }

@@ -48,13 +48,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="controls:CardReader">
                     <StackPanel Orientation="Horizontal" Spacing="10">
-                        <ComboBox x:Name="CardReaderCmb" Header="{TemplateBinding Header}" MinWidth="200"/>
+                        <ComboBox x:Name="CardReaderCmb" Header="{TemplateBinding Header}" Width="200"/>
                         <Button x:Name="RefreshBtn" VerticalAlignment="Bottom">
                             <ToolTipService.ToolTip>
                                 <ToolTip Content="{TemplateBinding RefreshTooltip}"></ToolTip>
                             </ToolTipService.ToolTip>
                             <Button.Content>
-                                <FontIcon FontSize="16" FontFamily="{StaticResource CardReader}" Glyph="&#xea04;"/>
+                                <FontIcon Margin="0 1 0 0" FontSize="16"
+                                          FontFamily="{StaticResource CardReader}" Glyph="&#xea04;"/>
                             </Button.Content>
                         </Button>
                     </StackPanel>

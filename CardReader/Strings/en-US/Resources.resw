@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddressDateCtl.Header" xml:space="preserve">
+    <value>Address Date</value>
+  </data>
+  <data name="AddressLabelCtl.Header" xml:space="preserve">
+    <value>Address Label</value>
+  </data>
+  <data name="ApartmentNumberCtl.Header" xml:space="preserve">
+    <value>Apartment Number</value>
+  </data>
   <data name="AppTitle.Text" xml:space="preserve">
     <value>Card Reader</value>
   </data>
@@ -138,6 +147,15 @@
   <data name="ClearReaderDataBtn.Content" xml:space="preserve">
     <value>Clear</value>
   </data>
+  <data name="CommunityCtl.Header" xml:space="preserve">
+    <value>Community</value>
+  </data>
+  <data name="CommunityOfBirthCtl.Header" xml:space="preserve">
+    <value>Community of Birth</value>
+  </data>
+  <data name="DateOfBirthCtl.Header" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
   <data name="DocRegNoCtl.Header" xml:space="preserve">
     <value>Document Registration Number</value>
   </data>
@@ -150,14 +168,26 @@
   <data name="DriverLicenseReaderItem.Text" xml:space="preserve">
     <value>Driver License</value>
   </data>
+  <data name="EntranceCtl.Header" xml:space="preserve">
+    <value>Entrance</value>
+  </data>
   <data name="ExpiryDateCtl.Header" xml:space="preserve">
     <value>Expiry Date</value>
+  </data>
+  <data name="FloorCtl.Header" xml:space="preserve">
+    <value>Floor</value>
   </data>
   <data name="GivenNameCtl.Header" xml:space="preserve">
     <value>Given Name</value>
   </data>
   <data name="HomeMenuItem.Text" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="HouseLetterCtl.Header" xml:space="preserve">
+    <value>House Letter</value>
+  </data>
+  <data name="HouseNumberCtl.Header" xml:space="preserve">
+    <value>House Number</value>
   </data>
   <data name="IdReader.ErrorMessage" xml:space="preserve">
     <value>ID reader error: {0}</value>
@@ -186,14 +216,38 @@
   <data name="Message.ErrorTitle" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="NationalityFullCtl.Header" xml:space="preserve">
+    <value>Nationality Full</value>
+  </data>
   <data name="ParentGivenNameCtl.Header" xml:space="preserve">
     <value>Parent Given Name</value>
   </data>
   <data name="PersonalNumberCtl.Header" xml:space="preserve">
     <value>Personal Number</value>
   </data>
+  <data name="PlaceCtl.Header" xml:space="preserve">
+    <value>Place</value>
+  </data>
+  <data name="PlaceOfBirthCtl.Header" xml:space="preserve">
+    <value>Place of Birth</value>
+  </data>
   <data name="SettingsMenuItem.Text" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="SexCtl.Header" xml:space="preserve">
+    <value>Sex</value>
+  </data>
+  <data name="StateCtl.Header" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="StateOfBirthCtl.Header" xml:space="preserve">
+    <value>State of Birth</value>
+  </data>
+  <data name="StatusOfForeignerCtl.Header" xml:space="preserve">
+    <value>Status of Foreigner</value>
+  </data>
+  <data name="StreetCtl.Header" xml:space="preserve">
+    <value>Street</value>
   </data>
   <data name="SurnameCtl.Header" xml:space="preserve">
     <value>Surname</value>

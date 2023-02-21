@@ -59,6 +59,60 @@ namespace CardReader.UI.ViewModel.IdReader
 
         [ObservableProperty]
         private string parentGivenNameLbl;
+
+        [ObservableProperty]
+        private string sexLbl;
+
+        [ObservableProperty]
+        private string placeOfBirthLbl;
+
+        [ObservableProperty]
+        private string stateOfBirthLbl;
+
+        [ObservableProperty]
+        private string dateOfBirthLbl;
+
+        [ObservableProperty]
+        private string communityOfBirthLbl;
+
+        [ObservableProperty]
+        private string statusOfForeignerLbl;
+
+        [ObservableProperty]
+        private string nationalityFullLbl;
+
+        [ObservableProperty]
+        private string stateLbl;
+
+        [ObservableProperty]
+        private string communityLbl;
+
+        [ObservableProperty]
+        private string placeLbl;
+
+        [ObservableProperty]
+        private string streetLbl;
+
+        [ObservableProperty]
+        private string houseNumberLbl;
+
+        [ObservableProperty]
+        private string houseLetterLbl;
+
+        [ObservableProperty]
+        private string entranceLbl;
+
+        [ObservableProperty]
+        private string floorLbl;
+
+        [ObservableProperty]
+        private string apartmentNumberLbl;
+
+        [ObservableProperty]
+        private string addressDateLbl;
+
+        [ObservableProperty]
+        private string addressLabelLbl;
         #endregion
 
         [ObservableProperty]
@@ -124,6 +178,24 @@ namespace CardReader.UI.ViewModel.IdReader
             SurnameLbl = stringLoader.GetString("SurnameCtl/Header");
             GivenNameLbl = stringLoader.GetString("GivenNameCtl/Header");
             ParentGivenNameLbl = stringLoader.GetString("ParentGivenNameCtl/Header");
+            SexLbl = stringLoader.GetString("SexCtl/Header");
+            PlaceOfBirthLbl = stringLoader.GetString("PlaceOfBirthCtl/Header");
+            StateOfBirthLbl = stringLoader.GetString("StateOfBirthCtl/Header");
+            DateOfBirthLbl = stringLoader.GetString("DateOfBirthCtl/Header");
+            CommunityOfBirthLbl = stringLoader.GetString("CommunityOfBirthCtl/Header");
+            StatusOfForeignerLbl = stringLoader.GetString("StatusOfForeignerCtl/Header");
+            NationalityFullLbl = stringLoader.GetString("NationalityFullCtl/Header");
+            StateLbl = stringLoader.GetString("StateCtl/Header");
+            CommunityLbl = stringLoader.GetString("CommunityCtl/Header");
+            PlaceLbl = stringLoader.GetString("PlaceCtl/Header");
+            StreetLbl = stringLoader.GetString("StreetCtl/Header");
+            HouseNumberLbl = stringLoader.GetString("HouseNumberCtl/Header");
+            HouseLetterLbl = stringLoader.GetString("HouseLetterCtl/Header");
+            EntranceLbl = stringLoader.GetString("EntranceCtl/Header");
+            FloorLbl = stringLoader.GetString("FloorCtl/Header");
+            ApartmentNumberLbl = stringLoader.GetString("ApartmentNumberCtl/Header");
+            AddressDateLbl = stringLoader.GetString("AddressDateCtl/Header");
+            AddressLabelLbl = stringLoader.GetString("AddressLabelCtl/Header");
         }
 
         partial void OnCardReaderIdChanged(string value)

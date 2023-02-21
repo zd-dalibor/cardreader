@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddressDateCtl.Header" xml:space="preserve">
+    <value>Datum adrese</value>
+  </data>
+  <data name="AddressLabelCtl.Header" xml:space="preserve">
+    <value>Labela adrese</value>
+  </data>
+  <data name="ApartmentNumberCtl.Header" xml:space="preserve">
+    <value>Broj apartmana</value>
+  </data>
   <data name="AppTitle.Text" xml:space="preserve">
     <value>ID Čitač</value>
   </data>
@@ -138,6 +147,15 @@
   <data name="ClearReaderDataBtn.Content" xml:space="preserve">
     <value>Poništi</value>
   </data>
+  <data name="CommunityCtl.Header" xml:space="preserve">
+    <value>Zajednica</value>
+  </data>
+  <data name="CommunityOfBirthCtl.Header" xml:space="preserve">
+    <value>Zajednica rođenja</value>
+  </data>
+  <data name="DateOfBirthCtl.Header" xml:space="preserve">
+    <value>Datum rođenja</value>
+  </data>
   <data name="DocRegNoCtl.Header" xml:space="preserve">
     <value>Registracion broj dokumenta</value>
   </data>
@@ -150,14 +168,26 @@
   <data name="DriverLicenseReaderItem.Text" xml:space="preserve">
     <value>Vozačka dozvola</value>
   </data>
+  <data name="EntranceCtl.Header" xml:space="preserve">
+    <value>Ulaz</value>
+  </data>
   <data name="ExpiryDateCtl.Header" xml:space="preserve">
     <value>Datum isteka</value>
+  </data>
+  <data name="FloorCtl.Header" xml:space="preserve">
+    <value>Sprat</value>
   </data>
   <data name="GivenNameCtl.Header" xml:space="preserve">
     <value>Ime</value>
   </data>
   <data name="HomeMenuItem.Text" xml:space="preserve">
     <value>Početna</value>
+  </data>
+  <data name="HouseLetterCtl.Header" xml:space="preserve">
+    <value>Slovo kuće</value>
+  </data>
+  <data name="HouseNumberCtl.Header" xml:space="preserve">
+    <value>Broj kuće</value>
   </data>
   <data name="IdReader.ErrorMessage" xml:space="preserve">
     <value>Greška pri čitanju: {0}</value>
@@ -186,14 +216,38 @@
   <data name="Message.ErrorTitle" xml:space="preserve">
     <value>Greška</value>
   </data>
+  <data name="NationalityFullCtl.Header" xml:space="preserve">
+    <value>Nacionalnost</value>
+  </data>
   <data name="ParentGivenNameCtl.Header" xml:space="preserve">
     <value>Ime oca</value>
   </data>
   <data name="PersonalNumberCtl.Header" xml:space="preserve">
     <value>Lični broj</value>
   </data>
+  <data name="PlaceCtl.Header" xml:space="preserve">
+    <value>Mesto</value>
+  </data>
+  <data name="PlaceOfBirthCtl.Header" xml:space="preserve">
+    <value>Mesto rođenja</value>
+  </data>
   <data name="SettingsMenuItem.Text" xml:space="preserve">
     <value>Podešavanja</value>
+  </data>
+  <data name="SexCtl.Header" xml:space="preserve">
+    <value>Pol</value>
+  </data>
+  <data name="StateCtl.Header" xml:space="preserve">
+    <value>Država</value>
+  </data>
+  <data name="StateOfBirthCtl.Header" xml:space="preserve">
+    <value>Država rođenja</value>
+  </data>
+  <data name="StatusOfForeignerCtl.Header" xml:space="preserve">
+    <value>Status stranca</value>
+  </data>
+  <data name="StreetCtl.Header" xml:space="preserve">
+    <value>Ulica</value>
   </data>
   <data name="SurnameCtl.Header" xml:space="preserve">
     <value>Prezime</value>
