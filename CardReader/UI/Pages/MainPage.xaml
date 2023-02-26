@@ -21,13 +21,13 @@
 
     <Grid>
         <controls:AppTitleBar x:Name="AppTitleBar" x:FieldModifier="public"
-                              Text="{x:Bind ViewModel.AppTitleText, Mode=OneWay}"
+                              Text="{x:Bind viewModel.AppTitleText, Mode=OneWay}"
                               Icon="ms-appx:///Assets/WindowIcon.svg"
-                              IsActive="{x:Bind ViewModel.IsMainWindowActive, Mode=OneWay}"
+                              IsActive="{x:Bind viewModel.IsMainWindowActive, Mode=OneWay}"
                               IsBackButtonVisible="{x:Bind NavigationView.IsBackButtonVisible, Mode=OneWay}"
                               DisplayMode="{x:Bind NavigationView.DisplayMode, Mode=OneWay}"
                               PaneDisplayMode="{x:Bind NavigationView.PaneDisplayMode, Mode=OneWay}"/>
-        <NavigationView x:Name="NavigationView" MenuItemsSource="{x:Bind ViewModel.MenuItems, Mode=OneWay}" SelectedItem="{x:Bind ViewModel.SelectedMenuItem, Mode=OneWay}"
+        <NavigationView x:Name="NavigationView" MenuItemsSource="{x:Bind viewModel.MenuItems, Mode=OneWay}" SelectedItem="{x:Bind viewModel.SelectedMenuItem, Mode=OneWay}"
                         IsTitleBarAutoPaddingEnabled="False" Loaded="NavigationView_Loaded" ItemInvoked="NavigationView_OnItemInvoked" BackRequested="NavigationView_OnBackRequested">
             <NavigationView.MenuItemTemplate>
                 <DataTemplate x:DataType="vm:MenuItemViewModel">

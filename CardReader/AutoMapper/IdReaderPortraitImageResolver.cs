@@ -13,7 +13,7 @@ namespace CardReader.AutoMapper
     {
         public BitmapImage Resolve(IdReaderData source, object destination, BitmapImage destMember, ResolutionContext context)
         {
-            if (source.Portrait == null) return null;
+            if (source?.Portrait == null) return null;
             var image = new BitmapImage();
             using var stream = new MemoryStream();
             stream.Write(source.Portrait);

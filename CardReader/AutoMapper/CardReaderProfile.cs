@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CardReader.Model;
-using CardReader.UI.ViewModel.IdReader;
+using CardReader.UI.ViewModel.IdReaderPage;
 
 namespace CardReader.AutoMapper
 {

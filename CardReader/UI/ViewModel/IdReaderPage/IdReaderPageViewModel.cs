@@ -1,13 +1,12 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
-using CardReader.Model;
 using CardReader.Service;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
 using Microsoft.UI.Xaml.Controls;
 
-namespace CardReader.UI.ViewModel.IdReader
+namespace CardReader.UI.ViewModel.IdReaderPage
 {
     public partial class IdReaderPageViewModel : ObservableObject
     {
@@ -155,7 +154,7 @@ namespace CardReader.UI.ViewModel.IdReader
             this.mapper = mapper;
 
             cardReaderId = appState.IdReaderCardReaderId;
-            readerData = new IdReaderDataViewModel();
+            readerData = mapper.Map<IdReaderDataViewModel>(appState.LastIdReaderData) ?? new IdReaderDataViewModel();
 
             InitStrings();
         }
@@ -215,8 +214,8 @@ namespace CardReader.UI.ViewModel.IdReader
             ShowMessage = false;
             try
             {
-                var data = await idReaderService.ReadAsync(CardReaderName, appState.IdReaderApiVersion);
-                ReaderData = mapper.Map<IdReaderDataViewModel>(data);
+                appState.LastIdReaderData = await idReaderService.ReadAsync(CardReaderName, appState.IdReaderApiVersion);
+                ReaderData = mapper.Map<IdReaderDataViewModel>(appState.LastIdReaderData);
             }
             catch (IdReaderServiceException e)
             {
@@ -236,7 +235,12 @@ namespace CardReader.UI.ViewModel.IdReader
         [RelayCommand]
         private void ClearReaderData()
         {
+            ShowMessage = false;
+            MessageSeverity = default(InfoBarSeverity);
+            Message = null;
+            MessageTitle = null;
             ReaderData = new IdReaderDataViewModel();
+            appState.LastIdReaderData = null;
         }
     }
 }

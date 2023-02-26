@@ -20,6 +20,11 @@ namespace CardReader.AutoMapper
 
         public string Resolve(IdReaderData source, object destination, string destMember, ResolutionContext context)
         {
+            if (source == null)
+            {
+                return null;
+            }
+
             return source.CardType switch
             {
                 IIdReaderService.EID_CARD_ID2008 => stringLoader.GetString("IdReaderCardType/Old"),

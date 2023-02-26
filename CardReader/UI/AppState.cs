@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CardReader.Model;
 using CardReader.Service;
 using CardReader.UI.Messages;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -24,6 +25,9 @@ namespace CardReader.UI
 
         [ObservableProperty]
         private string driverLicenseReaderCardReaderId;
+
+        [ObservableProperty]
+        private IdReaderData lastIdReaderData;
 
         private readonly IAppSettingsService appSettings;
 

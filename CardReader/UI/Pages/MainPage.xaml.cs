@@ -31,13 +31,13 @@ namespace CardReader.UI.Pages
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public MainPageViewModel ViewModel { get; set; }
+        public readonly MainPageViewModel viewModel;
 
         private readonly IStringLoader stringLoader;
 
         public MainPage()
         {
-            this.ViewModel = App.Current.Services.GetService<MainPageViewModel>();
+            this.viewModel = App.Current.Services.GetService<MainPageViewModel>();
             this.stringLoader = App.Current.Services.GetService<IStringLoader>();
 
             var navigationService = App.Current.Services.GetService<IMainNavigationService>();
@@ -52,7 +52,7 @@ namespace CardReader.UI.Pages
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            ViewModel.IsActive = true;
+            viewModel.IsActive = true;
         }
 
         private void NavigationView_Loaded(object sender, RoutedEventArgs e)
@@ -66,7 +66,7 @@ namespace CardReader.UI.Pages
             navigation.PaneTitle = " ";
             navigation.PaneTitle = "";
 
-            Navigate(ViewModel.SelectedMenuItem.Tag);
+            Navigate(viewModel.SelectedMenuItem.Tag);
         }
 
         private void ContentFrame_OnNavigated(object sender, NavigationEventArgs e)
@@ -81,7 +81,7 @@ namespace CardReader.UI.Pages
             else if (ContentFrame.SourcePageType != null)
             {
                 var tag = PageToTag(ContentFrame.SourcePageType);
-                NavigationView.SelectedItem = ViewModel.MenuItems.First(x => x.Tag.Equals(tag));
+                NavigationView.SelectedItem = viewModel.MenuItems.First(x => x.Tag.Equals(tag));
                 NavigationView.Header = ((MenuItemViewModel)NavigationView.SelectedItem)?.Name;
             }
         }

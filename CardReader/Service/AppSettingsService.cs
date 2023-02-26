@@ -37,5 +37,27 @@ namespace CardReader.Service
         {
             return Properties.Settings.Default.DriverLicenseReaderCardReaderId;
         }
+
+        public void SaveWindowWidthDip(double windowWidthDip)
+        {
+            Properties.Settings.Default.WindowWidithDip = windowWidthDip;
+            Properties.Settings.Default.Save();
+        }
+
+        public double GetWindowWidthDip(double defaultValue = default)
+        {
+            return Properties.Settings.Default.WindowWidithDip != 0 ? Properties.Settings.Default.WindowWidithDip : defaultValue;
+        }
+
+        public void SaveWindowHeightDip(double windowHeightDip)
+        {
+            Properties.Settings.Default.WindowHeightDip = windowHeightDip;
+            Properties.Settings.Default.Save();
+        }
+
+        public double GetWindowHeightDip(double defaultValue = default)
+        {
+            return Properties.Settings.Default.WindowHeightDip != 0 ? Properties.Settings.Default.WindowHeightDip : defaultValue;
+        }
     }
 }

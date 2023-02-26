@@ -8,41 +8,84 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CardReader.Service;
+using CardReader.UI.Utils;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml.Controls;
 
 namespace CardReader.UI
 {
     public class Shell
     {
-        public AppState AppState { get; }
+        private const double WINDOW_WIDTH_DPI = 1200D;
+        private const double WINDOW_HEIGHT_DPI = 800D;
 
-        public Window Window { get; private set; }
+        private static int DPI;
 
-        public MainPage MainPage { get; private set; }
+        private readonly AppState appState;
 
-        public Shell(AppState appState)
+        private readonly Window window;
+
+        private readonly MainPage mainPage;
+
+        private readonly IAppSettingsService appSettingsService;
+
+        private nint hWnd;
+
+        public Shell(AppState appState, IAppSettingsService appSettingsService)
         {
-            AppState = appState;
+            this.appState = appState;
+            this.appSettingsService = appSettingsService;
+
+            mainPage = new MainPage();
+            window = new Window
+            {
+                ExtendsContentIntoTitleBar = true,
+                Content = mainPage
+            };
+            window.SetTitleBar(mainPage.AppTitleBar);
+
+            window.Activated += Window_Activated;
+            window.SizeChanged += Window_SizeChanged;
         }
 
         public void Init()
         {
             //TestDriverLicenseReader();
-            this.MainPage = new MainPage();
-            this.Window = new Window
-            {
-                ExtendsContentIntoTitleBar = true,
-                Content = MainPage
-            };
-            this.Window.SetTitleBar(this.MainPage.AppTitleBar);
 
-            this.Window.Activated += Window_Activated;
-            this.Window.Activate();
+            hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+            var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            var appWindow = AppWindow.GetFromWindowId(windowId);
+
+            DPI = DipConverter.GetDpi(hWnd);
+            var windowWidthDip = appSettingsService.GetWindowWidthDip(WINDOW_WIDTH_DPI);
+            var windowHeightDip = appSettingsService.GetWindowHeightDip(WINDOW_HEIGHT_DPI);
+            var size = new Windows.Graphics.SizeInt32
+            {
+                Width = DipConverter.PixelValue(windowWidthDip, DPI),
+                Height = DipConverter.PixelValue(windowHeightDip, DPI)
+            };
+
+            appWindow.Resize(size);
+
+            window.Activate();
         }
 
         private void Window_Activated(object sender, WindowActivatedEventArgs args)
         {
-            this.AppState.IsMainWindowActive = args.WindowActivationState != WindowActivationState.Deactivated;
+            appState.IsMainWindowActive = args.WindowActivationState != WindowActivationState.Deactivated;
+        }
+
+        private void Window_SizeChanged(object sender, WindowSizeChangedEventArgs args)
+        {
+            appSettingsService.SaveWindowWidthDip(args.Size.Width);
+            appSettingsService.SaveWindowHeightDip(args.Size.Height);
+
+            if (hWnd != nint.Zero)
+            {
+                DPI = DipConverter.GetDpi(hWnd);
+            }
         }
 
         private static void TestDriverLicenseReader()

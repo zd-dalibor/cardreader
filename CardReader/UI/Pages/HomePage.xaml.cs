@@ -29,11 +29,11 @@ namespace CardReader.UI.Pages
     /// </summary>
     public sealed partial class HomePage : Page
     {
-        public HomePageViewModel ViewModel { get; set; }
+        private readonly HomePageViewModel viewModel;
 
         public HomePage()
         {
-            this.ViewModel = App.Current.Services.GetService<HomePageViewModel>();
+            viewModel = App.Current.Services.GetService<HomePageViewModel>();
 
             this.InitializeComponent();
         }

@@ -32,8 +32,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Serilog.Events;
-using IdReaderPageViewModel = CardReader.UI.ViewModel.IdReader.IdReaderPageViewModel;
 using CardReader.AutoMapper;
+using CardReader.UI.ViewModel.DriverLicenseReaderPage;
+using IdReaderPageViewModel = CardReader.UI.ViewModel.IdReaderPage.IdReaderPageViewModel;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -131,11 +132,13 @@ namespace CardReader
             services.AddSingleton<IMainNavigationService, MainNavigationService>();
             services.AddSingleton<IAppSettingsService, AppSettingsService>();
             services.AddSingleton<IIdReaderService, IdReaderService>();
+            services.AddSingleton<IDriverLicenseReaderService, DriverLicenseReaderService>();
 
             // view models
             services.AddTransient<MainPageViewModel>();
             services.AddTransient<HomePageViewModel>();
             services.AddTransient<IdReaderPageViewModel>();
+            services.AddTransient<DriverLicenseReaderPageViewModel>();
 
             return services.BuildServiceProvider();
         }

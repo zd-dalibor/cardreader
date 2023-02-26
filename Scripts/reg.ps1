@@ -7,7 +7,7 @@ Available modes:
     UnregServerPerUser - unregister local server per user
     RegServerPerUser   - register local server per user
 #>
-$Mode = RegServer
+$Mode = 'RegServerPerUser'
 
 $Server = Join-Path "$ScriptDir" "..\$Configuration\DriverLicenseReader.exe" | Resolve-Path
 & $Server /$Mode 2>&1
