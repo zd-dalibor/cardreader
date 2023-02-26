@@ -47,5 +47,10 @@ namespace CardReader.Model
         public byte[] CertIntermediateCa { get; set; }
         public byte[] CertUser1 { get; set; }
         public byte[] CertUser2 { get; set; }
+        // certVerify
+        public bool? SigCardVerified { get; set; }
+        public bool? SigFixedVerified { get; set; }
+        public bool? SigVariableVerified { get; set; }
+        public bool? SigPortraitVerified { get; set; }
     }
 }

@@ -59,5 +59,27 @@ namespace CardReader.Service
         {
             return Properties.Settings.Default.WindowHeightDip != 0 ? Properties.Settings.Default.WindowHeightDip : defaultValue;
         }
+
+        public void SaveWindowWidthInPixels(int windowWidthInPixels)
+        {
+            Properties.Settings.Default.WindowWidthInPixels = windowWidthInPixels;
+            Properties.Settings.Default.Save();
+        }
+
+        public int GetWindowWidthInPixels(int defaultValue = default)
+        {
+            return Properties.Settings.Default.WindowWidthInPixels  != 0 ? Properties.Settings.Default.WindowWidthInPixels : defaultValue;
+        }
+
+        public void SaveWindowHeightInPixels(int windowHeightInPixels)
+        {
+            Properties.Settings.Default.WindowHeightInPixels = windowHeightInPixels;
+            Properties.Settings.Default.Save();
+        }
+
+        public int GetWindowHeightInPixels(int defaultValue = default)
+        {
+            return Properties.Settings.Default.WindowHeightInPixels  != 0 ? Properties.Settings.Default.WindowHeightInPixels : defaultValue;
+        }
     }
 }

@@ -79,5 +79,29 @@ namespace CardReader.Properties {
                 this["WindowHeightDip"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int WindowWidthInPixels {
+            get {
+                return ((int)(this["WindowWidthInPixels"]));
+            }
+            set {
+                this["WindowWidthInPixels"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int WindowHeightInPixels {
+            get {
+                return ((int)(this["WindowHeightInPixels"]));
+            }
+            set {
+                this["WindowHeightInPixels"] = value;
+            }
+        }
     }
 }

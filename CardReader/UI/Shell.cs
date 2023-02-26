@@ -55,8 +55,7 @@ namespace CardReader.UI
             //TestDriverLicenseReader();
 
             hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
-            var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
-            var appWindow = AppWindow.GetFromWindowId(windowId);
+            var appWindow = GetAppWindow(hWnd);
 
             DPI = DipConverter.GetDpi(hWnd);
             var windowWidthDip = appSettingsService.GetWindowWidthDip(WINDOW_WIDTH_DPI);
@@ -79,13 +78,22 @@ namespace CardReader.UI
 
         private void Window_SizeChanged(object sender, WindowSizeChangedEventArgs args)
         {
-            appSettingsService.SaveWindowWidthDip(args.Size.Width);
-            appSettingsService.SaveWindowHeightDip(args.Size.Height);
+            if (hWnd == nint.Zero) return;
 
-            if (hWnd != nint.Zero)
-            {
-                DPI = DipConverter.GetDpi(hWnd);
-            }
+            DPI = DipConverter.GetDpi(hWnd);
+
+            var appWindow = GetAppWindow(hWnd);
+            var windowWidthDip = DipConverter.DipValue(appWindow.Size.Width, DPI);
+            var windowHeightDip = DipConverter.DipValue(appWindow.Size.Height, DPI);
+            
+            appSettingsService.SaveWindowWidthDip(windowWidthDip);
+            appSettingsService.SaveWindowHeightDip(windowHeightDip);
+        }
+
+        private static AppWindow GetAppWindow(nint hWnd)
+        {
+            var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            return AppWindow.GetFromWindowId(windowId);
         }
 
         private static void TestDriverLicenseReader()

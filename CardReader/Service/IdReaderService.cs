@@ -72,6 +72,49 @@ namespace CardReader.Service
                     //    var certUser2Data = ReadCertificate(reader, IIdReaderService.EID_Cert_User2);
                     //    data.CertUser2 = CopyBytes(certUser2Data.certificate, certUser2Data.certificateSize);
                     //}
+
+                    try
+                    {
+                        VerifySignature(reader, IIdReaderService.EID_SIG_CARD);
+                        data.SigCardVerified = true;
+                    }
+                    catch (IdReaderServiceException)
+                    {
+                        data.SigCardVerified = false;
+                    }
+
+                    try
+                    {
+                        VerifySignature(reader, IIdReaderService.EID_SIG_FIXED);
+                        data.SigFixedVerified = true;
+                    }
+                    catch (IdReaderServiceException)
+                    {
+                        data.SigFixedVerified = false;
+                    }
+
+                    try
+                    {
+                        VerifySignature(reader, IIdReaderService.EID_SIG_VARIABLE);
+                        data.SigVariableVerified = true;
+                    }
+                    catch (IdReaderServiceException)
+                    {
+                        data.SigVariableVerified = false;
+                    }
+
+                    if (data.CardType == IIdReaderService.EID_CARD_ID2008)
+                    {
+                        try
+                        {
+                            VerifySignature(reader, IIdReaderService.EID_SIG_PORTRAIT);
+                            data.SigPortraitVerified = true;
+                        }
+                        catch (IdReaderServiceException)
+                        {
+                            data.SigPortraitVerified = false;
+                        }
+                    }
                 }
                 finally
                 {
@@ -157,6 +200,12 @@ namespace CardReader.Service
         {
             VerifyResult(reader.EidReadCertificate(out var pData, certificateType));
             return pData;
+        }
+
+        private static void VerifySignature(IMainReader reader, uint signatureId)
+        {
+            VerifyResult(reader.EidVerifySignature(signatureId));
+
         }
 
         private static void VerifyResult(int result)

@@ -29,6 +29,9 @@ namespace CardReader.UI
         [ObservableProperty]
         private IdReaderData lastIdReaderData;
 
+        [ObservableProperty]
+        private DriverLicenseData lastDriverLicenseData;
+
         private readonly IAppSettingsService appSettings;
 
         public AppState(IMessenger messenger, IAppSettingsService appSettings) : base(messenger)

@@ -237,6 +237,27 @@
   <data name="SexCtl.Header" xml:space="preserve">
     <value>Pol</value>
   </data>
+  <data name="SigCardVerifiedCtl.ToolTip" xml:space="preserve">
+    <value>Verifikacija potpisa ključnih podataka</value>
+  </data>
+  <data name="SigFixedVerifiedCtl.ToolTip" xml:space="preserve">
+    <value>Verifikacija potpisa nepomenljivih podataka</value>
+  </data>
+  <data name="SignatureVerification.Failed" xml:space="preserve">
+    <value>Greška</value>
+  </data>
+  <data name="SignatureVerification.None" xml:space="preserve">
+    <value>Nedostupno</value>
+  </data>
+  <data name="SignatureVerification.Success" xml:space="preserve">
+    <value>Uspešno</value>
+  </data>
+  <data name="SigPortraitVerifiedCtl.ToolTip" xml:space="preserve">
+    <value>Verifikacija potpisa slike portreta</value>
+  </data>
+  <data name="SigVariableVerifiedCtl.ToolTip" xml:space="preserve">
+    <value>Verifikacija potpisa promenljivih podataka</value>
+  </data>
   <data name="StateCtl.Header" xml:space="preserve">
     <value>Država</value>
   </data>

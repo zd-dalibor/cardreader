@@ -63,4 +63,46 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="controls:ThreeStateCheck">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:ThreeStateCheck">
+                    <Grid x:Name="RootGrid">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="None">
+                                    <VisualState.Setters>
+                                        <Setter Target="CheckNone.Visibility" Value="Visible"/>
+                                        <Setter Target="CheckSuccess.Visibility" Value="Collapsed"/>
+                                        <Setter Target="CheckFailed.Visibility" Value="Collapsed"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="Success">
+                                    <VisualState.Setters>
+                                        <Setter Target="CheckNone.Visibility" Value="Collapsed"/>
+                                        <Setter Target="CheckSuccess.Visibility" Value="Visible"/>
+                                        <Setter Target="CheckFailed.Visibility" Value="Collapsed"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="Failed">
+                                    <VisualState.Setters>
+                                        <Setter Target="CheckNone.Visibility" Value="Collapsed"/>
+                                        <Setter Target="CheckSuccess.Visibility" Value="Collapsed"/>
+                                        <Setter Target="CheckFailed.Visibility" Value="Visible"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Image x:Name="CheckNone" Source="/Assets/check-none.svg" Width="{TemplateBinding Width}" Visibility="Collapsed"></Image>
+                        <Image x:Name="CheckSuccess" Source="/Assets/check-success.svg" Width="{TemplateBinding Width}" Visibility="Collapsed"></Image>
+                        <Image x:Name="CheckFailed" Source="/Assets/check-failed.svg" Width="{TemplateBinding Width}" Visibility="Collapsed"></Image>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

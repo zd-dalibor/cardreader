@@ -237,6 +237,27 @@
   <data name="SexCtl.Header" xml:space="preserve">
     <value>Sex</value>
   </data>
+  <data name="SigCardVerifiedCtl.ToolTip" xml:space="preserve">
+    <value>Card data signature verification</value>
+  </data>
+  <data name="SigFixedVerifiedCtl.ToolTip" xml:space="preserve">
+    <value>Fixed data signature verification</value>
+  </data>
+  <data name="SignatureVerification.Failed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="SignatureVerification.None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="SignatureVerification.Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="SigPortraitVerifiedCtl.ToolTip" xml:space="preserve">
+    <value>Portrait data signature verification</value>
+  </data>
+  <data name="SigVariableVerifiedCtl.ToolTip" xml:space="preserve">
+    <value>Variable data signature verification</value>
+  </data>
   <data name="StateCtl.Header" xml:space="preserve">
     <value>State</value>
   </data>

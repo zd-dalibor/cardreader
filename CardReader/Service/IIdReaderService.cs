@@ -38,6 +38,11 @@ namespace CardReader.Service
         public const int EID_E_INVALID_PASSWORD            = -14;
         public const int EID_E_PIN_BLOCKED                 = -15;
 
+        public const int EID_SIG_CARD               = 1;
+        public const int EID_SIG_FIXED              = 2;
+        public const int EID_SIG_VARIABLE           = 3;
+        public const int EID_SIG_PORTRAIT           = 4;
+
         public IdReaderData Read(string cardReaderName, int apiVersion);
         public Task<IdReaderData> ReadAsync(string cardReaderName, int apiVersion, CancellationToken token = default);
     }

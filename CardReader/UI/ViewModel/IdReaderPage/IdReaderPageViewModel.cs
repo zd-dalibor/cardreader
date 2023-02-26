@@ -112,6 +112,18 @@ namespace CardReader.UI.ViewModel.IdReaderPage
 
         [ObservableProperty]
         private string addressLabelLbl;
+
+        [ObservableProperty]
+        private string sigCardVerifiedTlp;
+
+        [ObservableProperty]
+        private string sigFixedVerifiedTlp;
+
+        [ObservableProperty]
+        private string sigVariableVerifiedTlp;
+
+        [ObservableProperty]
+        private string sigPortraitVerifiedTlp;
         #endregion
 
         [ObservableProperty]
@@ -195,6 +207,28 @@ namespace CardReader.UI.ViewModel.IdReaderPage
             ApartmentNumberLbl = stringLoader.GetString("ApartmentNumberCtl/Header");
             AddressDateLbl = stringLoader.GetString("AddressDateCtl/Header");
             AddressLabelLbl = stringLoader.GetString("AddressLabelCtl/Header");
+            UpdateDataVerifiedToolTips();
+        }
+
+        private void UpdateDataVerifiedToolTips()
+        {
+            SigCardVerifiedTlp =
+                $"{stringLoader.GetString("SigCardVerifiedCtl/ToolTip")} ({SigVerifyStatusMsg(ReaderData.SigCardVerified)})";
+            SigFixedVerifiedTlp =
+                $"{stringLoader.GetString("SigFixedVerifiedCtl/ToolTip")} ({SigVerifyStatusMsg(ReaderData.SigFixedVerified)})";
+            SigVariableVerifiedTlp = 
+                $"{stringLoader.GetString("SigVariableVerifiedCtl/ToolTip")} ({SigVerifyStatusMsg(ReaderData.SigVariableVerified)})";
+            SigPortraitVerifiedTlp =
+                $"{stringLoader.GetString("SigPortraitVerifiedCtl/ToolTip")} ({SigVerifyStatusMsg(ReaderData.SigPortraitVerified)})";
+        }
+
+        private string SigVerifyStatusMsg(bool? status)
+        {
+            return status.HasValue
+                ? (status.Value
+                    ? stringLoader.GetString("SignatureVerification/Success")
+                    : stringLoader.GetString("SignatureVerification/Failed"))
+                : stringLoader.GetString("SignatureVerification/None");
         }
 
         partial void OnCardReaderIdChanged(string value)
@@ -205,6 +239,11 @@ namespace CardReader.UI.ViewModel.IdReaderPage
         partial void OnCardReaderNameChanged(string value)
         {
             CanRead = !string.IsNullOrWhiteSpace(value);
+        }
+
+        partial void OnReaderDataChanged(IdReaderDataViewModel value)
+        {
+            UpdateDataVerifiedToolTips();
         }
 
         [RelayCommand(CanExecute = nameof(CanRead))]

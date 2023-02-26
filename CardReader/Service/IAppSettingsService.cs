@@ -20,5 +20,11 @@ namespace CardReader.Service
 
         public void SaveWindowHeightDip(double windowHeightDip);
         public double GetWindowHeightDip(double defaultValue = default);
+
+        public void SaveWindowWidthInPixels(int windowWidthInPixels);
+        public int GetWindowWidthInPixels(int defaultValue = default);
+
+        public void SaveWindowHeightInPixels(int windowHeightInPixels);
+        public int GetWindowHeightInPixels(int defaultValue = default);
     }
 }

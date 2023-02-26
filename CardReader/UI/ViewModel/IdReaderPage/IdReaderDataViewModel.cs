@@ -97,5 +97,18 @@ namespace CardReader.UI.ViewModel.IdReaderPage
 
         [ObservableProperty]
         private BitmapImage portrait;
+
+        [ObservableProperty]
+        public bool? sigCardVerified;
+
+        [ObservableProperty]
+        public bool? sigFixedVerified;
+
+        [ObservableProperty]
+        public bool? sigVariableVerified;
+
+        [ObservableProperty]
+        public bool? sigPortraitVerified;
+
     }
 }
