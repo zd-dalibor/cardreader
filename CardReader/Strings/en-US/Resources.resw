@@ -165,6 +165,9 @@
   <data name="DocumentTypeCtl.Header" xml:space="preserve">
     <value>Document Type</value>
   </data>
+  <data name="DriverLicenseReader.ErrorMessage" xml:space="preserve">
+    <value>Driver license reader error: {0}</value>
+  </data>
   <data name="DriverLicenseReaderItem.Text" xml:space="preserve">
     <value>Driver License</value>
   </data>

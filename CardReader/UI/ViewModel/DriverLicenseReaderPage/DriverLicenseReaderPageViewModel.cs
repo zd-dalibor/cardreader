@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CardReader.Model;
 using CardReader.Service;
+using CardReader.UI.ViewModel.IdReaderPage;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.Logging;
 using Microsoft.UI.Xaml.Controls;
 using static ABI.System.Windows.Input.ICommand_Delegates;
 
@@ -51,11 +54,15 @@ namespace CardReader.UI.ViewModel.DriverLicenseReaderPage
 
         private readonly IStringLoader stringLoader;
         private readonly AppState appState;
+        private readonly IDriverLicenseReaderService driverLicenseReaderService;
+        private readonly ILogger<DriverLicenseReaderPageViewModel> logger;
 
-        public DriverLicenseReaderPageViewModel(IStringLoader stringLoader, AppState appState)
+        public DriverLicenseReaderPageViewModel(IStringLoader stringLoader, AppState appState, IDriverLicenseReaderService driverLicenseReaderService, ILogger<DriverLicenseReaderPageViewModel> logger)
         {
             this.stringLoader = stringLoader;
             this.appState = appState;
+            this.driverLicenseReaderService = driverLicenseReaderService;
+            this.logger = logger;
 
             cardReaderId = appState.DriverLicenseReaderCardReaderId;
 
@@ -83,13 +90,36 @@ namespace CardReader.UI.ViewModel.DriverLicenseReaderPage
         [RelayCommand(CanExecute = nameof(CanRead))]
         private async Task BeginReadAsync()
         {
-            await Task.CompletedTask;
+            CanRead = false;
+            ShowMessage = false;
+
+            try
+            {
+                appState.LastDriverLicenseData =
+                    await driverLicenseReaderService.ReadAsync(cardReaderName, appState.DriverLicenseReaderApiVersion);
+            }
+            catch (DriverLicenseReaderServiceException e)
+            {
+                logger.LogError(e, "Failed to read data from ID card.");
+                MessageTitle = stringLoader.GetString("Message/ErrorTitle");
+                MessageSeverity = InfoBarSeverity.Error;
+                Message = string.Format(stringLoader.GetString("DriverLicenseReader/ErrorMessage"), e.Message);
+                ShowMessage = true;
+            }
+            finally
+            {
+                CanRead = true;
+            }
         }
 
         [RelayCommand]
         private void ClearReaderData()
         {
-
+            ShowMessage = false;
+            MessageSeverity = default(InfoBarSeverity);
+            Message = null;
+            MessageTitle = null;
+            appState.LastDriverLicenseData = null;
         }
     }
 }

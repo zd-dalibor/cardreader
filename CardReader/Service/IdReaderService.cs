@@ -134,11 +134,9 @@ namespace CardReader.Service
             return Task.Factory.StartNew(() => Read(cardReaderName, apiVersion), token);
         }
 
-        private static byte[] CopyBytes(byte[] data, int size)
+        private static byte[] CopyBytes(IEnumerable<byte> data, int size)
         {
-            var buff = new byte[size];
-            Buffer.BlockCopy(data, 0, buff, 0, size);
-            return buff;
+            return data.Take(size).ToArray();
         }
 
         private static string SbyteToString(IEnumerable<sbyte> data, int size)

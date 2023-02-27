@@ -27,6 +27,9 @@ namespace CardReader.UI
         private string driverLicenseReaderCardReaderId;
 
         [ObservableProperty]
+        private int driverLicenseReaderApiVersion;
+
+        [ObservableProperty]
         private IdReaderData lastIdReaderData;
 
         [ObservableProperty]
@@ -41,6 +44,7 @@ namespace CardReader.UI
             idReaderCardReaderId = appSettings.GetIdReaderCardReaderId();
             idReaderApiVersion = appSettings.GetIdReaderApiVersion();
             driverLicenseReaderCardReaderId = appSettings.GetDriverLicenseReaderCardReaderId();
+            driverLicenseReaderApiVersion = appSettings.GetDriverLicenseReaderApiVersion();
         }
 
         partial void OnIsMainWindowActiveChanged(bool value)

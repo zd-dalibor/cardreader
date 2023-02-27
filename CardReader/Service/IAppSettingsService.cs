@@ -14,6 +14,7 @@ namespace CardReader.Service
 
         public void SaveDriverLicenseReaderCardReaderId(string value);
         public string GetDriverLicenseReaderCardReaderId();
+        public int GetDriverLicenseReaderApiVersion();
 
         public void SaveWindowWidthDip(double windowWidthDip);
         public double GetWindowWidthDip(double defaultValue = default);

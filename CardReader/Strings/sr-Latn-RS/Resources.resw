@@ -165,6 +165,9 @@
   <data name="DocumentTypeCtl.Header" xml:space="preserve">
     <value>Tip dokumenta</value>
   </data>
+  <data name="DriverLicenseReader.ErrorMessage" xml:space="preserve">
+    <value>Greška pri čitanju: {0}</value>
+  </data>
   <data name="DriverLicenseReaderItem.Text" xml:space="preserve">
     <value>Vozačka dozvola</value>
   </data>

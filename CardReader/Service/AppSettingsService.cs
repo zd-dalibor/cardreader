@@ -38,6 +38,11 @@ namespace CardReader.Service
             return Properties.Settings.Default.DriverLicenseReaderCardReaderId;
         }
 
+        public int GetDriverLicenseReaderApiVersion()
+        {
+            return Properties.Settings.Default.DriverLicenseReaderApiVersion;
+        }
+
         public void SaveWindowWidthDip(double windowWidthDip)
         {
             Properties.Settings.Default.WindowWidithDip = windowWidthDip;
