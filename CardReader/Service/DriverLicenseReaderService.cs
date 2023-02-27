@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using CardReader.Model;
 using DriverLicenseReaderLib;
+using Org.BouncyCastle.Crypto;
 
 namespace CardReader.Service
 {
@@ -69,12 +72,14 @@ namespace CardReader.Service
                 data.RegistrationData = Enumerable.Range(1, 3).Select(i =>
                 {
                     var tmp = ReadRegistration(i, reader);
-                    return new DriverLicenseRegistrationData
+                    var regData = new DriverLicenseRegistrationData
                     {
                         RegistrationData = CopyBytes(tmp.registrationData, tmp.registrationDataSize),
                         SignatureData = CopyBytes(tmp.signatureData, tmp.signatureDataSize),
                         IssuingAuthority = CopyBytes(tmp.issuingAuthority, tmp.issuingAuthoritySize)
                     };
+                    VerifyRegistrationData(regData);
+                    return regData;
                 }).ToList();
             }
             finally
@@ -83,6 +88,25 @@ namespace CardReader.Service
             }
 
             return data;
+        }
+
+        private static void VerifyRegistrationData(DriverLicenseRegistrationData regData)
+        {
+            try
+            {
+                var signature = regData.SignatureData.Take(256).ToArray();
+                var cert = new X509Certificate2(regData.IssuingAuthority);
+
+                using var rsa = cert.GetRSAPublicKey();
+                regData.IsValid = rsa?.VerifyData(regData.RegistrationData, signature, HashAlgorithmName.SHA1,
+                    RSASignaturePadding.Pkcs1);
+            }
+            catch (Exception e)
+            {
+                regData.VerificationErrorMsg = e.Message;
+                regData.VerificationErrorDetails = e.StackTrace;
+                regData.IsValid = false;
+            }
         }
 
         private static void Startup(int apiVersion, IMainReader reader)
