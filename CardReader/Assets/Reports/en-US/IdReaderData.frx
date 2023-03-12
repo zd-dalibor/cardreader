@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="03/12/2023 14:30:12" ReportInfo.Modified="03/12/2023 14:30:12" ReportInfo.CreatorVersion="2023.1.13.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="IdReaderData" ReferenceName="IdReaderData" DataType="System.Collections.Generic.List`1[[CardReader.Model.IdReaderData, CardReader, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+      <Column Name="CardType" DataType="System.Int32"/>
+      <Column Name="DocRegNo" DataType="System.String"/>
+      <Column Name="DocumentType" DataType="System.String"/>
+      <Column Name="IssuingDate" DataType="System.String"/>
+      <Column Name="ExpiryDate" DataType="System.String"/>
+      <Column Name="IssuingAuthority" DataType="System.String"/>
+      <Column Name="DocumentSerialNumber" DataType="System.String"/>
+      <Column Name="ChipSerialNumber" DataType="System.String"/>
+      <Column Name="PersonalNumber" DataType="System.String"/>
+      <Column Name="Surname" DataType="System.String"/>
+      <Column Name="GivenName" DataType="System.String"/>
+      <Column Name="ParentGivenName" DataType="System.String"/>
+      <Column Name="Sex" DataType="System.String"/>
+      <Column Name="PlaceOfBirth" DataType="System.String"/>
+      <Column Name="StateOfBirth" DataType="System.String"/>
+      <Column Name="DateOfBirth" DataType="System.String"/>
+      <Column Name="CommunityOfBirth" DataType="System.String"/>
+      <Column Name="StatusOfForeigner" DataType="System.String"/>
+      <Column Name="NationalityFull" DataType="System.String"/>
+      <Column Name="State" DataType="System.String"/>
+      <Column Name="Community" DataType="System.String"/>
+      <Column Name="Place" DataType="System.String"/>
+      <Column Name="Street" DataType="System.String"/>
+      <Column Name="HouseNumber" DataType="System.String"/>
+      <Column Name="HouseLetter" DataType="System.String"/>
+      <Column Name="Entrance" DataType="System.String"/>
+      <Column Name="Floor" DataType="System.String"/>
+      <Column Name="ApartmentNumber" DataType="System.String"/>
+      <Column Name="AddressDate" DataType="System.String"/>
+      <Column Name="AddressLabel" DataType="System.String"/>
+      <Column Name="Portrait" DataType="System.Byte[]" BindableControl="Picture"/>
+      <Column Name="CertIntermediateCa" DataType="System.Byte[]" BindableControl="Picture"/>
+      <Column Name="CertUser1" DataType="System.Byte[]" BindableControl="Picture"/>
+      <Column Name="CertUser2" DataType="System.Byte[]" BindableControl="Picture"/>
+      <Column Name="SigCardVerified" DataType="System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"/>
+      <Column Name="SigFixedVerified" DataType="System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"/>
+      <Column Name="SigVariableVerified" DataType="System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"/>
+      <Column Name="SigPortraitVerified" DataType="System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"/>
+    </BusinessObjectDataSource>
+  </Dictionary>
+</Report>

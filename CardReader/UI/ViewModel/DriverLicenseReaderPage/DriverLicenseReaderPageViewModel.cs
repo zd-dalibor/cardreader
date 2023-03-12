@@ -96,7 +96,7 @@ namespace CardReader.UI.ViewModel.DriverLicenseReaderPage
             try
             {
                 appState.LastDriverLicenseData =
-                    await driverLicenseReaderService.ReadAsync(cardReaderName, appState.DriverLicenseReaderApiVersion);
+                    await driverLicenseReaderService.ReadAsync(CardReaderName, appState.DriverLicenseReaderApiVersion);
             }
             catch (DriverLicenseReaderServiceException e)
             {

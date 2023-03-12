@@ -1,14 +1,18 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AutoMapper;
+using CardReader.Model;
 using CardReader.Service;
+using CardReader.UI.Messages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.Logging;
 using Microsoft.UI.Xaml.Controls;
 
 namespace CardReader.UI.ViewModel.IdReaderPage
 {
-    public partial class IdReaderPageViewModel : ObservableObject
+    public partial class IdReaderPageViewModel : ObservableRecipient
     {
         #region strings
         [ObservableProperty]
@@ -124,6 +128,9 @@ namespace CardReader.UI.ViewModel.IdReaderPage
 
         [ObservableProperty]
         private string sigPortraitVerifiedTlp;
+
+        [ObservableProperty]
+        private string readerDataReportHlp;
         #endregion
 
         [ObservableProperty]
@@ -135,6 +142,10 @@ namespace CardReader.UI.ViewModel.IdReaderPage
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(BeginReadCommand))]
         private bool canRead;
+
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(ReaderDataReportCommand))]
+        private bool canReport;
 
         [ObservableProperty]
         private bool showMessage;
@@ -156,19 +167,36 @@ namespace CardReader.UI.ViewModel.IdReaderPage
         private readonly IIdReaderService idReaderService;
         private readonly ILogger<IdReaderPageViewModel> logger;
         private readonly IMapper mapper;
+        private readonly IReportingService reportingService;
 
-        public IdReaderPageViewModel(IStringLoader stringLoader, AppState appState, IIdReaderService idReaderService, ILogger<IdReaderPageViewModel> logger, IMapper mapper)
+        public IdReaderPageViewModel(IStringLoader stringLoader,
+            AppState appState,
+            IIdReaderService idReaderService,
+            ILogger<IdReaderPageViewModel> logger,
+            IMapper mapper,
+            IReportingService reportingService,
+            IMessenger messenger) : base(messenger)
         {
             this.stringLoader = stringLoader;
             this.appState = appState;
             this.idReaderService = idReaderService;
             this.logger = logger;
             this.mapper = mapper;
+            this.reportingService = reportingService;
 
             cardReaderId = appState.IdReaderCardReaderId;
-            readerData = mapper.Map<IdReaderDataViewModel>(appState.LastIdReaderData) ?? new IdReaderDataViewModel();
+            UpdateReaderData(appState.LastIdReaderData);
 
             InitStrings();
+        }
+
+        private void UpdateReaderData(IdReaderData data)
+        {
+            appState.LastIdReaderData = data;
+            ReaderData = data != null
+                ? mapper.Map<IdReaderDataViewModel>(appState.LastIdReaderData)
+                : new IdReaderDataViewModel();
+            CanReport = data != null;
         }
 
         private void InitStrings()
@@ -207,6 +235,7 @@ namespace CardReader.UI.ViewModel.IdReaderPage
             ApartmentNumberLbl = stringLoader.GetString("ApartmentNumberCtl/Header");
             AddressDateLbl = stringLoader.GetString("AddressDateCtl/Header");
             AddressLabelLbl = stringLoader.GetString("AddressLabelCtl/Header");
+            ReaderDataReportHlp = stringLoader.GetString("ReaderDataReportBtnToolTip/Content");
             UpdateDataVerifiedToolTips();
         }
 
@@ -253,8 +282,8 @@ namespace CardReader.UI.ViewModel.IdReaderPage
             ShowMessage = false;
             try
             {
-                appState.LastIdReaderData = await idReaderService.ReadAsync(CardReaderName, appState.IdReaderApiVersion);
-                ReaderData = mapper.Map<IdReaderDataViewModel>(appState.LastIdReaderData);
+                var data = await idReaderService.ReadAsync(CardReaderName, appState.IdReaderApiVersion);
+                UpdateReaderData(data);
             }
             catch (IdReaderServiceException e)
             {
@@ -278,8 +307,28 @@ namespace CardReader.UI.ViewModel.IdReaderPage
             MessageSeverity = default(InfoBarSeverity);
             Message = null;
             MessageTitle = null;
-            ReaderData = new IdReaderDataViewModel();
-            appState.LastIdReaderData = null;
+            UpdateReaderData(null);
+        }
+
+        [RelayCommand(CanExecute = nameof(CanReport))]
+        private async Task ReaderDataReport()
+        {
+            CanReport = false;
+            var readerDate = appState.LastIdReaderData ?? new IdReaderData();
+            var currentLocale = stringLoader.GetCurrentLocale();
+            try
+            {
+                await reportingService.IdReaderReportAsync(readerDate, currentLocale);
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e, "Reader data report error.");
+                Messenger.Send(new ErrorMessage(e));
+            }
+            finally
+            {
+                CanReport = true;
+            }
         }
     }
 }

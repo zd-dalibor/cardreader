@@ -19,6 +19,8 @@ using CardReader.UI.ViewModel.MainPage;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using CardReader.Service;
+using CardReader.UI.Messages;
+using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.UI.Xaml.Media.Animation;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -34,11 +36,13 @@ namespace CardReader.UI.Pages
         public readonly MainPageViewModel viewModel;
 
         private readonly IStringLoader stringLoader;
+        private readonly IMessenger messenger;
 
         public MainPage()
         {
             this.viewModel = App.Current.Services.GetService<MainPageViewModel>();
             this.stringLoader = App.Current.Services.GetService<IStringLoader>();
+            this.messenger = App.Current.Services.GetService<IMessenger>();
 
             var navigationService = App.Current.Services.GetService<IMainNavigationService>();
             navigationService.Delegate.NavigateWithTransition += this.NavigateWithTransition;
@@ -46,8 +50,21 @@ namespace CardReader.UI.Pages
             navigationService.Delegate.TryGoBack += this.TryGoBack;
 
             this.Loaded += MainPage_Loaded;
+            this.messenger.Register<ErrorMessage>(this, OnError);
 
             this.InitializeComponent();
+        }
+
+        private async void OnError(object recipient, ErrorMessage message)
+        {
+            var dialog = new ContentDialog
+            {
+                Title = stringLoader.GetString("ErrorDialog/Title"),
+                Content = stringLoader.GetString("ErrorDialog/Content", message.Value.Message),
+                CloseButtonText = stringLoader.GetString("ErrorDialog/CloseText"),
+                XamlRoot = Content.XamlRoot
+            };
+            await dialog.ShowAsync();
         }
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)

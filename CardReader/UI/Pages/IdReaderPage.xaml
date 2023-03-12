@@ -20,8 +20,8 @@
         <InfoBar Grid.Row="0" IsOpen="{x:Bind viewModel.ShowMessage, Mode=OneWay}" Severity="{x:Bind viewModel.MessageSeverity, Mode=OneWay}"
                  Title="{x:Bind viewModel.MessageTitle, Mode=OneWay}" Message="{x:Bind viewModel.Message, Mode=OneWay}"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10">
-            <controls:CardReader Header="{x:Bind viewModel.SelectReaderLbl}"
-                                 RefreshTooltip="{x:Bind viewModel.RefreshReaderHlp}"
+            <controls:CardReader Header="{x:Bind viewModel.SelectReaderLbl, Mode=OneWay}"
+                                 RefreshTooltip="{x:Bind viewModel.RefreshReaderHlp, Mode=OneWay}"
                                  CardReaderId="{x:Bind viewModel.CardReaderId, Mode=TwoWay}"
                                  CardReaderName="{x:Bind viewModel.CardReaderName, Mode=TwoWay}"/>
             <Button x:Uid="BeginReadBtn" VerticalAlignment="Bottom" Style="{StaticResource AccentButtonStyle}"
@@ -30,6 +30,12 @@
             <Button x:Uid="ClearReaderDataBtn" VerticalAlignment="Bottom"
                     Content="{x:Bind viewModel.ClearReaderDataLbl}"
                     Command="{x:Bind viewModel.ClearReaderDataCommand}"/>
+            <Button x:Uid="ReaderDataReportBtn" VerticalAlignment="Bottom" Command="{x:Bind viewModel.ReaderDataReportCommand}">
+                <ToolTipService.ToolTip>
+                    <ToolTip x:Uid="ReaderDataReportBtnToolTip" Content="{x:Bind viewModel.ReaderDataReportHlp, Mode=OneWay}"/>
+                </ToolTipService.ToolTip>
+                <FontIcon FontSize="20" Margin="0 0 0 -4" FontFamily="{StaticResource CardReader}" Glyph="&#xea04;"/>
+            </Button>
         </StackPanel>
         <Grid Grid.Row="2" ColumnSpacing="10">
             <Grid.ColumnDefinitions>

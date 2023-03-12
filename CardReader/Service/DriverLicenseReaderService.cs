@@ -8,7 +8,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using CardReader.Model;
 using DriverLicenseReaderLib;
-using Org.BouncyCastle.Crypto;
 
 namespace CardReader.Service
 {

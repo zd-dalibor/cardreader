@@ -1,19 +1,17 @@
 ﻿using CardReader.Service;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CardReader.UI.Messages;
 using CommunityToolkit.Mvvm.Messaging;
-using Microsoft.UI.Xaml;
+using CommunityToolkit.Mvvm.Messaging.Messages;
 
 namespace CardReader.UI.ViewModel.MainPage
 {
-    public partial class MainPageViewModel : ObservableRecipient, IRecipient<AppStateChangedMessage>
+    public partial class MainPageViewModel : ObservableRecipient, IRecipient<PropertyChangedMessage<object>>
     {
         [ObservableProperty]
         private ObservableCollection<MenuItemViewModel> menuItems;
@@ -31,10 +29,12 @@ namespace CardReader.UI.ViewModel.MainPage
 
         private readonly IStringLoader stringLoader;
         private Dictionary<string, MenuItemViewModel> menuItemsDictionary;
+        private readonly AppState appState;
 
         public MainPageViewModel(AppState appState, IStringLoader stringLoader, IMessenger messenger) : base(messenger)
         {
             this.stringLoader = stringLoader;
+            this.appState = appState;
 
             IsMainWindowActive = appState.IsMainWindowActive;
 
@@ -42,13 +42,12 @@ namespace CardReader.UI.ViewModel.MainPage
             InitMenuItems();
         }
 
-        public void Receive(AppStateChangedMessage message)
+        public void Receive(PropertyChangedMessage<object> message)
         {
-            IsMainWindowActive = message.PropertyName switch
+            if (message.Sender.Equals(appState) && message.PropertyName == nameof(AppState.IsMainWindowActive))
             {
-                nameof(AppState.IsMainWindowActive) => message.NewValue.IsMainWindowActive,
-                _ => IsMainWindowActive
-            };
+                IsMainWindowActive = (bool) message.NewValue;
+            }
         }
 
         private void InitStrings()

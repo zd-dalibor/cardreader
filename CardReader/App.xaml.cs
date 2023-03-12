@@ -34,7 +34,7 @@ using Serilog;
 using Serilog.Events;
 using CardReader.AutoMapper;
 using CardReader.UI.ViewModel.DriverLicenseReaderPage;
-using IdReaderPageViewModel = CardReader.UI.ViewModel.IdReaderPage.IdReaderPageViewModel;
+using CardReader.UI.ViewModel.IdReaderPage;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -72,18 +72,23 @@ namespace CardReader
             Shell.Init();
         }
 
-        private static void InitLocale()
+        private void InitLocale()
         {
-            var cult = "sr-Latn-RS";
-            //var cult = "en-US";
-            //ApplicationLanguages.PrimaryLanguageOverride = cult;
-            CultureInfo culture = new(cult);
-            CultureInfo.DefaultThreadCurrentCulture = culture;
-            CultureInfo.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentUICulture = culture;
+            ChangeLocale("sr-Latn-RS");
+            // ChangeLocale("en-US");
+            
+        }
+
+        public void ChangeLocale(string locale)
+        {
+            //ApplicationLanguages.PrimaryLanguageOverride = locale;
+            CurrentLocale = new CultureInfo(locale);
+            CultureInfo.DefaultThreadCurrentCulture = CurrentLocale;
+            CultureInfo.CurrentCulture = CurrentLocale;
+            Thread.CurrentThread.CurrentCulture = CurrentLocale;
+            Thread.CurrentThread.CurrentUICulture = CurrentLocale;
             //Windows.ApplicationModel.Resources.Core.ResourceContext.GetForCurrentView().Reset();
-            Windows.ApplicationModel.Resources.Core.ResourceContext.SetGlobalQualifierValue("Language", cult);
+            Windows.ApplicationModel.Resources.Core.ResourceContext.SetGlobalQualifierValue("Language", locale);
             Windows.ApplicationModel.Resources.Core.ResourceContext.GetForViewIndependentUse().Reset();
         }
 
@@ -133,6 +138,7 @@ namespace CardReader
             services.AddSingleton<IAppSettingsService, AppSettingsService>();
             services.AddSingleton<IIdReaderService, IdReaderService>();
             services.AddSingleton<IDriverLicenseReaderService, DriverLicenseReaderService>();
+            services.AddSingleton<IReportingService, ReportingService>();
 
             // view models
             services.AddTransient<MainPageViewModel>();
@@ -148,5 +154,7 @@ namespace CardReader
         public IServiceProvider Services { get; }
 
         public Shell Shell { get; private set; }
+
+        public CultureInfo CurrentLocale { get; private set; }
     }
 }
