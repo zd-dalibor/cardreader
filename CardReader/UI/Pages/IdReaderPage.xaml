@@ -20,7 +20,7 @@
         <InfoBar Grid.Row="0" IsOpen="{x:Bind viewModel.ShowMessage, Mode=OneWay}" Severity="{x:Bind viewModel.MessageSeverity, Mode=OneWay}"
                  Title="{x:Bind viewModel.MessageTitle, Mode=OneWay}" Message="{x:Bind viewModel.Message, Mode=OneWay}"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10">
-            <controls:CardReader Header="{x:Bind viewModel.SelectReaderLbl, Mode=OneWay}"
+            <controls:CardReader x:Uid="CardReaderCtl" Header="{x:Bind viewModel.SelectReaderLbl, Mode=OneWay}"
                                  RefreshTooltip="{x:Bind viewModel.RefreshReaderHlp, Mode=OneWay}"
                                  CardReaderId="{x:Bind viewModel.CardReaderId, Mode=TwoWay}"
                                  CardReaderName="{x:Bind viewModel.CardReaderName, Mode=TwoWay}"/>
@@ -45,100 +45,100 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Vertical" Spacing="10">
-                <TextBox x:Uid="CardTypeCtl" Header="{x:Bind viewModel.CardTypeLbl}"
+                <TextBox x:Uid="CardTypeCtl" Header="{x:Bind viewModel.CardTypeLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.CardType, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="DocRegNoCtl" Header="{x:Bind viewModel.DocRegNoLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="DocRegNoCtl" Header="{x:Bind viewModel.DocRegNoLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.DocRegNo, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="DocumentTypeCtl" Header="{x:Bind viewModel.DocumentTypeLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="DocumentTypeCtl" Header="{x:Bind viewModel.DocumentTypeLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.DocumentType, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="IssuingDateCtl" Header="{x:Bind viewModel.IssuingDateLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="IssuingDateCtl" Header="{x:Bind viewModel.IssuingDateLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.IssuingDate, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="ExpiryDateCtl" Header="{x:Bind viewModel.ExpiryDateLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="ExpiryDateCtl" Header="{x:Bind viewModel.ExpiryDateLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.ExpiryDate, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="IssuingAuthorityCtl" Header="{x:Bind viewModel.IssuingAuthorityLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="IssuingAuthorityCtl" Header="{x:Bind viewModel.IssuingAuthorityLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.IssuingAuthority, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="DocumentSerialNumberCtl" Header="{x:Bind viewModel.DocumentSerialNumberLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="DocumentSerialNumberCtl" Header="{x:Bind viewModel.DocumentSerialNumberLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.DocumentSerialNumber, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="ChipSerialNumberCtl" Header="{x:Bind viewModel.ChipSerialNumberLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="ChipSerialNumberCtl" Header="{x:Bind viewModel.ChipSerialNumberLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.ChipSerialNumber, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Vertical" Spacing="10">
-                <TextBox x:Uid="PersonalNumberCtl" Header="{x:Bind viewModel.PersonalNumberLbl}"
+                <TextBox x:Uid="PersonalNumberCtl" Header="{x:Bind viewModel.PersonalNumberLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.PersonalNumber, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="SurnameCtl" Header="{x:Bind viewModel.SurnameLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="SurnameCtl" Header="{x:Bind viewModel.SurnameLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.Surname, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="GivenNameCtl" Header="{x:Bind viewModel.GivenNameLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="GivenNameCtl" Header="{x:Bind viewModel.GivenNameLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.GivenName, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="ParentGivenNameCtl" Header="{x:Bind viewModel.ParentGivenNameLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="ParentGivenNameCtl" Header="{x:Bind viewModel.ParentGivenNameLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.ParentGivenName, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="SexCtl" Header="{x:Bind viewModel.SexLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="SexCtl" Header="{x:Bind viewModel.SexLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.Sex, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="PlaceOfBirthCtl" Header="{x:Bind viewModel.PlaceOfBirthLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="PlaceOfBirthCtl" Header="{x:Bind viewModel.PlaceOfBirthLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.PlaceOfBirth, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="StateOfBirthCtl" Header="{x:Bind viewModel.StateOfBirthLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="StateOfBirthCtl" Header="{x:Bind viewModel.StateOfBirthLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.StateOfBirth, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="DateOfBirthCtl" Header="{x:Bind viewModel.DateOfBirthLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="DateOfBirthCtl" Header="{x:Bind viewModel.DateOfBirthLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.DateOfBirth, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="CommunityOfBirthCtl" Header="{x:Bind viewModel.CommunityOfBirthLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="CommunityOfBirthCtl" Header="{x:Bind viewModel.CommunityOfBirthLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.CommunityOfBirth, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="StatusOfForeignerCtl" Header="{x:Bind viewModel.StatusOfForeignerLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="StatusOfForeignerCtl" Header="{x:Bind viewModel.StatusOfForeignerLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.StatusOfForeigner, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="NationalityFullCtl" Header="{x:Bind viewModel.NationalityFullLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="NationalityFullCtl" Header="{x:Bind viewModel.NationalityFullLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.NationalityFull, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Vertical" Spacing="10">
-                <TextBox x:Uid="StateCtl" Header="{x:Bind viewModel.StateLbl}"
+                <TextBox x:Uid="StateCtl" Header="{x:Bind viewModel.StateLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.State, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="CommunityCtl" Header="{x:Bind viewModel.CommunityLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="CommunityCtl" Header="{x:Bind viewModel.CommunityLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.Community, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="PlaceCtl" Header="{x:Bind viewModel.PlaceLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="PlaceCtl" Header="{x:Bind viewModel.PlaceLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.Place, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="StreetCtl" Header="{x:Bind viewModel.StreetLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="StreetCtl" Header="{x:Bind viewModel.StreetLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.Street, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="HouseNumberCtl" Header="{x:Bind viewModel.HouseNumberLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="HouseNumberCtl" Header="{x:Bind viewModel.HouseNumberLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.HouseNumber, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="HouseLetterCtl" Header="{x:Bind viewModel.HouseLetterLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="HouseLetterCtl" Header="{x:Bind viewModel.HouseLetterLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.HouseLetter, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="EntranceCtl" Header="{x:Bind viewModel.EntranceLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="EntranceCtl" Header="{x:Bind viewModel.EntranceLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.Entrance, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="FloorCtl" Header="{x:Bind viewModel.FloorLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="FloorCtl" Header="{x:Bind viewModel.FloorLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.Floor, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="ApartmentNumberCtl" Header="{x:Bind viewModel.ApartmentNumberLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="ApartmentNumberCtl" Header="{x:Bind viewModel.ApartmentNumberLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.ApartmentNumber, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="AddressDateCtl" Header="{x:Bind viewModel.AddressDateLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="AddressDateCtl" Header="{x:Bind viewModel.AddressDateLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.AddressDate, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
-                <TextBox x:Uid="AddressLabelCtl" Header="{x:Bind viewModel.AddressLabelLbl}"
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
+                <TextBox x:Uid="AddressLabelCtl" Header="{x:Bind viewModel.AddressLabelLbl, Mode=OneWay}"
                          Text="{x:Bind viewModel.ReaderData.AddressLabel, Mode=OneWay}"
-                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200"/>
+                         IsReadOnly="True" HorizontalAlignment="Left" MinWidth="200" MaxWidth="200"/>
             </StackPanel>
             <StackPanel Grid.Column="3" Orientation="Vertical" Spacing="10">
                 <Image Stretch="Uniform" VerticalAlignment="Top" Height="240"

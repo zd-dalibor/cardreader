@@ -202,7 +202,7 @@ namespace CardReader.UI.ViewModel.IdReaderPage
         private void InitStrings()
         {
             SelectReaderLbl = stringLoader.GetString("CardReaderCtl/Header");
-            RefreshReaderHlp = stringLoader.GetString("CardReaderCtl/Content");
+            RefreshReaderHlp = stringLoader.GetString("CardReaderCtl/RefreshTooltip");
             BeginReadLbl = stringLoader.GetString("BeginReadBtn/Content");
             ClearReaderDataLbl = stringLoader.GetString("ClearReaderDataBtn/Content");
             CardTypeLbl = stringLoader.GetString("CardTypeCtl/Header");
