@@ -1,0 +1,16 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {96c631a1-1594-40b6-b54b-f9b428a4e51d} = s 'MainReader class'
+		{
+			ForceRemove Programmable
+			LocalServer32 = s '%MODULE%'
+			{
+				val ServerExecutable = s '%MODULE_RAW%'
+			}
+			TypeLib = s '{4c275aff-dea2-47ef-9ba3-5dcca319dccc}'
+			Version = s '1.0'
+		}
+	}
+}

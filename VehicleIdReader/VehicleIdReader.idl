@@ -1,0 +1,177 @@
+// VehicleIdReader.idl : IDL source for VehicleIdReader
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (VehicleIdReader.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+#define SD_REGISDATA_MAX_SIZE 4096
+#define SD_SIGNATURE_MAX_SIZE 1024
+#define SD_AUTHORITY_MAX_SIZE 4096
+
+typedef
+[
+	uuid(5e1a86ef-7069-46a8-9102-16fe5834c40e),
+	version(1.0)
+]
+struct SD_REGISTRATION_DATAx
+{
+	char registrationData[SD_REGISDATA_MAX_SIZE];
+	long registrationDataSize;
+	char signatureData[SD_SIGNATURE_MAX_SIZE];
+	long signatureDataSize;
+	char issuingAuthority[SD_AUTHORITY_MAX_SIZE];
+	long issuingAuthoritySize;
+} SD_REGISTRATION_DATAx;
+
+typedef
+[
+	uuid(3406fbb1-815e-4370-8c93-c079ce5a01fa),
+	version(1.0)
+]
+struct SD_DOCUMENT_DATAx
+{
+	char stateIssuing[50];
+	long stateIssuingSize;
+	char competentAuthority[50];
+	long competentAuthoritySize;
+	char authorityIssuing[50];
+	long authorityIssuingSize;
+	char unambiguousNumber[30];
+	long unambiguousNumberSize;
+	char issuingDate[16];
+	long issuingDateSize;
+	char expiryDate[16];
+	long expiryDateSize;
+	char serialNumber[20];
+	long serialNumberSize;
+} SD_DOCUMENT_DATAx;
+
+typedef
+[
+	uuid(54fb0c83-d753-4b7c-ad76-dd81b9136495),
+	version(1.0)
+]
+struct SD_VEHICLE_DATAx
+{
+	char dateOfFirstRegistration[16];
+	long dateOfFirstRegistrationSize;
+	char yearOfProduction[5];
+	long yearOfProductionSize;
+	char vehicleMake[100];
+	long vehicleMakeSize;
+	char vehicleType[100];
+	long vehicleTypeSize;
+	char commercialDescription[100];
+	long commercialDescriptionSize;
+	char vehicleIDNumber[100];
+	long vehicleIDNumberSize;
+	char registrationNumberOfVehicle[20];
+	long registrationNumberOfVehicleSize;
+	char maximumNetPower[20];
+	long maximumNetPowerSize;
+	char engineCapacity[20];
+	long engineCapacitySize;
+	char typeOfFuel[100];
+	long typeOfFuelSize;
+	char powerWeightRatio[20];
+	long powerWeightRatioSize;
+	char vehicleMass[20];
+	long vehicleMassSize;
+	char maximumPermissibleLadenMass[20];
+	long maximumPermissibleLadenMassSize;
+	char typeApprovalNumber[50];
+	long typeApprovalNumberSize;
+	char numberOfSeats[20];
+	long numberOfSeatsSize;
+	char numberOfStandingPlaces[20];
+	long numberOfStandingPlacesSize;
+	char engineIDNumber[100];
+	long engineIDNumberSize;
+	char numberOfAxles[20];
+	long numberOfAxlesSize;
+	char vehicleCategory[50];
+	long vehicleCategorySize;
+	char colourOfVehicle[50];
+	long colourOfVehicleSize;
+	char restrictionToChangeOwner[200];
+	long restrictionToChangeOwnerSize;
+	char vehicleLoad[20];
+	long vehicleLoadSize;
+} SD_VEHICLE_DATAx;
+
+typedef
+[
+	uuid(c827838b-f7ef-41eb-ad8e-3e81ea49d4bd),
+	version(1.0)
+]
+struct SD_PERSONAL_DATAx
+{
+	char ownersPersonalNo[20];
+	long ownersPersonalNoSize;
+	char ownersSurnameOrBusinessName[100];
+	long ownersSurnameOrBusinessNameSize;
+	char ownerName[100];
+	long ownerNameSize;
+	char ownerAddress[200];
+	long ownerAddressSize;
+	char usersPersonalNo[20];
+	long usersPersonalNoSize;
+	char usersSurnameOrBusinessName[100];
+	long usersSurnameOrBusinessNameSize;
+	char usersName[100];
+	long usersNameSize;
+	char usersAddress[200];
+	long usersAddressSize;
+} SD_PERSONAL_DATAx;
+
+[
+	object,
+	uuid(ca7cf799-8d7a-4852-854c-07348b0ba59c),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IMainReader : IDispatch
+{
+	[id(1)] HRESULT sdStartup([in] int apiVersion, [out, retval] long* res);
+	[id(2)] HRESULT sdCleanup([out, retval] long* res);
+	[id(3)] HRESULT GetReaderName(
+		[in] long index, 
+		[in, out] SAFEARRAY(char)* readerName,
+		[in, out] long* nameSize,
+		[out, retval] long* res
+	);
+	[id(5)] HRESULT SelectReader([in] SAFEARRAY(char) readerName, [out, retval] long* res);
+	[id(6)] HRESULT sdProcessNewCard([out, retval] long* res);
+	[id(4)] HRESULT sdReadRegistration([in, out] SD_REGISTRATION_DATAx* data, [in] long index, [out, retval] long* res);
+	[id(7)] HRESULT sdReadDocumentData([in, out] SD_DOCUMENT_DATAx* data, [out, retval] long* res);
+	[id(8)] HRESULT sdReadVehicleData([in, out] SD_VEHICLE_DATAx* data, [out, retval] long* res);
+	[id(9)] HRESULT sdReadPersonalData([in, out] SD_PERSONAL_DATAx* data, [out, retval] long* res);
+};
+
+[
+	uuid(4c275aff-dea2-47ef-9ba3-5dcca319dccc),
+	version(1.0),
+]
+library VehicleIdReaderLib
+{
+	importlib("stdole2.tlb");
+
+	struct SD_REGISTRATION_DATAx;
+	struct SD_DOCUMENT_DATAx;
+	struct SD_VEHICLE_DATAx;
+	struct SD_PERSONAL_DATAx;
+
+	[
+		uuid(96c631a1-1594-40b6-b54b-f9b428a4e51d)
+	]
+	coclass MainReader
+	{
+		[default] interface IMainReader;
+	};
+};
+
+import "shobjidl.idl";
