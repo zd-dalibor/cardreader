@@ -38,12 +38,12 @@ namespace CardReader.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DriverLicenseReaderCardReaderId {
+        public string VehicleIdReaderCardReaderId {
             get {
-                return ((string)(this["DriverLicenseReaderCardReaderId"]));
+                return ((string)(this["VehicleIdReaderCardReaderId"]));
             }
             set {
-                this["DriverLicenseReaderCardReaderId"] = value;
+                this["VehicleIdReaderCardReaderId"] = value;
             }
         }
         
@@ -107,9 +107,9 @@ namespace CardReader.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int DriverLicenseReaderApiVersion {
+        public int VehicleIdReaderApiVersion {
             get {
-                return ((int)(this["DriverLicenseReaderApiVersion"]));
+                return ((int)(this["VehicleIdReaderApiVersion"]));
             }
         }
     }

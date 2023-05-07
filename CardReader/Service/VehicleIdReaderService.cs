@@ -11,11 +11,11 @@ using VehicleIdReaderLib;
 
 namespace CardReader.Service
 {
-    public class DriverLicenseReaderService : IDriverLicenseReaderService
+    public class VehicleIdReaderService : IVehicleIdReaderService
     {
-        public DriverLicenseData Read(string cardReaderName, int apiVersion)
+        public VehicleIdData Read(string cardReaderName, int apiVersion)
         {
-            var data = new DriverLicenseData();
+            var data = new VehicleIdData();
             var reader = new MainReader();
 
             Startup(apiVersion, reader);
@@ -71,7 +71,7 @@ namespace CardReader.Service
                 data.RegistrationData = Enumerable.Range(1, 3).Select(i =>
                 {
                     var tmp = ReadRegistration(i, reader);
-                    var regData = new DriverLicenseRegistrationData
+                    var regData = new VehicleIdRegistrationData
                     {
                         RegistrationData = CopyBytes(tmp.registrationData, tmp.registrationDataSize),
                         SignatureData = CopyBytes(tmp.signatureData, tmp.signatureDataSize),
@@ -89,7 +89,7 @@ namespace CardReader.Service
             return data;
         }
 
-        private static void VerifyRegistrationData(DriverLicenseRegistrationData regData)
+        private static void VerifyRegistrationData(VehicleIdRegistrationData regData)
         {
             try
             {
@@ -111,20 +111,20 @@ namespace CardReader.Service
         private static void Startup(int apiVersion, IMainReader reader)
         {
             var result = reader.sdStartup(apiVersion);
-            if (result != IDriverLicenseReaderService.ERROR_SERVICE_ALREADY_RUNNING &&
-                result != IDriverLicenseReaderService.S_OK)
+            if (result != IVehicleIdReaderService.ERROR_SERVICE_ALREADY_RUNNING &&
+                result != IVehicleIdReaderService.S_OK)
             {
-                throw new DriverLicenseReaderServiceException(result);
+                throw new VehicleIdReaderServiceException(result);
             }
         }
 
         private static void Cleanup(IMainReader reader)
         {
             var result = reader.sdCleanup();
-            if (result != IDriverLicenseReaderService.ERROR_SERVICE_NOT_ACTIVE &&
-                result != IDriverLicenseReaderService.S_OK)
+            if (result != IVehicleIdReaderService.ERROR_SERVICE_NOT_ACTIVE &&
+                result != IVehicleIdReaderService.S_OK)
             {
-                throw new DriverLicenseReaderServiceException(result);
+                throw new VehicleIdReaderServiceException(result);
             }
         }
 
@@ -136,15 +136,15 @@ namespace CardReader.Service
                 var size = 100;
                 Array data = new sbyte[size];
                 var result = reader.GetReaderName(index, ref data, ref size);
-                if (result == IDriverLicenseReaderService.SCARD_E_INSUFFICIENT_BUFFER)
+                if (result == IVehicleIdReaderService.SCARD_E_INSUFFICIENT_BUFFER)
                 {
                     data = new sbyte[size];
                     result = reader.GetReaderName(index, ref data, ref size);
                 }
 
-                if (result != IDriverLicenseReaderService.S_OK)
+                if (result != IVehicleIdReaderService.S_OK)
                 {
-                    throw new DriverLicenseReaderServiceException(result);
+                    throw new VehicleIdReaderServiceException(result);
                 }
 
                 var libReaderName = SbyteToString(data.OfType<sbyte>(), size);
@@ -213,13 +213,13 @@ namespace CardReader.Service
 
         private static void VerifyResult(int result)
         {
-            if (result != IDriverLicenseReaderService.S_OK)
+            if (result != IVehicleIdReaderService.S_OK)
             {
-                throw new DriverLicenseReaderServiceException(result);
+                throw new VehicleIdReaderServiceException(result);
             }
         }
 
-        public Task<DriverLicenseData> ReadAsync(string cardReaderName, int apiVersion, CancellationToken token = default)
+        public Task<VehicleIdData> ReadAsync(string cardReaderName, int apiVersion, CancellationToken token = default)
         {
             return Task.Factory.StartNew(() => Read(cardReaderName, apiVersion), token);
         }

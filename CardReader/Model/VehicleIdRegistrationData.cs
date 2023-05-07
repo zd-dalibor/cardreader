@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CardReader.Model
 {
-    public class DriverLicenseRegistrationData
+    public class VehicleIdRegistrationData
     {
         public byte[] RegistrationData { get; set; }
         public byte[] SignatureData { get; set; }

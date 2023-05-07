@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CardReader.Model;
-using CardReader.UI.ViewModel.DriverLicenseReaderPage;
 using CardReader.UI.ViewModel.IdReaderPage;
+using CardReader.UI.ViewModel.VehicleIdReaderPage;
 
 namespace CardReader.AutoMapper
 {
@@ -13,8 +13,8 @@ namespace CardReader.AutoMapper
                 .ForMember(dest => dest.CardType, opt => opt.MapFrom<IdReaderCardTypeResolver>())
                 .ForMember(dest => dest.Portrait, opt => opt.MapFrom<IdReaderPortraitImageResolver>());
 
-            CreateMap<DriverLicenseData, DriverLicenseDataViewModel>();
-            CreateMap<DriverLicenseRegistrationData, DriverLicenseRegistrationDataViewModel>();
+            CreateMap<VehicleIdData, VehicleIdDataViewModel>();
+            CreateMap<VehicleIdRegistrationData, VehicleIdRegistrationDataViewModel>();
         }
     }
 }

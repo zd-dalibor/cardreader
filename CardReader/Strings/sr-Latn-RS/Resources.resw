@@ -180,12 +180,6 @@
   <data name="DocumentTypeCtl.Header" xml:space="preserve">
     <value>Tip dokumenta</value>
   </data>
-  <data name="DriverLicenseReader.ErrorMessage" xml:space="preserve">
-    <value>Greška pri čitanju: {0}</value>
-  </data>
-  <data name="DriverLicenseReaderItem.Text" xml:space="preserve">
-    <value>Vozačka dozvola</value>
-  </data>
   <data name="EngineCapacityCtl.Header" xml:space="preserve">
     <value>Radna zapremina motora</value>
   </data>
@@ -377,6 +371,12 @@
   </data>
   <data name="VehicleIdNumberCtl.Header" xml:space="preserve">
     <value>Broj šasije</value>
+  </data>
+  <data name="VehicleIdReader.ErrorMessage" xml:space="preserve">
+    <value>Greška pri čitanju: {0}</value>
+  </data>
+  <data name="VehicleIdReaderItem.Text" xml:space="preserve">
+    <value>Saobraćajna</value>
   </data>
   <data name="VehicleLoadCtl.Header" xml:space="preserve">
     <value>Nosivost vozila</value>

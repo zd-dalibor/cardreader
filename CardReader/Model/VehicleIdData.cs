@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CardReader.Model
 {
-    public class DriverLicenseData
+    public class VehicleIdData
     {
         // SD_DOCUMENT_DATA
         public string StateIssuing { get; set; }
@@ -49,6 +49,6 @@ namespace CardReader.Model
         public string UsersName { get; set; }
         public string UsersAddress { get; set; }
         // SD_REGISTRATION_DATA
-        public List<DriverLicenseRegistrationData> RegistrationData { get; set; } = new();
+        public List<VehicleIdRegistrationData> RegistrationData { get; set; } = new();
     }
 }

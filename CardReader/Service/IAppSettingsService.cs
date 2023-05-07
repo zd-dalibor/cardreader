@@ -12,9 +12,9 @@ namespace CardReader.Service
         public string GetIdReaderCardReaderId();
         public int GetIdReaderApiVersion();
 
-        public void SaveDriverLicenseReaderCardReaderId(string value);
-        public string GetDriverLicenseReaderCardReaderId();
-        public int GetDriverLicenseReaderApiVersion();
+        public void SaveVehicleIdReaderCardReaderId(string value);
+        public string GetVehicleIdReaderCardReaderId();
+        public int GetVehicleIdReaderApiVersion();
 
         public void SaveWindowWidthDip(double windowWidthDip);
         public double GetWindowWidthDip(double defaultValue = default);

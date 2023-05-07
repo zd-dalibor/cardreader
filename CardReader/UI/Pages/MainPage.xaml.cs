@@ -130,7 +130,7 @@ namespace CardReader.UI.Pages
             {
                 "home" => typeof(HomePage),
                 "id_reader" => typeof(IdReaderPage),
-                "driver_license_reader" => typeof(DriverLicenseReaderPage),
+                "vehicle_id_reader" => typeof(VehicleIdReaderPage),
                 "settings" => typeof(SettingsPage),
                 _ => null
             };
@@ -142,7 +142,7 @@ namespace CardReader.UI.Pages
             {
                 not null when page == typeof(HomePage) => "home",
                 not null when page == typeof(IdReaderPage) => "id_reader",
-                not null when page == typeof(DriverLicenseReaderPage) => "driver_license_reader",
+                not null when page == typeof(VehicleIdReaderPage) => "vehicle_id_reader",
                 not null when page == typeof(SettingsPage) => "settings",
                 _ => null
             };

@@ -27,20 +27,20 @@ namespace CardReader.Service
             return Properties.Settings.Default.IdReaderApiVersion;
         }
 
-        public void SaveDriverLicenseReaderCardReaderId(string value)
+        public void SaveVehicleIdReaderCardReaderId(string value)
         {
-            Properties.Settings.Default.DriverLicenseReaderCardReaderId = value;
+            Properties.Settings.Default.VehicleIdReaderCardReaderId = value;
             Properties.Settings.Default.Save();
         }
 
-        public string GetDriverLicenseReaderCardReaderId()
+        public string GetVehicleIdReaderCardReaderId()
         {
-            return Properties.Settings.Default.DriverLicenseReaderCardReaderId;
+            return Properties.Settings.Default.VehicleIdReaderCardReaderId;
         }
 
-        public int GetDriverLicenseReaderApiVersion()
+        public int GetVehicleIdReaderApiVersion()
         {
-            return Properties.Settings.Default.DriverLicenseReaderApiVersion;
+            return Properties.Settings.Default.VehicleIdReaderApiVersion;
         }
 
         public void SaveWindowWidthDip(double windowWidthDip)

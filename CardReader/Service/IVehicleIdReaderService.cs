@@ -8,7 +8,7 @@ using CardReader.Model;
 
 namespace CardReader.Service
 {
-    public interface IDriverLicenseReaderService
+    public interface IVehicleIdReaderService
     {
         // errors
         public const int ERROR_BAD_FORMAT = 11;
@@ -28,8 +28,8 @@ namespace CardReader.Service
 
         public const int S_OK = 0;
 
-        public DriverLicenseData Read(string cardReaderName, int apiVersion);
+        public VehicleIdData Read(string cardReaderName, int apiVersion);
 
-        public Task<DriverLicenseData> ReadAsync(string cardReaderName, int apiVersion, CancellationToken token = default);
+        public Task<VehicleIdData> ReadAsync(string cardReaderName, int apiVersion, CancellationToken token = default);
     }
 }

@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using CardReader.Model;
 using CardReader.Service;
-using CardReader.UI.ViewModel.IdReaderPage;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
 using Microsoft.UI.Xaml.Controls;
-using static ABI.System.Windows.Input.ICommand_Delegates;
 
-namespace CardReader.UI.ViewModel.DriverLicenseReaderPage
+namespace CardReader.UI.ViewModel.VehicleIdReaderPage
 {
-    public partial class DriverLicenseReaderPageViewModel : ObservableObject
+    public partial class VehicleIdReaderPageViewModel : ObservableObject
     {
         #region strings
         [ObservableProperty]
@@ -168,39 +162,39 @@ namespace CardReader.UI.ViewModel.DriverLicenseReaderPage
         private bool canReport;
 
         [ObservableProperty]
-        private DriverLicenseDataViewModel readerData;
+        private VehicleIdDataViewModel readerData;
 
         private readonly IStringLoader stringLoader;
         private readonly AppState appState;
-        private readonly IDriverLicenseReaderService driverLicenseReaderService;
-        private readonly ILogger<DriverLicenseReaderPageViewModel> logger;
+        private readonly IVehicleIdReaderService vehicleIdReaderService;
+        private readonly ILogger<VehicleIdReaderPageViewModel> logger;
         private readonly IMapper mapper;
 
-        public DriverLicenseReaderPageViewModel(
+        public VehicleIdReaderPageViewModel(
             IStringLoader stringLoader,
             AppState appState,
-            IDriverLicenseReaderService driverLicenseReaderService,
-            ILogger<DriverLicenseReaderPageViewModel> logger,
+            IVehicleIdReaderService vehicleIdReaderService,
+            ILogger<VehicleIdReaderPageViewModel> logger,
             IMapper mapper)
         {
             this.stringLoader = stringLoader;
             this.appState = appState;
-            this.driverLicenseReaderService = driverLicenseReaderService;
+            this.vehicleIdReaderService = vehicleIdReaderService;
             this.logger = logger;
             this.mapper = mapper;
 
-            cardReaderId = appState.DriverLicenseReaderCardReaderId;
-            UpdateReaderData(appState.LastDriverLicenseData);
+            cardReaderId = appState.VehicleIdReaderCardReaderId;
+            UpdateReaderData(appState.LastVehicleIdData);
 
             InitStrings();
         }
 
-        private void UpdateReaderData(DriverLicenseData data)
+        private void UpdateReaderData(VehicleIdData data)
         {
-            appState.LastDriverLicenseData = data;
+            appState.LastVehicleIdData = data;
             ReaderData = data != null
-                ? mapper.Map<DriverLicenseDataViewModel>(data)
-                : new DriverLicenseDataViewModel();
+                ? mapper.Map<VehicleIdDataViewModel>(data)
+                : new VehicleIdDataViewModel();
             CanReport = data != null;
         }
 
@@ -254,7 +248,7 @@ namespace CardReader.UI.ViewModel.DriverLicenseReaderPage
 
         partial void OnCardReaderIdChanged(string value)
         {
-            appState.DriverLicenseReaderCardReaderId = value;
+            appState.VehicleIdReaderCardReaderId = value;
         }
 
         partial void OnCardReaderNameChanged(string value)
@@ -270,15 +264,15 @@ namespace CardReader.UI.ViewModel.DriverLicenseReaderPage
 
             try
             {
-                var data = await driverLicenseReaderService.ReadAsync(CardReaderName, appState.DriverLicenseReaderApiVersion);
+                var data = await vehicleIdReaderService.ReadAsync(CardReaderName, appState.VehicleIdReaderApiVersion);
                 UpdateReaderData(data);
             }
-            catch (DriverLicenseReaderServiceException e)
+            catch (VehicleIdReaderServiceException e)
             {
                 logger.LogError(e, "Failed to read data from ID card.");
                 MessageTitle = stringLoader.GetString("Message/ErrorTitle");
                 MessageSeverity = InfoBarSeverity.Error;
-                Message = string.Format(stringLoader.GetString("DriverLicenseReader/ErrorMessage"), e.Message);
+                Message = string.Format(stringLoader.GetString("VehicleIdReader/ErrorMessage"), e.Message);
                 ShowMessage = true;
             }
             finally

@@ -76,10 +76,10 @@ namespace CardReader.UI.ViewModel.MainPage
                     }
                 },
                 {
-                    "driver_license_reader", new MenuItemViewModel
+                    "vehicle_id_reader", new MenuItemViewModel
                     {
-                        Tag = "driver_license_reader",
-                        Name = stringLoader.GetString("DriverLicenseReaderItem/Text"),
+                        Tag = "vehicle_id_reader",
+                        Name = stringLoader.GetString("VehicleIdReaderItem/Text"),
                         Icon = "crr#\xea01"
                     }
                 }

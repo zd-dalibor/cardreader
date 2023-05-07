@@ -16,7 +16,7 @@ namespace CardReader.UI.ViewModel
         private string idReaderButtonText;
 
         [ObservableProperty]
-        private string driverLicenseReaderButtonText;
+        private string vehicleIdReaderButtonText;
 
         [ObservableProperty]
         private string settingsButtonText;
@@ -36,7 +36,7 @@ namespace CardReader.UI.ViewModel
         private void InitStrings()
         {
             IdReaderButtonText = stringLoader.GetString("IdReaderItem/Text");
-            DriverLicenseReaderButtonText = stringLoader.GetString("DriverLicenseReaderItem/Text");
+            VehicleIdReaderButtonText = stringLoader.GetString("VehicleIdReaderItem/Text");
             SettingsButtonText = stringLoader.GetString("SettingsMenuItem/Text");
         }
 
@@ -47,9 +47,9 @@ namespace CardReader.UI.ViewModel
         }
 
         [RelayCommand]
-        private void NavigateToDriverLicenseReader()
+        private void NavigateToVehicleIdReader()
         {
-            mainNavigationService.Navigate("driver_license_reader");
+            mainNavigationService.Navigate("vehicle_id_reader");
         }
 
         [RelayCommand]

@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="20" Margin="20 25" HorizontalAlignment="Center">
             <Button Content="{x:Bind viewModel.IdReaderButtonText}" Command="{x:Bind viewModel.NavigateToIdReaderCommand}" FontSize="36" Padding="50"/>
-            <Button Content="{x:Bind viewModel.DriverLicenseReaderButtonText}" Command="{x:Bind viewModel.NavigateToDriverLicenseReaderCommand}" FontSize="36" Padding="50"/>
+            <Button Content="{x:Bind viewModel.VehicleIdReaderButtonText}" Command="{x:Bind viewModel.NavigateToVehicleIdReaderCommand}" FontSize="36" Padding="50"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="20" Margin="20 25" HorizontalAlignment="Center">
             <Button Content="{x:Bind viewModel.SettingsButtonText}" Command="{x:Bind viewModel.NavigateToSettingsCommand}" FontSize="36" Padding="50"/>

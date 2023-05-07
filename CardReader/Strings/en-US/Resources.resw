@@ -180,12 +180,6 @@
   <data name="DocumentTypeCtl.Header" xml:space="preserve">
     <value>Document Type</value>
   </data>
-  <data name="DriverLicenseReader.ErrorMessage" xml:space="preserve">
-    <value>Driver license reader error: {0}</value>
-  </data>
-  <data name="DriverLicenseReaderItem.Text" xml:space="preserve">
-    <value>Driver License</value>
-  </data>
   <data name="EngineCapacityCtl.Header" xml:space="preserve">
     <value>Engine Capacity</value>
   </data>
@@ -377,6 +371,12 @@
   </data>
   <data name="VehicleIdNumberCtl.Header" xml:space="preserve">
     <value>VehicleId Number</value>
+  </data>
+  <data name="VehicleIdReader.ErrorMessage" xml:space="preserve">
+    <value>Vehicle ID reader error: {0}</value>
+  </data>
+  <data name="VehicleIdReaderItem.Text" xml:space="preserve">
+    <value>Vehicle ID</value>
   </data>
   <data name="VehicleLoadCtl.Header" xml:space="preserve">
     <value>Vehicle Load</value>

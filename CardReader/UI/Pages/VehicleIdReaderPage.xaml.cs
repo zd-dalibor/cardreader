@@ -15,7 +15,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using CardReader.UI.ViewModel.DriverLicenseReaderPage;
+using CardReader.UI.ViewModel.VehicleIdReaderPage;
 using Microsoft.Extensions.DependencyInjection;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -26,13 +26,13 @@ namespace CardReader.UI.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class DriverLicenseReaderPage : Page
+    public sealed partial class VehicleIdReaderPage : Page
     {
-        private readonly DriverLicenseReaderPageViewModel viewModel;
+        private readonly VehicleIdReaderPageViewModel viewModel;
 
-        public DriverLicenseReaderPage()
+        public VehicleIdReaderPage()
         {
-            viewModel = App.Current.Services.GetService<DriverLicenseReaderPageViewModel>();
+            viewModel = App.Current.Services.GetService<VehicleIdReaderPageViewModel>();
 
             this.InitializeComponent();
         }

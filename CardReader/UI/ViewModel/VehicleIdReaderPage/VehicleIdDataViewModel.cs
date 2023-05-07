@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace CardReader.UI.ViewModel.DriverLicenseReaderPage
+namespace CardReader.UI.ViewModel.VehicleIdReaderPage
 {
-    public partial class DriverLicenseDataViewModel : ObservableObject
+    public partial class VehicleIdDataViewModel : ObservableObject
     {
         // SD_DOCUMENT_DATA
         [ObservableProperty]
@@ -126,6 +121,6 @@ namespace CardReader.UI.ViewModel.DriverLicenseReaderPage
 
         // SD_REGISTRATION_DATA
         [ObservableProperty]
-        private ObservableCollection<DriverLicenseRegistrationDataViewModel> registrationData = new();
+        private ObservableCollection<VehicleIdRegistrationDataViewModel> registrationData = new();
     }
 }

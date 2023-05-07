@@ -27,16 +27,16 @@ namespace CardReader.UI
 
         [ObservableProperty]
         [NotifyPropertyChangedRecipients]
-        private string driverLicenseReaderCardReaderId;
+        private string vehicleIdReaderCardReaderId;
 
         [ObservableProperty]
-        private int driverLicenseReaderApiVersion;
+        private int vehicleIdReaderApiVersion;
 
         [ObservableProperty]
         private IdReaderData lastIdReaderData;
 
         [ObservableProperty]
-        private DriverLicenseData lastDriverLicenseData;
+        private VehicleIdData lastVehicleIdData;
 
         private readonly IAppSettingsService appSettings;
 
@@ -46,8 +46,8 @@ namespace CardReader.UI
 
             idReaderCardReaderId = appSettings.GetIdReaderCardReaderId();
             idReaderApiVersion = appSettings.GetIdReaderApiVersion();
-            driverLicenseReaderCardReaderId = appSettings.GetDriverLicenseReaderCardReaderId();
-            driverLicenseReaderApiVersion = appSettings.GetDriverLicenseReaderApiVersion();
+            vehicleIdReaderCardReaderId = appSettings.GetVehicleIdReaderCardReaderId();
+            vehicleIdReaderApiVersion = appSettings.GetVehicleIdReaderApiVersion();
         }
 
         partial void OnIdReaderCardReaderIdChanged(string value)
@@ -55,9 +55,9 @@ namespace CardReader.UI
             appSettings.SaveIdReaderCardReaderId(value);
         }
 
-        partial void OnDriverLicenseReaderCardReaderIdChanged(string value)
+        partial void OnVehicleIdReaderCardReaderIdChanged(string value)
         {
-            appSettings.SaveDriverLicenseReaderCardReaderId(value);
+            appSettings.SaveVehicleIdReaderCardReaderId(value);
         }
 
         //private void NotifyPropertyChangedRecipients(string propertyName)

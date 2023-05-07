@@ -5,7 +5,7 @@
     <Setting Name="IdReaderCardReaderId" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="DriverLicenseReaderCardReaderId" Type="System.String" Scope="User">
+    <Setting Name="VehicleIdReaderCardReaderId" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IdReaderApiVersion" Type="System.Int32" Scope="Application">
@@ -23,7 +23,7 @@
     <Setting Name="WindowHeightInPixels" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="DriverLicenseReaderApiVersion" Type="System.Int32" Scope="Application">
+    <Setting Name="VehicleIdReaderApiVersion" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
