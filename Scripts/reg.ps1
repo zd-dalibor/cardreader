@@ -9,6 +9,6 @@ Available modes:
 #>
 $Mode = 'RegServerPerUser'
 
-$Server = Join-Path "$ScriptDir" "..\$Configuration\DriverLicenseReader.exe" | Resolve-Path
+$Server = Join-Path "$ScriptDir" "..\$Configuration\VehicleIdReader.exe" | Resolve-Path
 & $Server /$Mode 2>&1
 Write-Host $LASTEXITCODE

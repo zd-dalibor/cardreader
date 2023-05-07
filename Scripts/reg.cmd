@@ -12,7 +12,7 @@ SET SCRIPT_DIR=%~dp0
 ::
 SET MODE=RegServerPerUser
 
-SET SERVER=%SCRIPT_DIR%..\%CONFIGURATION%\DriverLicenseReader.exe
+SET SERVER=%SCRIPT_DIR%..\%CONFIGURATION%\VehicleIdReader.exe
 for %%i in ("%SERVER%") do SET "SERVER=%%~fi"
 
 "%SERVER%" /%MODE%
