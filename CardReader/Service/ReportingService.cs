@@ -13,12 +13,10 @@ using FastReport.Export.Html;
 using iText.Html2pdf;
 using iText.Html2pdf.Attach.Impl;
 using iText.Html2pdf.Resolver.Font;
-using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
-using Path = System.IO.Path;
 
 namespace CardReader.Service
 {
@@ -44,7 +42,7 @@ namespace CardReader.Service
                 reportMs.Seek(0, SeekOrigin.Begin);
                 using var sr = new StreamReader(reportMs);
                 var reportStr = sr.ReadToEnd();
-                Directory.CreateDirectory(Path.GetDirectoryName(reportFile));
+                CreateParentDirectory(reportFile);
                 File.WriteAllText(reportFile, reportStr);
             }
             else
@@ -68,7 +66,7 @@ namespace CardReader.Service
 
                 var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                 var resultFile = Path.Combine(localAppData, AppDomain.CurrentDomain.FriendlyName, @"Reports\IdReaderData.pdf");
-                Directory.CreateDirectory(Path.GetDirectoryName(resultFile));
+                CreateParentDirectory(reportFile);
 
                 using var pdfWriter = new PdfWriter(new FileInfo(resultFile));
                 var fontProvider = new DefaultFontProvider(true, true, true);
@@ -76,9 +74,9 @@ namespace CardReader.Service
                 converterProviders.SetTagWorkerFactory(new CustomTagWorkerFactory());
                 converterProviders.SetFontProvider(fontProvider);
                 var pdfDocument = new PdfDocument(pdfWriter);
-                pdfDocument.SetDefaultPageSize(PageSize.A4);
+                pdfDocument.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4);
                 var elements = HtmlConverter.ConvertToElements(reportHtml, converterProviders);
-                var document = new Document(pdfDocument, PageSize.A4);
+                var document = new Document(pdfDocument, iText.Kernel.Geom.PageSize.A4);
                 document.SetMargins(0, 0, 0, 0);
                 var elementIndex = 0;
                 foreach (var element in elements)
@@ -103,6 +101,15 @@ namespace CardReader.Service
             CancellationToken cancellation = default)
         {
             return Task.Factory.StartNew(() => IdReaderReport(data, locale, forDesigner), cancellation);
+        }
+
+        private static void CreateParentDirectory(string filePath)
+        {
+            var directoryName = Path.GetDirectoryName(filePath);
+            if (!string.IsNullOrEmpty(directoryName))
+            {
+                Directory.CreateDirectory(directoryName);
+            }
         }
     }
 }
