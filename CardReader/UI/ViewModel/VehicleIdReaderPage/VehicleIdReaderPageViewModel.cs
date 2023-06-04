@@ -1,15 +1,18 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AutoMapper;
 using CardReader.Model;
 using CardReader.Service;
+using CardReader.UI.Messages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.Logging;
 using Microsoft.UI.Xaml.Controls;
 
 namespace CardReader.UI.ViewModel.VehicleIdReaderPage
 {
-    public partial class VehicleIdReaderPageViewModel : ObservableObject
+    public partial class VehicleIdReaderPageViewModel : ObservableRecipient
     {
         #region strings
         [ObservableProperty]
@@ -134,6 +137,9 @@ namespace CardReader.UI.ViewModel.VehicleIdReaderPage
 
         [ObservableProperty]
         private string usersAddressLbl;
+
+        [ObservableProperty]
+        private string readerDataReportHlp;
         #endregion
 
         [ObservableProperty]
@@ -159,6 +165,7 @@ namespace CardReader.UI.ViewModel.VehicleIdReaderPage
         private bool canRead;
 
         [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(ReaderDataReportCommand))]
         private bool canReport;
 
         [ObservableProperty]
@@ -169,19 +176,23 @@ namespace CardReader.UI.ViewModel.VehicleIdReaderPage
         private readonly IVehicleIdReaderService vehicleIdReaderService;
         private readonly ILogger<VehicleIdReaderPageViewModel> logger;
         private readonly IMapper mapper;
+        private readonly IReportingService reportingService;
 
         public VehicleIdReaderPageViewModel(
             IStringLoader stringLoader,
             AppState appState,
             IVehicleIdReaderService vehicleIdReaderService,
             ILogger<VehicleIdReaderPageViewModel> logger,
-            IMapper mapper)
+            IMapper mapper,
+            IReportingService reportingService,
+            IMessenger messenger) : base(messenger)
         {
             this.stringLoader = stringLoader;
             this.appState = appState;
             this.vehicleIdReaderService = vehicleIdReaderService;
             this.logger = logger;
             this.mapper = mapper;
+            this.reportingService = reportingService;
 
             cardReaderId = appState.VehicleIdReaderCardReaderId;
             UpdateReaderData(appState.LastVehicleIdData);
@@ -195,7 +206,8 @@ namespace CardReader.UI.ViewModel.VehicleIdReaderPage
             ReaderData = data != null
                 ? mapper.Map<VehicleIdDataViewModel>(data)
                 : new VehicleIdDataViewModel();
-            CanReport = data != null;
+            // CanReport = data != null;
+            CanReport = true;
         }
 
         private void InitStrings()
@@ -244,6 +256,8 @@ namespace CardReader.UI.ViewModel.VehicleIdReaderPage
             UsersSurnameOrBusinessNameLbl = stringLoader.GetString("UsersSurnameOrBusinessNameCtl/Header");
             UsersNameLbl = stringLoader.GetString("UsersNameCtl/Header");
             UsersAddressLbl = stringLoader.GetString("UsersAddressCtl/Header");
+
+            ReaderDataReportHlp = stringLoader.GetString("ReaderDataReportBtnToolTip/Content");
         }
 
         partial void OnCardReaderIdChanged(string value)
@@ -289,6 +303,32 @@ namespace CardReader.UI.ViewModel.VehicleIdReaderPage
             Message = null;
             MessageTitle = null;
             UpdateReaderData(null);
+        }
+
+        [RelayCommand(CanExecute = nameof(CanReport))]
+        private async Task ReaderDataReport()
+        {
+            CanReport = false;
+            var readerDate = appState.LastVehicleIdData ?? new VehicleIdData()
+            {
+                StateIssuing = "Srbija",
+                CompetentAuthority = "Mup Leskovac",
+                AuthorityIssuing = "Mup Leskovac"
+            };
+            var currentLocale = stringLoader.GetCurrentLocale();
+            try
+            {
+                await reportingService.VehicleIdReportAsync(readerDate, currentLocale);
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e, "Reader data report error.");
+                Messenger.Send(new ErrorMessage(e));
+            }
+            finally
+            {
+                CanReport = true;
+            }
         }
     }
 }

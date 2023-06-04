@@ -12,3 +12,8 @@ Appliation for reading:
 ## VehicleIdReader
 
 * [Addition Software, Libraries and Documentation](http://www.mup.gov.rs/wps/portal/sr/gradjani/dokumenta/registracija+vozila/citac+elektronske+saobracajne+dozvole)
+
+## Reporting
+
+* [FastReport](https://github.com/FastReports/FastReport)
+* [itext7-dotnet](https://github.com/itext/itext7-dotnet)

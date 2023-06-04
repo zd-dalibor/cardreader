@@ -30,6 +30,12 @@
             <Button x:Uid="ClearReaderDataBtn" VerticalAlignment="Bottom"
                     Content="{x:Bind viewModel.ClearReaderDataLbl}"
                     Command="{x:Bind viewModel.ClearReaderDataCommand}"/>
+            <Button x:Uid="ReaderDataReportBtn" VerticalAlignment="Bottom" Command="{x:Bind viewModel.ReaderDataReportCommand}">
+                <ToolTipService.ToolTip>
+                    <ToolTip x:Uid="ReaderDataReportBtnToolTip" Content="{x:Bind viewModel.ReaderDataReportHlp, Mode=OneWay}"/>
+                </ToolTipService.ToolTip>
+                <FontIcon FontSize="20" Margin="0 0 0 -4" FontFamily="{StaticResource CardReader}" Glyph="&#xea04;"/>
+            </Button>
         </StackPanel>
         <Grid Grid.Row="2" ColumnSpacing="10">
             <Grid.ColumnDefinitions>

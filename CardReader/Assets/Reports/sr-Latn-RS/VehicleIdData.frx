@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="06/04/2023 16:58:28" ReportInfo.Modified="06/04/2023 17:41:28" ReportInfo.CreatorVersion="2023.2.0.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="VehicleIdData" ReferenceName="VehicleIdData" DataType="System.Collections.ArrayList" Enabled="true">
+      <Column Name="StateIssuing" DataType="System.String"/>
+      <Column Name="CompetentAuthority" DataType="System.String"/>
+      <Column Name="AuthorityIssuing" DataType="System.String"/>
+      <Column Name="UnambiguousNumber" DataType="System.String"/>
+      <Column Name="IssuingDate" DataType="System.String"/>
+      <Column Name="ExpiryDate" DataType="System.String"/>
+      <Column Name="SerialNumber" DataType="System.String"/>
+      <Column Name="DateOfFirstRegistration" DataType="System.String"/>
+      <Column Name="YearOfProduction" DataType="System.String"/>
+      <Column Name="VehicleMake" DataType="System.String"/>
+      <Column Name="VehicleType" DataType="System.String"/>
+      <Column Name="CommercialDescription" DataType="System.String"/>
+      <Column Name="VehicleIdNumber" DataType="System.String"/>
+      <Column Name="RegistrationNumberOfVehicle" DataType="System.String"/>
+      <Column Name="MaximumNetPower" DataType="System.String"/>
+      <Column Name="EngineCapacity" DataType="System.String"/>
+      <Column Name="TypeOfFuel" DataType="System.String"/>
+      <Column Name="PowerWeightRatio" DataType="System.String"/>
+      <Column Name="VehicleMass" DataType="System.String"/>
+      <Column Name="MaximumPermissibleLadenMass" DataType="System.String"/>
+      <Column Name="TypeApprovalNumber" DataType="System.String"/>
+      <Column Name="NumberOfSeats" DataType="System.String"/>
+      <Column Name="NumberOfStandingPlaces" DataType="System.String"/>
+      <Column Name="EngineIdNumber" DataType="System.String"/>
+      <Column Name="NumberOfAxles" DataType="System.String"/>
+      <Column Name="VehicleCategory" DataType="System.String"/>
+      <Column Name="ColourOfVehicle" DataType="System.String"/>
+      <Column Name="RestrictionToChangeOwner" DataType="System.String"/>
+      <Column Name="VehicleLoad" DataType="System.String"/>
+      <Column Name="OwnersPersonalNo" DataType="System.String"/>
+      <Column Name="OwnersSurnameOrBusinessName" DataType="System.String"/>
+      <Column Name="OwnerName" DataType="System.String"/>
+      <Column Name="OwnerAddress" DataType="System.String"/>
+      <Column Name="UsersPersonalNo" DataType="System.String"/>
+      <Column Name="UsersSurnameOrBusinessName" DataType="System.String"/>
+      <Column Name="UsersName" DataType="System.String"/>
+      <Column Name="UsersAddress" DataType="System.String"/>
+      <BusinessObjectDataSource Name="RegistrationData" DataType="System.Collections.ArrayList" Enabled="true">
+        <Column Name="RegistrationData" DataType="System.Byte[]" BindableControl="Picture"/>
+        <Column Name="SignatureData" DataType="System.Byte[]" BindableControl="Picture"/>
+        <Column Name="IssuingAuthority" DataType="System.Byte[]" BindableControl="Picture"/>
+        <Column Name="IsValid" DataType="System.Boolean"/>
+        <Column Name="VerificationErrorMsg" DataType="System.String"/>
+        <Column Name="VerificationErrorDetails" DataType="System.String"/>
+      </BusinessObjectDataSource>
+    </BusinessObjectDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" RawPaperSize="9" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8"/>
+    <PageHeaderBand Name="PageHeader1" Top="41.65" Width="718.2" Height="28.35">
+      <TextObject Name="Text2" Left="9.45" Width="94.5" Height="18.9" Text="StateIssuing" Font="Arial, 10pt"/>
+      <TextObject Name="Text4" Left="151.2" Width="94.5" Height="18.9" CanGrow="true" Text="CompetentAuthority" Font="Arial, 10pt"/>
+      <TextObject Name="Text6" Left="264.6" Width="94.5" Height="18.9" Text="AuthorityIssuing" Font="Arial, 10pt"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="73.84" Width="718.2" Height="75.6" DataSource="VehicleIdData">
+      <TextObject Name="Text1" Left="9.45" Top="18.9" Width="94.5" Height="18.9" Text="[VehicleIdData.StateIssuing]" Font="Arial, 10pt"/>
+      <TextObject Name="Text3" Left="151.2" Top="18.9" Width="94.5" Height="18.9" Text="[VehicleIdData.CompetentAuthority]" Font="Arial, 10pt"/>
+      <TextObject Name="Text5" Left="264.6" Top="18.9" Width="94.5" Height="18.9" Text="[VehicleIdData.AuthorityIssuing]" Font="Arial, 10pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="153.29" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>

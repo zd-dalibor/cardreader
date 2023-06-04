@@ -15,5 +15,10 @@ namespace CardReader.Service
 
         Task IdReaderReportAsync(IdReaderData data, CultureInfo locale, bool forDesigner = false,
             CancellationToken cancellation = default);
+
+        void VehicleIdReport(VehicleIdData data, CultureInfo locale, bool forDesigner = false);
+
+        Task VehicleIdReportAsync(VehicleIdData data, CultureInfo locale, bool forDesigner = false,
+            CancellationToken cancellation = default);
     }
 }
