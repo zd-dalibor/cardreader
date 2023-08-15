@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CardReader2 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "CardReader2 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

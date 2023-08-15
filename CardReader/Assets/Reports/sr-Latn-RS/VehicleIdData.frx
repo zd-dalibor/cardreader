@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="06/04/2023 16:58:28" ReportInfo.Modified="06/04/2023 17:41:28" ReportInfo.CreatorVersion="2023.2.0.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="06/04/2023 16:58:28" ReportInfo.Modified="06/13/2023 17:01:24" ReportInfo.CreatorVersion="2023.2.0.0">
   <Dictionary>
     <BusinessObjectDataSource Name="VehicleIdData" ReferenceName="VehicleIdData" DataType="System.Collections.ArrayList" Enabled="true">
       <Column Name="StateIssuing" DataType="System.String"/>
@@ -51,16 +51,45 @@
   </Dictionary>
   <ReportPage Name="Page1" RawPaperSize="9" Watermark.Font="Arial, 60pt">
     <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8"/>
-    <PageHeaderBand Name="PageHeader1" Top="41.65" Width="718.2" Height="28.35">
-      <TextObject Name="Text2" Left="9.45" Width="94.5" Height="18.9" Text="StateIssuing" Font="Arial, 10pt"/>
-      <TextObject Name="Text4" Left="151.2" Width="94.5" Height="18.9" CanGrow="true" Text="CompetentAuthority" Font="Arial, 10pt"/>
-      <TextObject Name="Text6" Left="264.6" Width="94.5" Height="18.9" Text="AuthorityIssuing" Font="Arial, 10pt"/>
-    </PageHeaderBand>
-    <DataBand Name="Data1" Top="73.84" Width="718.2" Height="75.6" DataSource="VehicleIdData">
-      <TextObject Name="Text1" Left="9.45" Top="18.9" Width="94.5" Height="18.9" Text="[VehicleIdData.StateIssuing]" Font="Arial, 10pt"/>
-      <TextObject Name="Text3" Left="151.2" Top="18.9" Width="94.5" Height="18.9" Text="[VehicleIdData.CompetentAuthority]" Font="Arial, 10pt"/>
-      <TextObject Name="Text5" Left="264.6" Top="18.9" Width="94.5" Height="18.9" Text="[VehicleIdData.AuthorityIssuing]" Font="Arial, 10pt"/>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="28.35"/>
+    <DataBand Name="Data1" Top="74.15" Width="718.2" Height="463.05" DataSource="VehicleIdData">
+      <TextObject Name="Text1" Left="10.45" Top="9.45" Width="127.3" Height="18.9" Text="Država izdavanja:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text2" Left="141.75" Top="9.45" Width="151.2" Height="18.9" Text="[VehicleIdData.StateIssuing]" Font="Arial, 10pt"/>
+      <TextObject Name="Text3" Left="9.45" Top="28.35" Width="124.95" Height="18.9" Text="Ovlašćeni organ:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text4" Left="136.3" Top="28.35" Width="153.2" Height="18.9" Text="[VehicleIdData.CompetentAuthority]" Font="Arial, 10pt"/>
+      <TextObject Name="Text6" Left="9.45" Top="47.25" Width="122.85" Height="47.25" Text="Organ izdavanja saobraćajne dozvole:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text7" Left="132.3" Top="47.25" Width="160.65" Height="47.25" Text="[VehicleIdData.AuthorityIssuing]" Font="Arial, 10pt"/>
+      <TextObject Name="Text8" Left="9.45" Top="94.5" Width="122.85" Height="66.15" Text="Jedinstveni broj pod kojim je vozilo upisano u registar:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text9" Left="132.3" Top="94.5" Width="160.65" Height="66.15" Text="[VehicleIdData.UnambiguousNumber]" Font="Arial, 10pt"/>
+      <TextObject Name="Text10" Left="9.45" Top="160.65" Width="122.85" Height="18.9" Text="Datum izdavanja:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text11" Left="132.3" Top="160.65" Width="160.65" Height="18.9" Text="[VehicleIdData.IssuingDate]" Font="Arial, 10pt"/>
+      <TextObject Name="Text12" Left="9.45" Top="179.55" Width="122.85" Height="18.9" Text="Datum isteka:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text13" Left="132.3" Top="179.55" Width="160.65" Height="18.9" Text="[VehicleIdData.ExpiryDate]" Font="Arial, 10pt"/>
+      <TextObject Name="Text14" Left="9.45" Top="198.45" Width="122.85" Height="47.25" Text="Serijski broj saobraćajne dozvole:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text15" Left="132.3" Top="198.45" Width="160.65" Height="47.25" Text="[VehicleIdData.SerialNumber]" Font="Arial, 10pt"/>
+      <TextObject Name="Text16" Left="302.4" Top="9.45" Width="122.85" Height="37.8" Text="Datum prve registracije:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text17" Left="425.25" Top="9.45" Width="141.75" Height="37.8" Text="[VehicleIdData.DateOfFirstRegistration]" Font="Arial, 10pt"/>
+      <TextObject Name="Text18" Left="302.4" Top="47.25" Width="122.85" Height="37.8" Text="Godina proizvodnje:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text19" Left="425.25" Top="47.25" Width="141.75" Height="37.8" Text="[VehicleIdData.YearOfProduction]" Font="Arial, 10pt"/>
+      <TextObject Name="Text20" Left="302.4" Top="85.05" Width="122.85" Height="18.9" Text="Marka:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text21" Left="425.25" Top="85.05" Width="141.75" Height="18.9" Text="[VehicleIdData.VehicleMake]" Font="Arial, 10pt"/>
+      <TextObject Name="Text22" Left="302.4" Top="103.95" Width="122.85" Height="18.9" Text="Tip:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text23" Left="425.25" Top="103.95" Width="141.75" Height="18.9" Text="[VehicleIdData.VehicleType]" Font="Arial, 10pt"/>
+      <TextObject Name="Text24" Left="302.4" Top="122.85" Width="122.85" Height="37.8" Text="Komercijalna oznaka (model):" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text25" Left="425.25" Top="122.85" Width="141.75" Height="37.8" Text="[VehicleIdData.CommercialDescription]" Font="Arial, 10pt"/>
+      <TextObject Name="Text26" Left="302.4" Top="160.65" Width="122.85" Height="18.9" Text="Broj šasije:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text27" Left="425.25" Top="160.65" Width="141.75" Height="18.9" Text="[VehicleIdData.VehicleIdNumber]" Font="Arial, 10pt"/>
+      <TextObject Name="Text28" Left="302.4" Top="179.55" Width="122.85" Height="37.8" Text="Registarski broj vozila:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text29" Left="425.25" Top="179.55" Width="141.75" Height="37.8" Text="[VehicleIdData.RegistrationNumberOfVehicle]" Font="Arial, 10pt"/>
+      <TextObject Name="Text30" Left="302.4" Top="217.35" Width="122.85" Height="37.8" Text="Snaga motora u kW:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text31" Left="425.25" Top="217.35" Width="141.75" Height="37.8" Text="[VehicleIdData.MaximumNetPower]" Font="Arial, 10pt"/>
+      <TextObject Name="Text32" Left="302.4" Top="255.15" Width="122.85" Height="37.8" Text="Radna zapremina motora:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text33" Left="425.25" Top="255.15" Width="141.75" Height="37.8" Text="[VehicleIdData.EngineCapacity]" Font="Arial, 10pt"/>
+      <TextObject Name="Text34" Left="302.4" Top="292.95" Width="122.85" Height="37.8" Text="Vrsta goriva ili pogona:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text35" Left="425.25" Top="292.95" Width="141.75" Height="37.8" Text="[VehicleIdData.TypeOfFuel]" Font="Arial, 10pt"/>
+      <TextObject Name="Text36" Left="302.4" Top="330.75" Width="122.85" Height="66.15" Text="Odnos snaga/masa u kg/kW (samo za motocikle):" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text37" Left="425.25" Top="330.75" Width="141.75" Height="66.15" Text="[VehicleIdData.PowerWeightRatio]" Font="Arial, 10pt"/>
     </DataBand>
-    <PageFooterBand Name="PageFooter1" Top="153.29" Width="718.2" Height="18.9"/>
+    <PageFooterBand Name="PageFooter1" Top="541.2" Width="718.2" Height="18.9"/>
   </ReportPage>
 </Report>

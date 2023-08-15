@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace CardReader.UI.Utils
 {
-    public static class DipConverter
+    public static partial class DipConverter
     {
-        [DllImport("user32.dll")]
-        private static extern int GetDpiForWindow(nint hWnd);
+        [LibraryImport("user32.dll")]
+        private static partial int GetDpiForWindow(nint hWnd);
 
         public static int GetDpi(nint hWnd)
         {

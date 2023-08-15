@@ -17,3 +17,8 @@ Appliation for reading:
 
 * [FastReport](https://github.com/FastReports/FastReport)
 * [itext7-dotnet](https://github.com/itext/itext7-dotnet)
+
+## Signing
+
+* Certificate `Doc\signing.pfx`
+* Password `Passw0rd`

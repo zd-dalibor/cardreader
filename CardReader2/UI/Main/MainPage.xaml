@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<local:MainPageBase
+    x:Class="CardReader.UI.Main.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CardReader.UI.Main"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CardReader.UI.Controls"
+    xmlns:converters="using:CardReader.UI.Converters"
+    xmlns:system="using:System"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <converters:SymbolToIconElementConverter x:Key="SymbolToIconElementConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <controls:AppTitleBar x:Uid="AppTitleBar" x:Name="AppTitleBar" x:FieldModifier="public"
+                              Icon="ms-appx:///Assets/WindowIcon.svg"
+                              IsActive="{x:Bind ViewModel.IsMainWindowActive, Mode=OneWay}"
+                              IsBackButtonVisible="{x:Bind NavigationView.IsBackButtonVisible, Mode=OneWay}"
+                              DisplayMode="{x:Bind NavigationView.DisplayMode, Mode=OneWay}"
+                              PaneDisplayMode="{x:Bind NavigationView.PaneDisplayMode, Mode=OneWay}"/>
+        <NavigationView x:Name="NavigationView"
+                        MenuItemsSource="{x:Bind ViewModel.MenuItems, Mode=OneWay}"
+                        SelectedItem="{x:Bind ViewModel.SelectedMenuItem, Mode=TwoWay}"
+                        IsTitleBarAutoPaddingEnabled="False">
+            <NavigationView.MenuItemTemplate>
+                <DataTemplate x:DataType="local:MenuItem">
+                    <NavigationViewItem Tag="{x:Bind Tag, Mode=OneWay}"
+                                        Icon="{x:Bind Icon, Mode=OneWay, Converter={StaticResource SymbolToIconElementConverter}}"
+                                        Content="{x:Bind Name, Mode=OneWay}"
+                                        MenuItemsSource="{x:Bind Children, Mode=OneWay}"/>
+                </DataTemplate>
+            </NavigationView.MenuItemTemplate>
+            <NavigationView.HeaderTemplate>
+                <DataTemplate x:DataType="system:String">
+                    <TextBlock Margin="-36 0 0 10" Text="{Binding Mode=OneWay}"/>
+                </DataTemplate>
+            </NavigationView.HeaderTemplate>
+
+            <ScrollViewer>
+                <Frame x:Name="ContentFrame"/>
+            </ScrollViewer>
+        </NavigationView>
+    </Grid>
+</local:MainPageBase>

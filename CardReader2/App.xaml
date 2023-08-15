@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application
+    x:Class="CardReader.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CardReader">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <!-- Other merged dictionaries here -->
+            </ResourceDictionary.MergedDictionaries>
+            <!-- Other app resources here -->
+            <SolidColorBrush x:Key="WindowCaptionBackground">Transparent</SolidColorBrush>
+            <SolidColorBrush x:Key="WindowCaptionBackgroundDisabled">Transparent</SolidColorBrush>
+            <!--<SolidColorBrush x:Key="WindowCaptionForeground">Transparent</SolidColorBrush>
+            <SolidColorBrush x:Key="WindowCaptionForegroundDisabled">Transparent</SolidColorBrush>-->
+
+            <!-- ReSharper disable Xaml.UnexpectedTextToken -->
+            <!-- ReSharper disable Xaml.ConstructorWarning -->
+            <FontFamily x:Key="CardReader">ms-appx:///Assets/Fonts/CardReader.ttf#CardReader</FontFamily>
+            <!-- ReSharper restore Xaml.ConstructorWarning -->
+            <!-- ReSharper restore Xaml.UnexpectedTextToken -->
+
+            <!--<Thickness x:Key="NavigationViewHeaderMargin">20,44,0,0</Thickness>
+            <Thickness x:Key="NavigationViewMinimalHeaderMargin">-60,44,0,0</Thickness>-->
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
