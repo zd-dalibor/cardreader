@@ -18,7 +18,7 @@
 
             <!-- ReSharper disable Xaml.UnexpectedTextToken -->
             <!-- ReSharper disable Xaml.ConstructorWarning -->
-            <FontFamily x:Key="CardReader">ms-appx:///Assets/Fonts/CardReader.ttf#CardReader</FontFamily>
+            <FontFamily x:Key="CardReader">/Assets/Fonts/CardReader.ttf#CardReader</FontFamily>
             <!-- ReSharper restore Xaml.ConstructorWarning -->
             <!-- ReSharper restore Xaml.UnexpectedTextToken -->
 

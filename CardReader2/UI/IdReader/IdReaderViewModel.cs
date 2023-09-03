@@ -1,12 +1,158 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Reactive;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
+using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
+using CardReader.Core.Service.IdReader;
+using CardReader.Core.Service.Resources;
+using CardReader.Core.State;
+using Microsoft.UI.Xaml.Controls;
+using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
+using Splat;
 
 namespace CardReader.UI.IdReader
 {
-    internal class IdReaderViewModel
+    public class IdReaderViewModel : ReactiveObject, IActivatableViewModel
     {
+        [Reactive]
+        public bool ShowMessage { get; set; }
+
+        [Reactive]
+        public InfoBarSeverity MessageSeverity { get; set; }
+
+        [Reactive]
+        public string MessageTitle { get; set; }
+
+        [Reactive]
+        public string Message { get; set; }
+
+        [Reactive]
+        public string CardReaderId { get; set; }
+
+        [Reactive]
+        public string CardReaderName { get; set; }
+
+        [Reactive]
+        public IdReaderData ReaderData { get; set; }
+
+        public ReactiveCommand<Unit, Unit> BeginReadCommand { get; }
+
+        public ReactiveCommand<Unit, Unit> ClearReaderDataCommand { get; }
+
+        public ReactiveCommand<Unit, Unit> ReaderDataReportCommand { get; }
+
+        public ViewModelActivator Activator { get; }
+
+        [Reactive]
+        private bool CanRead { get; set; }
+
+        [Reactive]
+        private bool CanReport { get; set; }
+
+        private readonly Subject<Unit> endReadCommand = new();
+
+        private readonly IApplicationState applicationState;
+        private readonly IApplicationResources applicationResources;
+        private readonly IIdReaderService idReaderService;
+        private readonly IMapper mapper;
+
+        public IdReaderViewModel(
+            IApplicationState applicationState,
+            IApplicationResources applicationResources,
+            IIdReaderService idReaderService,
+            IMapper mapper)
+        {
+            this.applicationState = applicationState;
+            this.applicationResources = applicationResources;
+            this.idReaderService = idReaderService;
+            this.mapper = mapper;
+
+            Activator = new ViewModelActivator();
+
+            CardReaderId = applicationState.IdReaderCardReaderId;
+            UpdateReaderData(applicationState.LastIdReaderData);
+
+            this.WhenAnyValue(x => x.CardReaderName).Subscribe(CardReaderNameChanged);
+            this.WhenAnyValue(x => x.CardReaderId).Subscribe(CardReaderIdChanged);
+
+            var canReadChanged = this.WhenAnyValue(x => x.CanRead);
+            BeginReadCommand = ReactiveCommand.CreateFromObservable(() =>
+                Observable.StartAsync(BeginReadAsync).TakeUntil(endReadCommand), canReadChanged);
+
+            ClearReaderDataCommand = ReactiveCommand.Create(ClearReaderData);
+
+            var canReportChanged = this.WhenAnyValue(x => x.CanReport);
+            ReaderDataReportCommand = ReactiveCommand.CreateFromTask(ReaderDataReportAsync, canReportChanged);
+
+            this.WhenActivated(disposables =>
+            {
+                Disposable.Create(() => endReadCommand.OnNext(Unit.Default))
+                    .DisposeWith(disposables);
+            });
+        }
+
+        private void CardReaderNameChanged(string value)
+        {
+            CanRead = !string.IsNullOrWhiteSpace(value);
+        }
+
+        private void CardReaderIdChanged(string value)
+        {
+            applicationState.IdReaderCardReaderId = value;
+        }
+
+        private void UpdateReaderData(Core.Model.IdReader.IdReaderData data)
+        {
+            applicationState.LastIdReaderData = data;
+            ReaderData = data != null
+                ? mapper.Map<IdReaderData>(applicationState.LastIdReaderData)
+                : new IdReaderData();
+            CanReport = data != null;
+        }
+
+        private async Task BeginReadAsync(CancellationToken ct)
+        {
+            CanRead = false;
+            ShowMessage = false;
+            try
+            {
+                var data = await idReaderService.ReadAsync(CardReaderName, applicationState.IdReaderApiVersion, ct);
+                UpdateReaderData(data);
+            }
+            catch (OperationCanceledException)
+            {
+                this.Log().Info("Operation has been canceled.");
+            }
+            catch (Exception e)
+            {
+                this.Log().Error(e, "Failed to read data from ID card.");
+                MessageTitle = applicationResources.GetString("MessageErrorTitle");
+                MessageSeverity = InfoBarSeverity.Error;
+                Message = string.Format(applicationResources.GetString("IdReaderErrorMessage"), e.Message);
+                ShowMessage = true;
+            }
+            finally
+            {
+                CanRead = true;
+            }
+        }
+
+        private void ClearReaderData()
+        {
+            ShowMessage = false;
+            MessageSeverity = InfoBarSeverity.Informational;
+            Message = null;
+            MessageTitle = null;
+            UpdateReaderData(null);
+        }
+
+        private async Task ReaderDataReportAsync()
+        {
+
+        }
     }
 }

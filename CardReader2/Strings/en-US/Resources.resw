@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddressDateCtl.Header" xml:space="preserve">
+    <value>Address Date</value>
+  </data>
+  <data name="AddressLabelCtl.Header" xml:space="preserve">
+    <value>Address Label</value>
+  </data>
+  <data name="ApartmentNumberCtl.Header" xml:space="preserve">
+    <value>Apartment Number</value>
+  </data>
   <data name="AppDescription" xml:space="preserve">
     <value>Card reader application.</value>
   </data>
@@ -126,14 +135,149 @@
   <data name="AppTitleBar.Text" xml:space="preserve">
     <value>Card Reader</value>
   </data>
+  <data name="BeginReadBtn.Content" xml:space="preserve">
+    <value>Begin Read</value>
+  </data>
+  <data name="CardReaderCtl.Header" xml:space="preserve">
+    <value>Reader</value>
+  </data>
+  <data name="CardReaderCtl.RefreshTooltip" xml:space="preserve">
+    <value>Refresh readers list.</value>
+  </data>
+  <data name="CardTypeCtl.Header" xml:space="preserve">
+    <value>Card Type</value>
+  </data>
+  <data name="ChipSerialNumberCtl.Header" xml:space="preserve">
+    <value>Chip Serial Number</value>
+  </data>
+  <data name="ClearReaderDataBtn.Content" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="CommunityCtl.Header" xml:space="preserve">
+    <value>Community</value>
+  </data>
+  <data name="CommunityOfBirthCtl.Header" xml:space="preserve">
+    <value>Community of Birth</value>
+  </data>
+  <data name="DateOfBirthCtl.Header" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="DocRegNoCtl.Header" xml:space="preserve">
+    <value>Document Registration Number</value>
+  </data>
+  <data name="DocumentSerialNumberCtl.Header" xml:space="preserve">
+    <value>Document Serial Number</value>
+  </data>
+  <data name="DocumentTypeCtl.Header" xml:space="preserve">
+    <value>Document Type</value>
+  </data>
+  <data name="EntranceCtl.Header" xml:space="preserve">
+    <value>Entrance</value>
+  </data>
+  <data name="ExpiryDateCtl.Header" xml:space="preserve">
+    <value>Expiry Date</value>
+  </data>
+  <data name="FloorCtl.Header" xml:space="preserve">
+    <value>Floor</value>
+  </data>
+  <data name="GivenNameCtl.Header" xml:space="preserve">
+    <value>Given Name</value>
+  </data>
   <data name="HomeMenuItemName" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="HouseLetterCtl.Header" xml:space="preserve">
+    <value>House Letter</value>
+  </data>
+  <data name="HouseNumberCtl.Header" xml:space="preserve">
+    <value>House Number</value>
+  </data>
+  <data name="IdReaderCardTypeForeigner" xml:space="preserve">
+    <value>Foreigner ID card</value>
+  </data>
+  <data name="IdReaderCardTypeNew" xml:space="preserve">
+    <value>New ID card</value>
+  </data>
+  <data name="IdReaderCardTypeOld" xml:space="preserve">
+    <value>Old ID card</value>
+  </data>
+  <data name="IdReaderCardTypeUnknown" xml:space="preserve">
+    <value>Nepoznato</value>
+  </data>
+  <data name="IdReaderErrorMessage" xml:space="preserve">
+    <value>ID reader error: {0}</value>
   </data>
   <data name="IdReaderItemName" xml:space="preserve">
     <value>ID</value>
   </data>
+  <data name="IssuingAuthorityCtl.Header" xml:space="preserve">
+    <value>Issuing Authority</value>
+  </data>
+  <data name="IssuingDateCtl.Header" xml:space="preserve">
+    <value>Issuing Date</value>
+  </data>
+  <data name="MessageErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="NationalityFullCtl.Header" xml:space="preserve">
+    <value>Nationality Full</value>
+  </data>
+  <data name="ParentGivenNameCtl.Header" xml:space="preserve">
+    <value>Parent Given Name</value>
+  </data>
+  <data name="PersonalNumberCtl.Header" xml:space="preserve">
+    <value>Personal Number</value>
+  </data>
+  <data name="PlaceCtl.Header" xml:space="preserve">
+    <value>Place</value>
+  </data>
+  <data name="PlaceOfBirthCtl.Header" xml:space="preserve">
+    <value>Place of Birth</value>
+  </data>
+  <data name="ReaderDataReportBtnToolTip.Content" xml:space="preserve">
+    <value>Print</value>
+  </data>
   <data name="SettingsMenuItemName" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="SexCtl.Header" xml:space="preserve">
+    <value>Sex</value>
+  </data>
+  <data name="SigCardVerifiedTlp.Content" xml:space="preserve">
+    <value>Card data signature verification ({0})</value>
+  </data>
+  <data name="SigFixedVerifiedTlp.Content" xml:space="preserve">
+    <value>Fixed data signature verification ({0})</value>
+  </data>
+  <data name="SignatureVerificationFailed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="SignatureVerificationNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="SignatureVerificationSuccess" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="SigPortraitVerifiedTlp/Content" xml:space="preserve">
+    <value>Portrait data signature verification ({0})</value>
+  </data>
+  <data name="SigVariableVerifiedTlp.Content" xml:space="preserve">
+    <value>Variable data signature verification ({0})</value>
+  </data>
+  <data name="StateCtl.Header" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="StateOfBirthCtl.Header" xml:space="preserve">
+    <value>State of Birth</value>
+  </data>
+  <data name="StatusOfForeignerCtl.Header" xml:space="preserve">
+    <value>Status of Foreigner</value>
+  </data>
+  <data name="StreetCtl.Header" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="SurnameCtl.Header" xml:space="preserve">
+    <value>Surname</value>
   </data>
   <data name="VehicleIdReaderItemName" xml:space="preserve">
     <value>Vehicle ID</value>
