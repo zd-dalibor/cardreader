@@ -1,0 +1,8 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Reports'
+sectionPagesMenu = 'main'
+disableKinds = ["sitemap", "taxonomy", "RSS"]
+
+[minify]
+minifyOutput = true

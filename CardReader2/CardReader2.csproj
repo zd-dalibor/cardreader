@@ -70,6 +70,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="Fluid.Core" Version="2.4.0" />
     <PackageReference Include="Fody" Version="6.8.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -81,6 +82,8 @@
     <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
     <PackageReference Include="Splat.Serilog" Version="14.7.1" />
+    <PackageReference Include="Syncfusion.HtmlToPdfConverter.Net.Windows" Version="22.2.12" />
+    <PackageReference Include="Syncfusion.Licensing" Version="22.2.12" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
@@ -133,4 +136,10 @@
   <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
   </PropertyGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="cd &quot;$(ProjectDir)&quot;&#xD;&#xA;call ..\Scripts\SyncfusionLicenseRegister.bat PreBuild App.xaml.cs" />
+  </Target>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="cd &quot;$(ProjectDir)&quot;&#xD;&#xA;call ..\Scripts\SyncfusionLicenseRegister.bat PostBuild App.xaml.cs" />
+  </Target>
 </Project>

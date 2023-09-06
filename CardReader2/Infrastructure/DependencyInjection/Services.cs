@@ -22,7 +22,9 @@ using Serilog;
 using Splat;
 using Splat.Serilog;
 using AutoMapper;
+using CardReader.Core.Service.Reporting;
 using CardReader.Infrastructure.AutoMapper;
+using CardReader.Infrastructure.Services.Reporting;
 
 namespace CardReader.Infrastructure.DependencyInjection
 {
@@ -84,7 +86,8 @@ namespace CardReader.Infrastructure.DependencyInjection
                     Locator.Current.GetService<IApplicationSettings>()))
                 .RegisterLazySingletonAnd<IStore<IApplicationState>>(() => new ApplicationStore(
                     Locator.Current.GetService<IApplicationState>()))
-                .RegisterLazySingletonAnd<IIdReaderService>(() => new IdReaderService());
+                .RegisterLazySingletonAnd<IIdReaderService>(() => new IdReaderService())
+                .RegisterLazySingletonAnd<IReportingService>(() => new ReportingService());
         }
 
         private static IMutableDependencyResolver RegisterViewModelsAnd(this IMutableDependencyResolver resolver)
@@ -99,6 +102,9 @@ namespace CardReader.Infrastructure.DependencyInjection
                     Locator.Current.GetService<IApplicationState>(),
                     Locator.Current.GetService<IApplicationResources>(),
                     Locator.Current.GetService<IIdReaderService>(),
+                    Locator.Current.GetService<IReportingService>(),
+                    Locator.Current.GetService<ILocaleService>(),
+                    Locator.Current.GetService<IApplicationSettings>(),
                     Locator.Current.GetService<IMapper>()))
                 .RegisterAnd(() => new SettingsViewModel())
                 .RegisterAnd(() => new VehicleIdReaderViewModel());

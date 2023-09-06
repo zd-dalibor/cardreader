@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.NetworkInformation;
 using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
@@ -6,12 +7,17 @@ using System.Reactive.Subjects;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using CardReader.Core.Service.Configuration;
+using CardReader.Core.Service.Globalization;
 using CardReader.Core.Service.IdReader;
+using CardReader.Core.Service.Reporting;
 using CardReader.Core.Service.Resources;
 using CardReader.Core.State;
+using CardReader.Infrastructure.Events;
 using Microsoft.UI.Xaml.Controls;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using Serilog.Core;
 using Splat;
 
 namespace CardReader.UI.IdReader
@@ -54,22 +60,32 @@ namespace CardReader.UI.IdReader
         private bool CanReport { get; set; }
 
         private readonly Subject<Unit> endReadCommand = new();
+        private readonly Subject<Unit> endReportCommand = new();
 
         private readonly IApplicationState applicationState;
         private readonly IApplicationResources applicationResources;
         private readonly IIdReaderService idReaderService;
+        private readonly IReportingService reportingService;
+        private readonly ILocaleService localeService;
+        private readonly IApplicationSettings settings;
         private readonly IMapper mapper;
 
         public IdReaderViewModel(
             IApplicationState applicationState,
             IApplicationResources applicationResources,
             IIdReaderService idReaderService,
+            IReportingService reportingService,
+            ILocaleService localeService,
+            IApplicationSettings settings,
             IMapper mapper)
         {
             this.applicationState = applicationState;
             this.applicationResources = applicationResources;
             this.idReaderService = idReaderService;
             this.mapper = mapper;
+            this.reportingService = reportingService;
+            this.settings = settings;
+            this.localeService = localeService;
 
             Activator = new ViewModelActivator();
 
@@ -86,11 +102,16 @@ namespace CardReader.UI.IdReader
             ClearReaderDataCommand = ReactiveCommand.Create(ClearReaderData);
 
             var canReportChanged = this.WhenAnyValue(x => x.CanReport);
-            ReaderDataReportCommand = ReactiveCommand.CreateFromTask(ReaderDataReportAsync, canReportChanged);
+            ReaderDataReportCommand = ReactiveCommand.CreateFromObservable(() =>
+                Observable.StartAsync(ReaderDataReportAsync).TakeUntil(endReportCommand), canReportChanged);
 
             this.WhenActivated(disposables =>
             {
-                Disposable.Create(() => endReadCommand.OnNext(Unit.Default))
+                Disposable.Create(() =>
+                    {
+                        endReadCommand.OnNext(Unit.Default);
+                        endReportCommand.OnNext(Unit.Default);
+                    })
                     .DisposeWith(disposables);
             });
         }
@@ -111,7 +132,8 @@ namespace CardReader.UI.IdReader
             ReaderData = data != null
                 ? mapper.Map<IdReaderData>(applicationState.LastIdReaderData)
                 : new IdReaderData();
-            CanReport = data != null;
+            // CanReport = data != null;
+            CanReport = true;
         }
 
         private async Task BeginReadAsync(CancellationToken ct)
@@ -150,9 +172,28 @@ namespace CardReader.UI.IdReader
             UpdateReaderData(null);
         }
 
-        private async Task ReaderDataReportAsync()
+        private async Task ReaderDataReportAsync(CancellationToken ct)
         {
-
+            CanReport = false;
+            var readerDate = applicationState.LastIdReaderData ?? new Core.Model.IdReader.IdReaderData();
+            var currentLocale = settings.CurrentLocale(localeService.DefaultLocale);
+            try
+            {
+                await reportingService.IdReaderReportAsync(readerDate, currentLocale, ct);
+            }
+            catch (OperationCanceledException)
+            {
+                this.Log().Info("Operation has been canceled.");
+            }
+            catch (Exception e)
+            {
+                this.Log().Error(e, "Reader data report error.");
+                MessageBus.Current.SendMessage(new ErrorEventArgs(e));
+            }
+            finally
+            {
+                CanReport = true;
+            }
         }
     }
 }

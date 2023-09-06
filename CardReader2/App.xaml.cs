@@ -20,6 +20,7 @@ namespace CardReader
         /// </summary>
         public App()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("##SyncfusionLicense##");
             Infrastructure.DependencyInjection.Services.Configure();
 
             this.InitializeComponent();

@@ -5,7 +5,9 @@ using System;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using System.Threading.Tasks;
 using CardReader.Core.Service.Resources;
+using CardReader.Infrastructure.Events;
 using CardReader.UI.Home;
 using CardReader.UI.IdReader;
 using CardReader.UI.Settings;
@@ -13,6 +15,7 @@ using CardReader.UI.VehicleIdReader;
 using Microsoft.UI.Xaml.Media.Animation;
 using ReactiveUI;
 using Splat;
+using System.Windows.Forms;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -41,6 +44,12 @@ namespace CardReader.UI.Main
                     .ObserveOn(RxApp.MainThreadScheduler)
                     .Subscribe(_ => LoadStrings())
                     .DisposeWith(disposables);
+
+                MessageBus.Current.Listen<ErrorEventArgs>()
+                    .Select(args => Observable.FromAsync(async () => await OnError(args)))
+                    .Concat()
+                    .Subscribe()
+                    .DisposeWith(disposables);
             });
 
 
@@ -48,6 +57,18 @@ namespace CardReader.UI.Main
             NavigationView.ItemInvoked += NavigationView_ItemInvoked;
             NavigationView.BackRequested += NavigationView_BackRequested;
             ContentFrame.Navigated += ContentFrame_Navigated;
+        }
+
+        private async Task OnError(ErrorEventArgs obj)
+        {
+            var dialog = new ContentDialog
+            {
+                Title = resources.GetString("ErrorDialogTitle"),
+                Content = string.Format(resources.GetString("ErrorDialogContent"), obj.Error.Message),
+                CloseButtonText = resources.GetString("ErrorDialogCloseText"),
+                XamlRoot = Content.XamlRoot
+            };
+            await dialog.ShowAsync();
         }
 
         private void LoadStrings()
