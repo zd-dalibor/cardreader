@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CardReader.UI.VehicleIdReader
+﻿namespace CardReader.UI.VehicleIdReader
 {
-    internal class VehicleIdReaderViewModel
+    public class VehicleIdReaderViewModel
     {
     }
 }
