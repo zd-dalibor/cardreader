@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using CardReader.Core.Service.Globalization;
 using CardReader.Core.Service.Resources;
 using CardReader.Infrastructure.Services.Resources;
@@ -10,7 +11,7 @@ namespace CardReader.Infrastructure.DependencyInjection
     {
         public static IReadonlyDependencyResolver InitLocale(this IReadonlyDependencyResolver resolver)
         {
-            resolver.GetService<ILocaleService>().Init();
+            resolver.GetRequiredService<ILocaleService>().Init();
             return resolver;
         }
 
@@ -34,6 +35,11 @@ namespace CardReader.Infrastructure.DependencyInjection
             }
 
             return resolver;
+        }
+
+        public static T GetRequiredService<T>(this IReadonlyDependencyResolver resolver, string? contract = null)
+        {
+            return resolver.GetService<T>(contract) ?? throw new NullReferenceException($"Service of type {typeof(T)} cannot be found.");
         }
     }
 }

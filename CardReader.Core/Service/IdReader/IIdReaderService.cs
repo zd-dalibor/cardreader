@@ -38,6 +38,6 @@ namespace CardReader.Core.Service.IdReader
         public const int EID_SIG_PORTRAIT           = 4;
 
         public IdReaderData Read(string cardReaderName, int apiVersion);
-        public Task<IdReaderData> ReadAsync(string cardReaderName, int apiVersion, CancellationToken token = default);
+        public Task<IdReaderData> ReadAsync(string? cardReaderName, int apiVersion, CancellationToken token = default);
     }
 }

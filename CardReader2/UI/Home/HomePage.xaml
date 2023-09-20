@@ -10,6 +10,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <ImageIcon Width="100" Source="/Assets/assignment_ind_FILL0_wght400_GRAD0_opsz24.svg"/>
     </Grid>
 </local:HomePageBase>

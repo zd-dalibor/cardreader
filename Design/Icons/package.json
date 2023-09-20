@@ -6,13 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "font": "svgtofont --sources ./dest --output ./font --fontName CardReader",
-    "optimize": "svgo --folder ./svg --output ./dest"
+    "optimize": "svgo --config ./svgo.config.js --folder ./svg --output ./dest",
+    "build": "npm run optimize && npm run font"
   },
   "author": "Dalibor Zdravković <zd.dalibor@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "svgo": "^3.0.2",
-    "svgtofont": "^3.22.0"
+    "svgtofont": "^4.0.0"
   },
   "svgtofont": {
     "emptyDist": true,

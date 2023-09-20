@@ -1,4 +1,5 @@
-﻿using Windows.Storage;
+﻿#nullable enable
+using Windows.Storage;
 using CardReader.Core.Service.Storage;
 
 namespace CardReader.Infrastructure.Services.Storage
@@ -7,7 +8,7 @@ namespace CardReader.Infrastructure.Services.Storage
     {
         private static ApplicationDataContainer LocalSettings => ApplicationData.Current.LocalSettings;
 
-        public object GetSettings(string key)
+        public object? GetSettings(string key)
         {
             return LocalSettings.Values[key];
         }
@@ -17,7 +18,7 @@ namespace CardReader.Infrastructure.Services.Storage
             return LocalSettings.Values[key] ?? defaultValue;
         }
 
-        public void SetSettings(string key, object value)
+        public void SetSettings(string key, object? value)
         {
             LocalSettings.Values[key] = value;
         }

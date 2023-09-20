@@ -2,6 +2,7 @@ using System;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using CardReader.Core.Service.Resources;
+using CardReader.Infrastructure.DependencyInjection;
 using ReactiveUI;
 using Splat;
 
@@ -13,15 +14,15 @@ namespace CardReader.UI.IdReader
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class IdReaderPage : IdReaderPageBase
+    public sealed partial class IdReaderPage
     {
         private readonly IApplicationResources resources;
 
         public IdReaderPage()
         {
             this.InitializeComponent();
-            ViewModel = Locator.Current.GetService<IdReaderViewModel>();
-            resources = Locator.Current.GetService<IApplicationResources>();
+            ViewModel = Locator.Current.GetRequiredService<IdReaderViewModel>();
+            resources = Locator.Current.GetRequiredService<IApplicationResources>();
 
             LoadStrings();
             this.WhenActivated(disposables =>
@@ -79,17 +80,17 @@ namespace CardReader.UI.IdReader
 
         private void UpdateDataVerifiedToolTips()
         {
-            SigCardVerifiedTlp.Content = string.Format(
-                resources.GetString("SigCardVerifiedTlp/Content"),
-                SigVerifyStatusMsg(ViewModel.ReaderData.SigCardVerified));
-            SigFixedVerifiedTlp.Content = string.Format(
-                resources.GetString("SigFixedVerifiedTlp/Content"),
+            SigCardVerifiedTlp.Content = resources.GetString(
+                "SigCardVerifiedTlp/Content",
+                SigVerifyStatusMsg(ViewModel!.ReaderData.SigCardVerified));
+            SigFixedVerifiedTlp.Content = resources.GetString(
+                "SigFixedVerifiedTlp/Content",
                 SigVerifyStatusMsg(ViewModel.ReaderData.SigFixedVerified));
-            SigVariableVerifiedTlp.Content = string.Format(
-                resources.GetString("SigVariableVerifiedTlp/Content"),
+            SigVariableVerifiedTlp.Content = resources.GetString(
+                "SigVariableVerifiedTlp/Content",
                 SigVerifyStatusMsg(ViewModel.ReaderData.SigVariableVerified));
-            SigPortraitVerifiedTlp.Content = string.Format(
-                resources.GetString("SigPortraitVerifiedTlp/Content"),
+            SigPortraitVerifiedTlp.Content = resources.GetString(
+                "SigPortraitVerifiedTlp/Content",
                 SigVerifyStatusMsg(ViewModel.ReaderData.SigPortraitVerified));
         }
 

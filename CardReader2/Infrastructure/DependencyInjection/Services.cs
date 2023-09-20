@@ -32,8 +32,6 @@ namespace CardReader.Infrastructure.DependencyInjection
     {
         public static void Configure()
         {
-            // logging
-            
             Locator.CurrentMutable.UseSerilogFullLogger();
             
             Locator.CurrentMutable
@@ -66,7 +64,7 @@ namespace CardReader.Infrastructure.DependencyInjection
                 .RegisterConstantAnd(me)
                 .RegisterConstantAnd<IConfigurationProvider>(mc)
                 .RegisterAnd<IMapper>(() => new Mapper(mc, type => Locator.Current.GetService(type)))
-                .RegisterAnd(() => new IdReaderCardTypeResolver(Locator.Current.GetService<IApplicationResources>()))
+                .RegisterAnd(() => new IdReaderCardTypeResolver(Locator.Current.GetRequiredService<IApplicationResources>()))
                 .RegisterAnd(() => new IdReaderPortraitImageResolver());
         }
 
@@ -74,18 +72,18 @@ namespace CardReader.Infrastructure.DependencyInjection
         {
             return resolver
                 .RegisterLazySingletonAnd<ILocaleService>(() => new LocaleService(
-                    Locator.Current.GetService<IApplicationSettings>(),
-                    Locator.Current.GetService<IApplicationLanguages>(),
-                    Locator.Current.GetService<IApplicationResources>()))
+                    Locator.Current.GetRequiredService<IApplicationSettings>(),
+                    Locator.Current.GetRequiredService<IApplicationLanguages>(),
+                    Locator.Current.GetRequiredService<IApplicationResources>()))
                 .RegisterLazySingletonAnd<IApplicationSettings>(() => new ApplicationSettings(
-                    Locator.Current.GetService<IApplicationStorage>()))
+                    Locator.Current.GetRequiredService<IApplicationStorage>()))
                 .RegisterLazySingletonAnd<IApplicationLanguages>(() => new ApplicationLanguages())
                 .RegisterLazySingletonAnd<IApplicationStorage>(() => new ApplicationStorage())
                 .RegisterLazySingletonAnd<IApplicationResources>(() => new ApplicationResources())
                 .RegisterLazySingletonAnd<IApplicationState>(() => new ApplicationState(
-                    Locator.Current.GetService<IApplicationSettings>()))
+                    Locator.Current.GetRequiredService<IApplicationSettings>()))
                 .RegisterLazySingletonAnd<IStore<IApplicationState>>(() => new ApplicationStore(
-                    Locator.Current.GetService<IApplicationState>()))
+                    Locator.Current.GetRequiredService<IApplicationState>()))
                 .RegisterLazySingletonAnd<IIdReaderService>(() => new IdReaderService())
                 .RegisterLazySingletonAnd<IReportingService>(() => new ReportingService());
         }
@@ -94,18 +92,18 @@ namespace CardReader.Infrastructure.DependencyInjection
         {
             return resolver
                 .RegisterAnd(() => new MainViewModel(
-                    Locator.Current.GetService<IStore<IApplicationState>>(),
-                    Locator.Current.GetService<IApplicationResources>()))
+                    Locator.Current.GetRequiredService<IStore<IApplicationState>>(),
+                    Locator.Current.GetRequiredService<IApplicationResources>()))
                 .RegisterAnd(() => new HomeViewModel(
-                    Locator.Current.GetService<IStore<IApplicationState>>()))
+                    Locator.Current.GetRequiredService<IStore<IApplicationState>>()))
                 .RegisterAnd(() => new IdReaderViewModel(
-                    Locator.Current.GetService<IApplicationState>(),
-                    Locator.Current.GetService<IApplicationResources>(),
-                    Locator.Current.GetService<IIdReaderService>(),
-                    Locator.Current.GetService<IReportingService>(),
-                    Locator.Current.GetService<ILocaleService>(),
-                    Locator.Current.GetService<IApplicationSettings>(),
-                    Locator.Current.GetService<IMapper>()))
+                    Locator.Current.GetRequiredService<IApplicationState>(),
+                    Locator.Current.GetRequiredService<IApplicationResources>(),
+                    Locator.Current.GetRequiredService<IIdReaderService>(),
+                    Locator.Current.GetRequiredService<IReportingService>(),
+                    Locator.Current.GetRequiredService<ILocaleService>(),
+                    Locator.Current.GetRequiredService<IApplicationSettings>(),
+                    Locator.Current.GetRequiredService<IMapper>()))
                 .RegisterAnd(() => new SettingsViewModel())
                 .RegisterAnd(() => new VehicleIdReaderViewModel());
         }

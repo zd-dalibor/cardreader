@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
@@ -17,13 +18,23 @@ namespace CardReader.Infrastructure.Services.Resources
 
         private readonly Subject<IDictionary<string, string>> subject = new();
 
-        private IDisposable disposable;
+        private IDisposable? disposable;
 
         public string GetString(string resource, bool forCurrentView = false)
         {
             return forCurrentView
                 ? ResourceLoaderForCurrentView.GetString(resource)
                 : ResourceLoaderForViewIndependentUse.GetString(resource);
+        }
+
+        public string GetString(string resource, params object?[] objects)
+        {
+            return string.Format(GetString(resource), objects);
+        }
+
+        public string GetString(string resource, bool forCurrentView, params object?[] objects)
+        {
+            return string.Format(GetString(resource, forCurrentView), objects);
         }
 
         public IObservable<IDictionary<string, string>> Observe()

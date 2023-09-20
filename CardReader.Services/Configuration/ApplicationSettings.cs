@@ -35,17 +35,17 @@ namespace CardReader.Services.Configuration
             return (string) storage.GetSettings(CurrentLocaleKey, defaultLocale);
         }
 
-        public void UpdateCurrentLocale(string locale)
+        public void UpdateCurrentLocale(string? locale)
         {
             storage.SetSettings(CurrentLocaleKey, locale);
         }
 
-        public string IdReaderCardReaderId()
+        public string? IdReaderCardReaderId()
         {
-            return (string) storage.GetSettings(IdReaderCardReaderIdKey);
+            return (string?) storage.GetSettings(IdReaderCardReaderIdKey);
         }
 
-        public void UpdateIdReaderCardReaderId(string value)
+        public void UpdateIdReaderCardReaderId(string? value)
         {
             storage.SetSettings(IdReaderCardReaderIdKey, value);
         }
@@ -55,14 +55,14 @@ namespace CardReader.Services.Configuration
             return (int) storage.GetSettings(IdReaderApiVersionKey, DefaultIdReaderApiVersion);
         }
 
-        public void UpdateVehicleIdReaderCardReaderId(string value)
+        public void UpdateVehicleIdReaderCardReaderId(string? value)
         {
             storage.SetSettings(VehicleIdReaderCardReaderIdKye, value);
         }
 
-        public string VehicleIdReaderCardReaderId()
+        public string? VehicleIdReaderCardReaderId()
         {
-            return (string) storage.GetSettings(VehicleIdReaderCardReaderIdKye);
+            return (string?) storage.GetSettings(VehicleIdReaderCardReaderIdKye);
         }
 
         public int VehicleIdReaderApiVersion()

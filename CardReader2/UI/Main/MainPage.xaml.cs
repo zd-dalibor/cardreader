@@ -15,7 +15,7 @@ using CardReader.UI.VehicleIdReader;
 using Microsoft.UI.Xaml.Media.Animation;
 using ReactiveUI;
 using Splat;
-using System.Windows.Forms;
+using CardReader.Infrastructure.DependencyInjection;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -25,7 +25,7 @@ namespace CardReader.UI.Main
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : MainPageBase
+    public sealed partial class MainPage
     {
         private readonly IApplicationResources resources;
 
@@ -34,8 +34,8 @@ namespace CardReader.UI.Main
         public MainPage()
         {
             InitializeComponent();
-            ViewModel = Locator.Current.GetService<MainViewModel>();
-            resources = Locator.Current.GetService<IApplicationResources>();
+            ViewModel = Locator.Current.GetRequiredService<MainViewModel>();
+            resources = Locator.Current.GetRequiredService<IApplicationResources>();
             
             LoadStrings();
             this.WhenActivated(disposables =>
@@ -64,7 +64,7 @@ namespace CardReader.UI.Main
             var dialog = new ContentDialog
             {
                 Title = resources.GetString("ErrorDialogTitle"),
-                Content = string.Format(resources.GetString("ErrorDialogContent"), obj.Error.Message),
+                Content = resources.GetString(("ErrorDialogContent"), obj.Error.Message),
                 CloseButtonText = resources.GetString("ErrorDialogCloseText"),
                 XamlRoot = Content.XamlRoot
             };
@@ -104,7 +104,7 @@ namespace CardReader.UI.Main
             navigation.PaneTitle = " ";
             navigation.PaneTitle = "";
 
-            Navigate(ViewModel.SelectedMenuItem);
+            Navigate(ViewModel!.SelectedMenuItem);
         }
 
         private void ContentFrame_Navigated(object sender, NavigationEventArgs e)
@@ -119,7 +119,7 @@ namespace CardReader.UI.Main
             else if (ContentFrame.SourcePageType != null)
             {
                 var tag = PageToTag(ContentFrame.SourcePageType);
-                NavigationView.SelectedItem = ViewModel.MenuItems.First(x => x.Tag.Equals(tag));
+                NavigationView.SelectedItem = ViewModel!.MenuItems.First(x => x.Tag.Equals(tag));
                 NavigationView.Header = ((MenuItem)NavigationView.SelectedItem)?.Name;
             }
         }

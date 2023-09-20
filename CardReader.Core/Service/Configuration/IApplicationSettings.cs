@@ -4,17 +4,17 @@
     {
         string CurrentLocale(string defaultLocale);
 
-        void UpdateCurrentLocale(string locale);
+        void UpdateCurrentLocale(string? locale);
 
-        string IdReaderCardReaderId();
+        string? IdReaderCardReaderId();
 
-        void UpdateIdReaderCardReaderId(string value);
+        void UpdateIdReaderCardReaderId(string? value);
 
         int IdReaderApiVersion();
 
-        void UpdateVehicleIdReaderCardReaderId(string value);
+        void UpdateVehicleIdReaderCardReaderId(string? value);
 
-        string VehicleIdReaderCardReaderId();
+        string? VehicleIdReaderCardReaderId();
 
         int VehicleIdReaderApiVersion();
         

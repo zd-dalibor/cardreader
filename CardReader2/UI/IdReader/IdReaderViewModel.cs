@@ -1,5 +1,5 @@
-﻿using System;
-using System.Net.NetworkInformation;
+﻿#nullable enable
+using System;
 using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
@@ -17,7 +17,6 @@ using CardReader.Infrastructure.Events;
 using Microsoft.UI.Xaml.Controls;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using Serilog.Core;
 using Splat;
 
 namespace CardReader.UI.IdReader
@@ -31,16 +30,16 @@ namespace CardReader.UI.IdReader
         public InfoBarSeverity MessageSeverity { get; set; }
 
         [Reactive]
-        public string MessageTitle { get; set; }
+        public string? MessageTitle { get; set; }
 
         [Reactive]
-        public string Message { get; set; }
+        public string? Message { get; set; }
 
         [Reactive]
-        public string CardReaderId { get; set; }
+        public string? CardReaderId { get; set; }
 
         [Reactive]
-        public string CardReaderName { get; set; }
+        public string? CardReaderName { get; set; }
 
         [Reactive]
         public IdReaderData ReaderData { get; set; }
@@ -88,6 +87,7 @@ namespace CardReader.UI.IdReader
             this.localeService = localeService;
 
             Activator = new ViewModelActivator();
+            ReaderData = new IdReaderData();
 
             CardReaderId = applicationState.IdReaderCardReaderId;
             UpdateReaderData(applicationState.LastIdReaderData);
@@ -116,24 +116,23 @@ namespace CardReader.UI.IdReader
             });
         }
 
-        private void CardReaderNameChanged(string value)
+        private void CardReaderNameChanged(string? value)
         {
             CanRead = !string.IsNullOrWhiteSpace(value);
         }
 
-        private void CardReaderIdChanged(string value)
+        private void CardReaderIdChanged(string? value)
         {
             applicationState.IdReaderCardReaderId = value;
         }
 
-        private void UpdateReaderData(Core.Model.IdReader.IdReaderData data)
+        private void UpdateReaderData(Core.Model.IdReader.IdReaderData? data)
         {
             applicationState.LastIdReaderData = data;
             ReaderData = data != null
                 ? mapper.Map<IdReaderData>(applicationState.LastIdReaderData)
                 : new IdReaderData();
-            // CanReport = data != null;
-            CanReport = true;
+            CanReport = data != null;
         }
 
         private async Task BeginReadAsync(CancellationToken ct)
@@ -154,7 +153,7 @@ namespace CardReader.UI.IdReader
                 this.Log().Error(e, "Failed to read data from ID card.");
                 MessageTitle = applicationResources.GetString("MessageErrorTitle");
                 MessageSeverity = InfoBarSeverity.Error;
-                Message = string.Format(applicationResources.GetString("IdReaderErrorMessage"), e.Message);
+                Message = applicationResources.GetString("IdReaderErrorMessage", e.Message);
                 ShowMessage = true;
             }
             finally

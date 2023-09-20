@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -133,7 +134,7 @@ namespace CardReader.Infrastructure.Services.IdReader
         {
             return Task.Factory.StartNew(() =>
             {
-                var result = Read(cardReaderName, apiVersion);
+                var result = Read(cardReaderName ?? throw new ArgumentNullException(nameof(cardReaderName)), apiVersion);
                 token.ThrowIfCancellationRequested();
                 return result;
             }, token);
@@ -199,11 +200,11 @@ namespace CardReader.Infrastructure.Services.IdReader
             return pData;
         }
 
-        private static EID_CERTIFICATEx ReadCertificate(IMainReader reader, int certificateType)
+        /*private static EID_CERTIFICATEx ReadCertificate(IMainReader reader, int certificateType)
         {
             VerifyResult(reader.EidReadCertificate(out var pData, certificateType));
             return pData;
-        }
+        }*/
 
         private static void VerifySignature(IMainReader reader, uint signatureId)
         {

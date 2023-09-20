@@ -10,7 +10,7 @@
   <Identity
     Name="b3d4a541-612c-4a1a-b3b4-2ce97fb25d40"
     Publisher="E=office@myhome.lan, CN=z_dalibor, OU=IT, O=My Home, L=Belgrade, S=City of Belgrade, C=RS"
-    Version="1.0.0.0" />
+    Version="1.0.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="b3d4a541-612c-4a1a-b3b4-2ce97fb25d40" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

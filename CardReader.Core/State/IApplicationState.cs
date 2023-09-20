@@ -6,14 +6,14 @@ namespace CardReader.Core.State
     {
         bool IsMainWindowActive { get; set; }
 
-        string IdReaderCardReaderId { get; set; }
+        string? IdReaderCardReaderId { get; set; }
 
         int IdReaderApiVersion { get; }
 
-        string VehicleIdReaderCardReaderId { get; set; }
+        string? VehicleIdReaderCardReaderId { get; set; }
 
         int VehicleIdReaderApiVersion { get; }
 
-        IdReaderData LastIdReaderData { get; set; }
+        IdReaderData? LastIdReaderData { get; set; }
     }
 }
