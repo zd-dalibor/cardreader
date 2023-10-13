@@ -135,6 +135,9 @@
   <data name="AppTitleBar.Text" xml:space="preserve">
     <value>Čitač kartica</value>
   </data>
+  <data name="AuthorityIssuingCtl.Header" xml:space="preserve">
+    <value>Organ izdavanja saobraćajne dozvole</value>
+  </data>
   <data name="BeginReadBtn.Content" xml:space="preserve">
     <value>Započni čitanje</value>
   </data>
@@ -153,14 +156,26 @@
   <data name="ClearReaderDataBtn.Content" xml:space="preserve">
     <value>Poništi</value>
   </data>
+  <data name="ColourOfVehicleCtl.Header" xml:space="preserve">
+    <value>Boja vozila</value>
+  </data>
+  <data name="CommercialDescriptionCtl.Header" xml:space="preserve">
+    <value>Komercijalna oznaka (model)</value>
+  </data>
   <data name="CommunityCtl.Header" xml:space="preserve">
     <value>Zajednica</value>
   </data>
   <data name="CommunityOfBirthCtl.Header" xml:space="preserve">
     <value>Zajednica rođenja</value>
   </data>
+  <data name="CompetentAuthorityCtl.Header" xml:space="preserve">
+    <value>Ovlašćeni organ</value>
+  </data>
   <data name="DateOfBirthCtl.Header" xml:space="preserve">
     <value>Datum rođenja</value>
+  </data>
+  <data name="DateOfFirstRegistrationCtl.Header" xml:space="preserve">
+    <value>Datum prve registracije</value>
   </data>
   <data name="DocRegNoCtl.Header" xml:space="preserve">
     <value>Registracion broj dokumenta</value>
@@ -170,6 +185,12 @@
   </data>
   <data name="DocumentTypeCtl.Header" xml:space="preserve">
     <value>Tip dokumenta</value>
+  </data>
+  <data name="EngineCapacityCtl.Header" xml:space="preserve">
+    <value>Radna zapremina motora</value>
+  </data>
+  <data name="EngineIdNumberCtl.Header" xml:space="preserve">
+    <value>Broj motora</value>
   </data>
   <data name="EntranceCtl.Header" xml:space="preserve">
     <value>Ulaz</value>
@@ -225,11 +246,38 @@
   <data name="IssuingDateCtl.Header" xml:space="preserve">
     <value>Datum izdavanja</value>
   </data>
+  <data name="MaximumNetPowerCtl.Header" xml:space="preserve">
+    <value>Snaga motora u kW</value>
+  </data>
+  <data name="MaximumPermissibleLadenMassCtl.Header" xml:space="preserve">
+    <value>Najvćeda dozvoljena masa</value>
+  </data>
   <data name="MessageErrorTitle" xml:space="preserve">
     <value>Greška</value>
   </data>
   <data name="NationalityFullCtl.Header" xml:space="preserve">
     <value>Nacionalnost</value>
+  </data>
+  <data name="NumberOfAxlesCtl.Header" xml:space="preserve">
+    <value>Broj osovina</value>
+  </data>
+  <data name="NumberOfSeatsCtl.Header" xml:space="preserve">
+    <value>Broj mesta za sedenje uključujući i mesto vozača</value>
+  </data>
+  <data name="NumberOfStandingPlacesCtl.Header" xml:space="preserve">
+    <value>Broj mesta za stajanje</value>
+  </data>
+  <data name="OwnerAddressCtl.Header" xml:space="preserve">
+    <value>Prebivalište (sedište) i adresa vlasnika vozila</value>
+  </data>
+  <data name="OwnerNameCtl.Header" xml:space="preserve">
+    <value>Ime vlasnika</value>
+  </data>
+  <data name="OwnersPersonalNoCtl.Header" xml:space="preserve">
+    <value>JMBG, odnosno matični broj vlasnika vozila</value>
+  </data>
+  <data name="OwnersSurnameOrBusinessNameCtl.Header" xml:space="preserve">
+    <value>Prezime vlasnika (firma odnosno naziv za pravna lica)</value>
   </data>
   <data name="ParentGivenNameCtl.Header" xml:space="preserve">
     <value>Ime oca</value>
@@ -243,8 +291,20 @@
   <data name="PlaceOfBirthCtl.Header" xml:space="preserve">
     <value>Mesto rođenja</value>
   </data>
+  <data name="PowerWeightRatioCtl.Header" xml:space="preserve">
+    <value>Odnos snaga/masa u kg/kW (samo za motocikle)</value>
+  </data>
   <data name="ReaderDataReportBtnToolTip.Content" xml:space="preserve">
     <value>Štampa</value>
+  </data>
+  <data name="RegistrationNumberOfVehicleCtl.Header" xml:space="preserve">
+    <value>Registarski broj vozila</value>
+  </data>
+  <data name="RestrictionToChangeOwnerCtl.Header" xml:space="preserve">
+    <value>Zabrana otuđenja vozila do</value>
+  </data>
+  <data name="SerialNumberCtl.Header" xml:space="preserve">
+    <value>Serijski broj saobraćajne dozvole</value>
   </data>
   <data name="SettingsMenuItemName" xml:space="preserve">
     <value>Podešavanja</value>
@@ -276,6 +336,9 @@
   <data name="StateCtl.Header" xml:space="preserve">
     <value>Država</value>
   </data>
+  <data name="StateIssuingCtl.Header" xml:space="preserve">
+    <value>Država izdavanja</value>
+  </data>
   <data name="StateOfBirthCtl.Header" xml:space="preserve">
     <value>Država rođenja</value>
   </data>
@@ -288,7 +351,49 @@
   <data name="SurnameCtl.Header" xml:space="preserve">
     <value>Prezime</value>
   </data>
+  <data name="TypeApprovalNumberCtl.Header" xml:space="preserve">
+    <value>Homologacijska oznaka</value>
+  </data>
+  <data name="TypeOfFuelCtl.Header" xml:space="preserve">
+    <value>Vrsta goriva ili pogona</value>
+  </data>
+  <data name="UnambiguousNumberCtl.Header" xml:space="preserve">
+    <value>Jedinstveni broj pod kojim je vozilo upisano u registar</value>
+  </data>
+  <data name="UsersAddressCtl.Header" xml:space="preserve">
+    <value>Prebivalište (sedište) i adresa korisnika vozila</value>
+  </data>
+  <data name="UsersNameCtl.Header" xml:space="preserve">
+    <value>Ime korisnika vozila</value>
+  </data>
+  <data name="UsersPersonalNoCtl.Header" xml:space="preserve">
+    <value>JMBG, odnosno matični broj korisnika vozila</value>
+  </data>
+  <data name="UsersSurnameOrBusinessNameCtl.Header" xml:space="preserve">
+    <value>Prezime korisnika vozila (firma odnosno naziv za pravna lica)</value>
+  </data>
+  <data name="VehicleCategoryCtl.Header" xml:space="preserve">
+    <value>Vrsta vozila</value>
+  </data>
+  <data name="VehicleIdNumberCtl.Header" xml:space="preserve">
+    <value>Broj šasije</value>
+  </data>
   <data name="VehicleIdReaderItemName" xml:space="preserve">
     <value>Saobraćajna</value>
+  </data>
+  <data name="VehicleLoadCtl.Header" xml:space="preserve">
+    <value>Nosivost vozila</value>
+  </data>
+  <data name="VehicleMakeCtl.Header" xml:space="preserve">
+    <value>Marka</value>
+  </data>
+  <data name="VehicleMassCtl.Header" xml:space="preserve">
+    <value>Masa</value>
+  </data>
+  <data name="VehicleTypeCtl.Header" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="YearOfProductionCtl.Header" xml:space="preserve">
+    <value>Godina proizvodnje</value>
   </data>
 </root>
