@@ -41,8 +41,8 @@
                 </DataTemplate>
             </NavigationView.HeaderTemplate>
 
-            <ScrollViewer>
-                <Frame x:Name="ContentFrame"/>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                <Frame x:Name="ContentFrame" Margin="20 0 20 20" x:FieldModifier="public"/>
             </ScrollViewer>
         </NavigationView>
     </Grid>

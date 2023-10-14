@@ -1,6 +1,11 @@
-﻿using Microsoft.UI.Xaml;
+﻿using System;
+using System.Linq;
+using CardReader.Core.Service.Configuration;
+using Microsoft.UI.Xaml;
 using CardReader.Infrastructure.DependencyInjection;
+using Microsoft.UI;
 using Splat;
+using UnhandledExceptionEventArgs = Microsoft.UI.Xaml.UnhandledExceptionEventArgs;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -22,8 +27,6 @@ namespace CardReader
 
             this.InitializeComponent();
             UnhandledException += OnUnhandledException;
-
-            // App.Current.RequestedTheme = ApplicationTheme.Light;
         }
 
         /// <summary>
@@ -47,6 +50,16 @@ namespace CardReader
                 LogHost.Default.Error(e.Exception, e.Message);
             }
             catch (LoggingException) { }
+        }
+
+        public ElementTheme GetTheme()
+        {
+            return ((MainWindow)mWindow).GetTheme();
+        }
+
+        public void SetTheme(ElementTheme theme)
+        {
+            ((MainWindow)mWindow).SetTheme(theme);
         }
 
         public new static App Current => (App)Application.Current;

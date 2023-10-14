@@ -303,6 +303,12 @@
   <data name="RestrictionToChangeOwnerCtl.Header" xml:space="preserve">
     <value>Restriction to Change Owner</value>
   </data>
+  <data name="SelectLanguageCtl.Header" xml:space="preserve">
+    <value>Change Language</value>
+  </data>
+  <data name="SelectThemeCtl.Header" xml:space="preserve">
+    <value>Theme</value>
+  </data>
   <data name="SerialNumberCtl.Header" xml:space="preserve">
     <value>Serial Number</value>
   </data>
@@ -350,6 +356,15 @@
   </data>
   <data name="SurnameCtl.Header" xml:space="preserve">
     <value>Surname</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="ThemeDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Light</value>
   </data>
   <data name="TypeApprovalNumberCtl.Header" xml:space="preserve">
     <value>TypeApproval Number</value>

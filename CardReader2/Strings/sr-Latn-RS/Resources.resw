@@ -303,6 +303,12 @@
   <data name="RestrictionToChangeOwnerCtl.Header" xml:space="preserve">
     <value>Zabrana otuđenja vozila do</value>
   </data>
+  <data name="SelectLanguageCtl.Header" xml:space="preserve">
+    <value>Promeni jezik</value>
+  </data>
+  <data name="SelectThemeCtl.Header" xml:space="preserve">
+    <value>Tema</value>
+  </data>
   <data name="SerialNumberCtl.Header" xml:space="preserve">
     <value>Serijski broj saobraćajne dozvole</value>
   </data>
@@ -350,6 +356,15 @@
   </data>
   <data name="SurnameCtl.Header" xml:space="preserve">
     <value>Prezime</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Tamna</value>
+  </data>
+  <data name="ThemeDefault" xml:space="preserve">
+    <value>Podrazumevana</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Svetla</value>
   </data>
   <data name="TypeApprovalNumberCtl.Header" xml:space="preserve">
     <value>Homologacijska oznaka</value>

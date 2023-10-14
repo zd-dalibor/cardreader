@@ -9,7 +9,10 @@ using System.Reactive.Linq;
 using Windows.Graphics;
 using CardReader.Core.Service.Configuration;
 using CardReader.Infrastructure.Extensions;
+using Microsoft.UI;
 using Splat;
+using CardReader.Infrastructure.DependencyInjection;
+using System.Linq;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -53,7 +56,39 @@ namespace CardReader
             Activated += MainWindow_Activated;
             Closed += MainWindow_Closed;
 
+            UpdateTheme();
             UpdateWindowSize();
+        }
+
+        public ElementTheme GetTheme()
+        {
+            return MainPage.RequestedTheme;
+        }
+
+        public void SetTheme(ElementTheme theme)
+        {
+            MainPage.RequestedTheme = theme;
+            UpdateTitleBar();
+        }
+
+        private void UpdateTitleBar()
+        {
+            var color = MainPage.ContentFrame.ActualTheme == ElementTheme.Dark ? Colors.Wheat : Colors.Black;
+            var res = App.Current.Resources;
+            res["WindowCaptionForeground"] = color;
+            AppWindow.TitleBar.ButtonForegroundColor = color;
+        }
+
+        private void UpdateTheme()
+        {
+            var appTheme = settings.AppTheme();
+            var availableThemes = Enum.GetNames(typeof(ElementTheme));
+            var themeStr = availableThemes.FirstOrDefault(x => x.Equals(appTheme));
+            if (themeStr != null && Enum.TryParse(themeStr, out ElementTheme theme))
+            {
+                SetTheme(theme);
+            }
+            UpdateTitleBar();
         }
 
         private void UpdateWindowSize()

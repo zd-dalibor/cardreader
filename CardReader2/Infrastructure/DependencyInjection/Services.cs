@@ -104,7 +104,10 @@ namespace CardReader.Infrastructure.DependencyInjection
                     Locator.Current.GetRequiredService<ILocaleService>(),
                     Locator.Current.GetRequiredService<IApplicationSettings>(),
                     Locator.Current.GetRequiredService<IMapper>()))
-                .RegisterAnd(() => new SettingsViewModel())
+                .RegisterAnd(() => new SettingsViewModel(
+                    Locator.Current.GetRequiredService<ILocaleService>(),
+                    Locator.Current.GetRequiredService<IApplicationSettings>(),
+                    Locator.Current.GetRequiredService<IApplicationResources>()))
                 .RegisterAnd(() => new VehicleIdReaderViewModel());
         }
     }

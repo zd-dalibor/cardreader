@@ -60,6 +60,8 @@ namespace CardReader.UI.Main
                     .ObserveOn(RxApp.MainThreadScheduler)
                     .Subscribe(_ => LoadStrings())
                     .DisposeWith(disposables);
+
+                SelectedMenuItem = menuItemsSource.Items.First();
             });
         }
 
@@ -103,8 +105,6 @@ namespace CardReader.UI.Main
                     }
                 });
             });
-
-            SelectedMenuItem = menuItemsSource.Items.First();
         }
     }
 }

@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Page
+<local:SettingsPageBase
     x:Class="CardReader.UI.Settings.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CardReader.UI.Settings"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
-    <StackPanel HorizontalAlignment="Center"
-                VerticalAlignment="Center">
-        <Button Content="Change Language" Click="ButtonBase_OnClick"/>
-    </StackPanel>
-</Page>
+    <Grid>
+        <StackPanel Orientation="Vertical" Spacing="10">
+            <ComboBox x:Name="SelectLanguageCtl" x:Uid="SelectLanguageCtl"
+                      ItemsSource="{x:Bind ViewModel.LanguageItems, Mode=OneWay}"
+                      SelectedItem="{x:Bind ViewModel.CurrentLanguage, Mode=TwoWay}"
+                      DisplayMemberPath="Language" SelectedValuePath="Locale"/>
+            <ComboBox x:Name="SelectThemeCtl" x:Uid="SelectThemeCtl"
+                      ItemsSource="{x:Bind ViewModel.ThemeItems, Mode=OneWay}"
+                      SelectedItem="{x:Bind ViewModel.CurrentTheme, Mode=TwoWay}"
+                      DisplayMemberPath="Name" SelectedValuePath="Value"/>
+        </StackPanel>
+    </Grid>
+</local:SettingsPageBase>

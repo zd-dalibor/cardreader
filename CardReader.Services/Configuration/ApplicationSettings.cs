@@ -19,6 +19,8 @@ namespace CardReader.Services.Configuration
 
         private const string WindowHeightKey = "WindowHeight";
 
+        private const string AppThemeKey = "AppTheme";
+
         private const int DefaultIdReaderApiVersion = 3;
 
         private const int DefaultVehicleIdReaderApiVersion = 0;
@@ -88,6 +90,16 @@ namespace CardReader.Services.Configuration
         public int WindowHeight(int defaultHeight)
         {
             return (int) storage.GetSettings(WindowHeightKey, defaultHeight);
+        }
+
+        public string? AppTheme()
+        {
+            return (string?) storage.GetSettings(AppThemeKey);
+        }
+
+        public void UpdateAppTheme(string theme)
+        {
+            storage.SetSettings(AppThemeKey, theme);
         }
     }
 }

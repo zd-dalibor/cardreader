@@ -25,5 +25,9 @@
         void UpdateWindowHeight(int height);
         
         int WindowHeight(int defaultHeight);
+
+        string? AppTheme();
+
+        void UpdateAppTheme(string theme);
     }
 }

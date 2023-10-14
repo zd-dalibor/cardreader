@@ -15,6 +15,7 @@
             <SolidColorBrush x:Key="WindowCaptionBackgroundDisabled">Transparent</SolidColorBrush>
             <!--<SolidColorBrush x:Key="WindowCaptionForeground">Transparent</SolidColorBrush>
             <SolidColorBrush x:Key="WindowCaptionForegroundDisabled">Transparent</SolidColorBrush>-->
+            
 
             <!-- ReSharper disable Xaml.UnexpectedTextToken -->
             <!-- ReSharper disable Xaml.ConstructorWarning -->
@@ -24,6 +25,20 @@
 
             <!--<Thickness x:Key="NavigationViewHeaderMargin">20,44,0,0</Thickness>
             <Thickness x:Key="NavigationViewMinimalHeaderMargin">-60,44,0,0</Thickness>-->
+
+            <Style x:Key="Separator" TargetType="Border">
+                <Setter Property="BorderBrush" Value="{ThemeResource SeparatorBrush}" />
+                <Setter Property="BorderThickness" Value="0 0 0 1" />
+            </Style>
+
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="SeparatorBrush">Gray</SolidColorBrush>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="SeparatorBrush">White</SolidColorBrush>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
