@@ -222,6 +222,9 @@
   <data name="HouseNumberCtl.Header" xml:space="preserve">
     <value>House Number</value>
   </data>
+  <data name="IdReaderButtonCtl.Content" xml:space="preserve">
+    <value>ID</value>
+  </data>
   <data name="IdReaderCardTypeForeigner" xml:space="preserve">
     <value>Foreigner ID card</value>
   </data>
@@ -316,6 +319,9 @@ Some element will not be refreshed until application restart.</value>
   <data name="SerialNumberCtl.Header" xml:space="preserve">
     <value>Serial Number</value>
   </data>
+  <data name="SettingsButtonCtl.Content" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="SettingsMenuItemName" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -396,6 +402,9 @@ Some element will not be refreshed until application restart.</value>
   </data>
   <data name="VehicleIdNumberCtl.Header" xml:space="preserve">
     <value>VehicleId Number</value>
+  </data>
+  <data name="VehicleIdReaderButtonCtl.Content" xml:space="preserve">
+    <value>Vehicle ID</value>
   </data>
   <data name="VehicleIdReaderItemName" xml:space="preserve">
     <value>Vehicle ID</value>

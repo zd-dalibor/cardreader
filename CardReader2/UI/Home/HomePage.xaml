@@ -6,10 +6,25 @@
     xmlns:local="using:CardReader.UI.Home"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <Grid>
-        <ImageIcon Width="100" Source="/Assets/assignment_ind_FILL0_wght400_GRAD0_opsz24.svg"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="20" Margin="20 25" HorizontalAlignment="Center">
+            <Button x:Name="IdReaderButtonCtl" x:Uid="IdReaderButtonCtl"
+                    Command="{x:Bind ViewModel.NavigateToIdReaderCommand}"
+                    FontSize="36" Padding="50"/>
+            <Button x:Name="VehicleIdReaderButtonCtl" x:Uid="VehicleIdReaderButtonCtl"
+                    Command="{x:Bind ViewModel.NavigateToVehicleIdReaderCommand}"
+                    FontSize="36" Padding="50"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="20" Margin="20 25" HorizontalAlignment="Center">
+            <Button x:Name="SettingsButtonCtl" x:Uid="SettingsButtonCtl"
+                    Command="{x:Bind ViewModel.NavigateToSettingsCommand}"
+                    FontSize="36" Padding="50"/>
+        </StackPanel>
     </Grid>
 </local:HomePageBase>

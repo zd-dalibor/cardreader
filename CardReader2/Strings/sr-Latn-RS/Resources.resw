@@ -222,6 +222,9 @@
   <data name="HouseNumberCtl.Header" xml:space="preserve">
     <value>Broj kuće</value>
   </data>
+  <data name="IdReaderButtonCtl.Content" xml:space="preserve">
+    <value>Lična karta</value>
+  </data>
   <data name="IdReaderCardTypeForeigner" xml:space="preserve">
     <value>Lična karta za strance</value>
   </data>
@@ -316,6 +319,9 @@ Neki element se nece osvežiti bez restrartovanja aplikacije.</value>
   <data name="SerialNumberCtl.Header" xml:space="preserve">
     <value>Serijski broj saobraćajne dozvole</value>
   </data>
+  <data name="SettingsButtonCtl.Content" xml:space="preserve">
+    <value>Podešavanja</value>
+  </data>
   <data name="SettingsMenuItemName" xml:space="preserve">
     <value>Podešavanja</value>
   </data>
@@ -396,6 +402,9 @@ Neki element se nece osvežiti bez restrartovanja aplikacije.</value>
   </data>
   <data name="VehicleIdNumberCtl.Header" xml:space="preserve">
     <value>Broj šasije</value>
+  </data>
+  <data name="VehicleIdReaderButtonCtl.Content" xml:space="preserve">
+    <value>Saobraćajna</value>
   </data>
   <data name="VehicleIdReaderItemName" xml:space="preserve">
     <value>Saobraćajna</value>

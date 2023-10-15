@@ -167,7 +167,7 @@ namespace CardReader.UI.Main
             return true;
         }
 
-        private void NavigateWithTransition(string tag, NavigationTransitionInfo transitionInfo)
+        public void NavigateWithTransition(string tag, NavigationTransitionInfo transitionInfo)
         {
             var page = TagToPage(tag);
             var currentPage = ContentFrame.CurrentSourcePageType;

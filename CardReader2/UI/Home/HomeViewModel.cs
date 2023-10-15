@@ -1,30 +1,44 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Reactive.Disposables;
-using System.Reactive.Linq;
-using CardReader.Core.Redux;
-using CardReader.Core.State;
+using System.Reactive;
+using CardReader.UI.Main;
 using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 
 namespace CardReader.UI.Home
 {
-    public class HomeViewModel : ReactiveObject, IActivatableViewModel
+    public class HomeViewModel : ReactiveObject
     {
-        public ViewModelActivator Activator { get; }
+        public event EventHandler<string> Navigate;
 
-        public HomeViewModel(IStore<IApplicationState> store)
+        [Reactive]
+        public ReactiveCommand<Unit, Unit> NavigateToIdReaderCommand { get; set; }
+
+        [Reactive]
+        public ReactiveCommand<Unit, Unit> NavigateToVehicleIdReaderCommand { get; set; }
+
+        [Reactive]
+        public ReactiveCommand<Unit, Unit> NavigateToSettingsCommand { get; set; }
+
+        public HomeViewModel()
         {
-            Activator = new ViewModelActivator();
-            var counter = 0;
+            NavigateToIdReaderCommand = ReactiveCommand.Create(NavigateToIdReader);
+            NavigateToVehicleIdReaderCommand = ReactiveCommand.Create(NavigateToVehicleIdReader);
+            NavigateToSettingsCommand = ReactiveCommand.Create(NavigateToSettings);
+        }
 
-            this.WhenActivated(disposables =>
-            {
-                store.DistinctUntilChanged(x => new {x.IsMainWindowActive}).Subscribe(_ =>
-                {
-                    counter++;
-                    Debug.WriteLine($"Counter is: {counter}");
-                }).DisposeWith(disposables);
-            });
+        private void NavigateToIdReader()
+        {
+            Navigate?.Invoke(this, MainViewModel.IdReaderPageTag);
+        }
+
+        private void NavigateToVehicleIdReader()
+        {
+            Navigate?.Invoke(this, MainViewModel.VehicleIdReaderPageTag);
+        }
+
+        private void NavigateToSettings()
+        {
+            Navigate?.Invoke(this, MainViewModel.SettingsPageTag);
         }
     }
 }

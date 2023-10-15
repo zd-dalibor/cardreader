@@ -96,8 +96,7 @@ namespace CardReader.Infrastructure.DependencyInjection
                 .RegisterAnd(() => new MainViewModel(
                     Locator.Current.GetRequiredService<IStore<IApplicationState>>(),
                     Locator.Current.GetRequiredService<IApplicationResources>()))
-                .RegisterAnd(() => new HomeViewModel(
-                    Locator.Current.GetRequiredService<IStore<IApplicationState>>()))
+                .RegisterAnd(() => new HomeViewModel())
                 .RegisterAnd(() => new IdReaderViewModel(
                     Locator.Current.GetRequiredService<IApplicationState>(),
                     Locator.Current.GetRequiredService<IApplicationResources>(),
