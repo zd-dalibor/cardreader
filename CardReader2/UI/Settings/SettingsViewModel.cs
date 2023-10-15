@@ -104,26 +104,53 @@ namespace CardReader.UI.Settings
         {
             if (themeItem == null) return;
 
-            var currentTheme = App.Current.GetTheme();
-            if (currentTheme.Equals(themeItem.Value)) return;
-
-            App.Current.SetTheme(themeItem.Value);
             var themeStr = Enum.GetName(themeItem.Value);
             if (themeStr != null)
             {
                 settings.UpdateAppTheme(themeStr);
             }
+
+            var currentTheme = App.Current.GetTheme();
+            if (themeItem.Value.Equals(currentTheme)) return;
+
+            if (themeItem.Value == ElementTheme.Default)
+            {
+                var userTheme = App.Current.UserTheme();
+                if (!userTheme.Equals(currentTheme))
+                {
+                    App.Current.SetTheme(userTheme);
+                }
+            }
+            else
+            {
+                App.Current.SetTheme(themeItem.Value);
+            }
         }
 
         private void UpdateCurrentTheme()
         {
-            CurrentTheme = themesSource.Items.First(x => x.Value.Equals(App.Current.GetTheme()));
+            CurrentTheme = themesSource.Items.First(x => x.Value.Equals(GetCurrentTheme()));
         }
 
         private void LoadStrings()
         {
             InitThemes();
             UpdateCurrentTheme();
+        }
+
+        private ElementTheme GetCurrentTheme()
+        {
+            var currentTheme = settings.AppTheme();
+            if (currentTheme == null) return App.Current.GetTheme();
+
+            var availableThemes = Enum.GetNames(typeof(ElementTheme));
+            var themeStr = availableThemes.FirstOrDefault(x => x.Equals(currentTheme));
+            if (themeStr != null && Enum.TryParse(themeStr, out ElementTheme theme))
+            {
+                return theme;
+            }
+
+            return App.Current.GetTheme();
         }
 
         private void InitLanguageItems()

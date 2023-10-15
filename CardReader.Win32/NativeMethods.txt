@@ -1,1 +1,5 @@
 ﻿GetDpiForWindow
+GetWindowPlacement
+SendMessage
+WM_SYSCOMMAND
+SC_MAXIMIZE

@@ -1,5 +1,6 @@
 using Microsoft.UI.Xaml;
 using System;
+using System.Diagnostics;
 using CardReader.Core.State;
 using CardReader.Core.Redux;
 using CardReader.Core.Service.Resources;
@@ -11,8 +12,8 @@ using CardReader.Core.Service.Configuration;
 using CardReader.Infrastructure.Extensions;
 using Microsoft.UI;
 using Splat;
-using CardReader.Infrastructure.DependencyInjection;
 using System.Linq;
+using Windows.UI;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -60,6 +61,8 @@ namespace CardReader
             UpdateWindowSize();
         }
 
+        
+
         public ElementTheme GetTheme()
         {
             return MainPage.RequestedTheme;
@@ -68,12 +71,20 @@ namespace CardReader
         public void SetTheme(ElementTheme theme)
         {
             MainPage.RequestedTheme = theme;
-            UpdateTitleBar();
+            UpdateTitleBar(theme);
         }
 
-        private void UpdateTitleBar()
+        private void UpdateTitleBar(ElementTheme? theme = default)
         {
-            var color = MainPage.ContentFrame.ActualTheme == ElementTheme.Dark ? Colors.Wheat : Colors.Black;
+            Color color;
+            if (theme is null or ElementTheme.Default)
+            {
+                color = App.Current.UserTheme() == ElementTheme.Dark ? Colors.White : Colors.Black;
+            }
+            else
+            {
+                color = theme == ElementTheme.Dark ? Colors.White : Colors.Black;
+            }
             var res = App.Current.Resources;
             res["WindowCaptionForeground"] = color;
             AppWindow.TitleBar.ButtonForegroundColor = color;
@@ -88,19 +99,32 @@ namespace CardReader
             {
                 SetTheme(theme);
             }
-            UpdateTitleBar();
+            else
+            {
+                UpdateTitleBar();
+            }
         }
 
         private void UpdateWindowSize()
         {
+            var windowMaximized = settings.IsWindowMaximized();
             var scale = this.GetDpiForWindow() / 96F;
             var width = settings.WindowWidth((int) (DefaultWindowWidth * scale));
             var height = settings.WindowHeight((int) (DefaultWindowHeight * scale));
             AppWindow.Resize(new SizeInt32(width, height));
+
+            if (windowMaximized)
+            {
+                this.MaximizeWindow();
+            }
         }
 
         private void MainWindow_SizeChanged(object sender, WindowSizeChangedEventArgs args)
         {
+            var windowMaximized = this.IsWindowMaximized();
+            settings.UpdateWindowMaximized(windowMaximized);
+
+            if (windowMaximized) return;
             var size = AppWindow.Size;
             settings.UpdateWindowWidth(size.Width);
             settings.UpdateWindowHeight(size.Height);
@@ -118,6 +142,7 @@ namespace CardReader
 
         private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
         {
+            Debug.WriteLine("MainWindow_Activated, IsWindowMaximized: " + this.IsWindowMaximized());
             store.Dispatch(new ChangeMainWindowActivationAction
             {
                 IsActive = args.WindowActivationState != WindowActivationState.Deactivated

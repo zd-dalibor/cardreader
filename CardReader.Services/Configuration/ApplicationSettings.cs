@@ -19,6 +19,8 @@ namespace CardReader.Services.Configuration
 
         private const string WindowHeightKey = "WindowHeight";
 
+        private const string WindowMaximizedKey = "WindowMaximized";
+
         private const string AppThemeKey = "AppTheme";
 
         private const int DefaultIdReaderApiVersion = 3;
@@ -100,6 +102,17 @@ namespace CardReader.Services.Configuration
         public void UpdateAppTheme(string theme)
         {
             storage.SetSettings(AppThemeKey, theme);
+        }
+
+        public bool IsWindowMaximized()
+        {
+            var obj = storage.GetSettings(WindowMaximizedKey);
+            return obj != null && (bool) obj;
+        }
+
+        public void UpdateWindowMaximized(bool windowMaximized)
+        {
+            storage.SetSettings(WindowMaximizedKey, windowMaximized);
         }
     }
 }

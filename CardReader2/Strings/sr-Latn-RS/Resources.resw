@@ -309,6 +309,10 @@
   <data name="SelectThemeCtl.Header" xml:space="preserve">
     <value>Tema</value>
   </data>
+  <data name="SelectThemeMsg.Text" xml:space="preserve">
+    <value>Restartujte aplikaciju posle promene teme.
+Neki element se nece osvežiti bez restrartovanja aplikacije.</value>
+  </data>
   <data name="SerialNumberCtl.Header" xml:space="preserve">
     <value>Serijski broj saobraćajne dozvole</value>
   </data>

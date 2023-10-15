@@ -29,5 +29,9 @@
         string? AppTheme();
 
         void UpdateAppTheme(string theme);
+
+        bool IsWindowMaximized();
+
+        void UpdateWindowMaximized(bool windowMaximized);
     }
 }

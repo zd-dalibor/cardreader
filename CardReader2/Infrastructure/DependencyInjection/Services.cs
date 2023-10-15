@@ -25,6 +25,7 @@ using AutoMapper;
 using CardReader.Core.Service.Reporting;
 using CardReader.Infrastructure.AutoMapper;
 using CardReader.Infrastructure.Services.Reporting;
+using CardReader.UI.Helper;
 
 namespace CardReader.Infrastructure.DependencyInjection
 {
@@ -85,7 +86,8 @@ namespace CardReader.Infrastructure.DependencyInjection
                 .RegisterLazySingletonAnd<IStore<IApplicationState>>(() => new ApplicationStore(
                     Locator.Current.GetRequiredService<IApplicationState>()))
                 .RegisterLazySingletonAnd<IIdReaderService>(() => new IdReaderService())
-                .RegisterLazySingletonAnd<IReportingService>(() => new ReportingService());
+                .RegisterLazySingletonAnd<IReportingService>(() => new ReportingService())
+                .RegisterLazySingletonAnd(() => new ThemeHelper());
         }
 
         private static IMutableDependencyResolver RegisterViewModelsAnd(this IMutableDependencyResolver resolver)

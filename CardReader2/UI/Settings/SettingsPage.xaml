@@ -14,10 +14,14 @@
                       ItemsSource="{x:Bind ViewModel.LanguageItems, Mode=OneWay}"
                       SelectedItem="{x:Bind ViewModel.CurrentLanguage, Mode=TwoWay}"
                       DisplayMemberPath="Language" SelectedValuePath="Locale"/>
-            <ComboBox x:Name="SelectThemeCtl" x:Uid="SelectThemeCtl"
-                      ItemsSource="{x:Bind ViewModel.ThemeItems, Mode=OneWay}"
-                      SelectedItem="{x:Bind ViewModel.CurrentTheme, Mode=TwoWay}"
-                      DisplayMemberPath="Name" SelectedValuePath="Value"/>
+            <StackPanel Orientation="Vertical">
+                <ComboBox x:Name="SelectThemeCtl" x:Uid="SelectThemeCtl"
+                          ItemsSource="{x:Bind ViewModel.ThemeItems, Mode=OneWay}"
+                          SelectedItem="{x:Bind ViewModel.CurrentTheme, Mode=TwoWay}"
+                          DisplayMemberPath="Name" SelectedValuePath="Value"/>
+                <TextBlock x:Name="SelectThemeMsg" x:Uid="SelectThemeMsg"
+                           FontStyle="Italic"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </local:SettingsPageBase>

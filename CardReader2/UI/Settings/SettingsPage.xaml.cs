@@ -38,6 +38,7 @@ namespace CardReader.UI.Settings
         {
             SelectLanguageCtl.Header = resources.GetString("SelectLanguageCtl/Header");
             SelectThemeCtl.Header = resources.GetString("SelectThemeCtl/Header");
+            SelectThemeMsg.Text = resources.GetString("SelectThemeMsg/Text");
         }
     }
 }

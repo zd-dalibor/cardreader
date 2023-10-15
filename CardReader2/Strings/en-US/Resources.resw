@@ -309,6 +309,10 @@
   <data name="SelectThemeCtl.Header" xml:space="preserve">
     <value>Theme</value>
   </data>
+  <data name="SelectThemeMsg.Text" xml:space="preserve">
+    <value>Please restart application when theme is changes.
+Some element will not be refreshed until application restart.</value>
+  </data>
   <data name="SerialNumberCtl.Header" xml:space="preserve">
     <value>Serial Number</value>
   </data>
