@@ -14,6 +14,7 @@ using CardReader.Core.Service.Reporting;
 using CardReader.Core.Service.Resources;
 using CardReader.Core.State;
 using CardReader.Infrastructure.Events;
+using CardReader.Infrastructure.Exceptions;
 using Microsoft.UI.Xaml.Controls;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -148,7 +149,7 @@ namespace CardReader.UI.IdReader
             {
                 this.Log().Info("Operation has been canceled.");
             }
-            catch (Exception e)
+            catch (IdReaderServiceException e)
             {
                 this.Log().Error(e, "Failed to read data from ID card.");
                 MessageTitle = applicationResources.GetString("MessageErrorTitle");

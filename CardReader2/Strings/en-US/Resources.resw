@@ -406,6 +406,9 @@ Some element will not be refreshed until application restart.</value>
   <data name="VehicleIdReaderButtonCtl.Content" xml:space="preserve">
     <value>Vehicle ID</value>
   </data>
+  <data name="VehicleIdReaderErrorMessage" xml:space="preserve">
+    <value>Vehicle ID reader error: {0}</value>
+  </data>
   <data name="VehicleIdReaderItemName" xml:space="preserve">
     <value>Vehicle ID</value>
   </data>

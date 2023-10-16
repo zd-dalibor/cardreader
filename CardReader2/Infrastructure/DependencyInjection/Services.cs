@@ -23,8 +23,10 @@ using Splat;
 using Splat.Serilog;
 using AutoMapper;
 using CardReader.Core.Service.Reporting;
+using CardReader.Core.Service.VehicleIdReader;
 using CardReader.Infrastructure.AutoMapper;
 using CardReader.Infrastructure.Services.Reporting;
+using CardReader.Infrastructure.Services.VehicleIdReader;
 using CardReader.UI.Helper;
 
 namespace CardReader.Infrastructure.DependencyInjection
@@ -87,7 +89,8 @@ namespace CardReader.Infrastructure.DependencyInjection
                     Locator.Current.GetRequiredService<IApplicationState>()))
                 .RegisterLazySingletonAnd<IIdReaderService>(() => new IdReaderService())
                 .RegisterLazySingletonAnd<IReportingService>(() => new ReportingService())
-                .RegisterLazySingletonAnd(() => new ThemeHelper());
+                .RegisterLazySingletonAnd(() => new ThemeHelper())
+                .RegisterLazySingletonAnd<IVehicleIdReaderService>(() => new VehicleIdReaderService());
         }
 
         private static IMutableDependencyResolver RegisterViewModelsAnd(this IMutableDependencyResolver resolver)
@@ -109,7 +112,10 @@ namespace CardReader.Infrastructure.DependencyInjection
                     Locator.Current.GetRequiredService<ILocaleService>(),
                     Locator.Current.GetRequiredService<IApplicationSettings>(),
                     Locator.Current.GetRequiredService<IApplicationResources>()))
-                .RegisterAnd(() => new VehicleIdReaderViewModel());
+                .RegisterAnd(() => new VehicleIdReaderViewModel(
+                    Locator.Current.GetRequiredService<IApplicationState>(),
+                    Locator.Current.GetRequiredService<IApplicationResources>(),
+                    Locator.Current.GetRequiredService<IVehicleIdReaderService>()));
         }
     }
 }

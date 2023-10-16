@@ -406,6 +406,9 @@ Neki element se nece osvežiti bez restrartovanja aplikacije.</value>
   <data name="VehicleIdReaderButtonCtl.Content" xml:space="preserve">
     <value>Saobraćajna</value>
   </data>
+  <data name="VehicleIdReaderErrorMessage" xml:space="preserve">
+    <value>Greška pri čitanju: {0}</value>
+  </data>
   <data name="VehicleIdReaderItemName" xml:space="preserve">
     <value>Saobraćajna</value>
   </data>
