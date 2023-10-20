@@ -126,8 +126,14 @@
   <data name="ApartmentNumberCtl.Header" xml:space="preserve">
     <value>Broj apartmana</value>
   </data>
-  <data name="AppTitle.Text" xml:space="preserve">
-    <value>ID Čitač</value>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Aplikacija za čitanje kartica.</value>
+  </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Čitač kartica</value>
+  </data>
+  <data name="AppTitleBar.Text" xml:space="preserve">
+    <value>Čitač kartica</value>
   </data>
   <data name="AuthorityIssuingCtl.Header" xml:space="preserve">
     <value>Organ izdavanja saobraćajne dozvole</value>
@@ -189,13 +195,13 @@
   <data name="EntranceCtl.Header" xml:space="preserve">
     <value>Ulaz</value>
   </data>
-  <data name="ErrorDialog.CloseText" xml:space="preserve">
+  <data name="ErrorDialogCloseText" xml:space="preserve">
     <value>Ok</value>
   </data>
-  <data name="ErrorDialog.Content" xml:space="preserve">
+  <data name="ErrorDialogContent" xml:space="preserve">
     <value>Došlo je do greške.  {0}</value>
   </data>
-  <data name="ErrorDialog.Title" xml:space="preserve">
+  <data name="ErrorDialogTitle" xml:space="preserve">
     <value>Greška</value>
   </data>
   <data name="ExpiryDateCtl.Header" xml:space="preserve">
@@ -207,7 +213,7 @@
   <data name="GivenNameCtl.Header" xml:space="preserve">
     <value>Ime</value>
   </data>
-  <data name="HomeMenuItem.Text" xml:space="preserve">
+  <data name="HomeMenuItemName" xml:space="preserve">
     <value>Početna</value>
   </data>
   <data name="HouseLetterCtl.Header" xml:space="preserve">
@@ -216,22 +222,25 @@
   <data name="HouseNumberCtl.Header" xml:space="preserve">
     <value>Broj kuće</value>
   </data>
-  <data name="IdReader.ErrorMessage" xml:space="preserve">
-    <value>Greška pri čitanju: {0}</value>
+  <data name="IdReaderButtonCtl.Content" xml:space="preserve">
+    <value>Lična karta</value>
   </data>
-  <data name="IdReaderCardType.Foreigner" xml:space="preserve">
+  <data name="IdReaderCardTypeForeigner" xml:space="preserve">
     <value>Lična karta za strance</value>
   </data>
-  <data name="IdReaderCardType.New" xml:space="preserve">
+  <data name="IdReaderCardTypeNew" xml:space="preserve">
     <value>Nova lična karta</value>
   </data>
-  <data name="IdReaderCardType.Old" xml:space="preserve">
+  <data name="IdReaderCardTypeOld" xml:space="preserve">
     <value>Stara lična karta</value>
   </data>
-  <data name="IdReaderCardType.Unknown" xml:space="preserve">
+  <data name="IdReaderCardTypeUnknown" xml:space="preserve">
     <value>Nepoznato</value>
   </data>
-  <data name="IdReaderItem.Text" xml:space="preserve">
+  <data name="IdReaderErrorMessage" xml:space="preserve">
+    <value>Greška pri čitanju: {0}</value>
+  </data>
+  <data name="IdReaderItemName" xml:space="preserve">
     <value>Lična karta</value>
   </data>
   <data name="IssuingAuthorityCtl.Header" xml:space="preserve">
@@ -246,7 +255,7 @@
   <data name="MaximumPermissibleLadenMassCtl.Header" xml:space="preserve">
     <value>Najvćeda dozvoljena masa</value>
   </data>
-  <data name="Message.ErrorTitle" xml:space="preserve">
+  <data name="MessageErrorTitle" xml:space="preserve">
     <value>Greška</value>
   </data>
   <data name="NationalityFullCtl.Header" xml:space="preserve">
@@ -297,35 +306,48 @@
   <data name="RestrictionToChangeOwnerCtl.Header" xml:space="preserve">
     <value>Zabrana otuđenja vozila do</value>
   </data>
+  <data name="SelectLanguageCtl.Header" xml:space="preserve">
+    <value>Promeni jezik</value>
+  </data>
+  <data name="SelectThemeCtl.Header" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="SelectThemeMsg.Text" xml:space="preserve">
+    <value>Restartujte aplikaciju posle promene teme.
+Neki element se nece osvežiti bez restrartovanja aplikacije.</value>
+  </data>
   <data name="SerialNumberCtl.Header" xml:space="preserve">
     <value>Serijski broj saobraćajne dozvole</value>
   </data>
-  <data name="SettingsMenuItem.Text" xml:space="preserve">
+  <data name="SettingsButtonCtl.Content" xml:space="preserve">
+    <value>Podešavanja</value>
+  </data>
+  <data name="SettingsMenuItemName" xml:space="preserve">
     <value>Podešavanja</value>
   </data>
   <data name="SexCtl.Header" xml:space="preserve">
     <value>Pol</value>
   </data>
-  <data name="SigCardVerifiedCtl.ToolTip" xml:space="preserve">
-    <value>Verifikacija potpisa ključnih podataka</value>
+  <data name="SigCardVerifiedTlp.Content" xml:space="preserve">
+    <value>Verifikacija potpisa ključnih podataka ({0})</value>
   </data>
-  <data name="SigFixedVerifiedCtl.ToolTip" xml:space="preserve">
-    <value>Verifikacija potpisa nepomenljivih podataka</value>
+  <data name="SigFixedVerifiedTlp.Content" xml:space="preserve">
+    <value>Verifikacija potpisa nepomenljivih podataka ({0})</value>
   </data>
-  <data name="SignatureVerification.Failed" xml:space="preserve">
+  <data name="SignatureVerificationFailed" xml:space="preserve">
     <value>Greška</value>
   </data>
-  <data name="SignatureVerification.None" xml:space="preserve">
+  <data name="SignatureVerificationNone" xml:space="preserve">
     <value>Nedostupno</value>
   </data>
-  <data name="SignatureVerification.Success" xml:space="preserve">
+  <data name="SignatureVerificationSuccess" xml:space="preserve">
     <value>Uspešno</value>
   </data>
-  <data name="SigPortraitVerifiedCtl.ToolTip" xml:space="preserve">
-    <value>Verifikacija potpisa slike portreta</value>
+  <data name="SigPortraitVerifiedTlp/Content" xml:space="preserve">
+    <value>Verifikacija potpisa slike portreta ({0})</value>
   </data>
-  <data name="SigVariableVerifiedCtl.ToolTip" xml:space="preserve">
-    <value>Verifikacija potpisa promenljivih podataka</value>
+  <data name="SigVariableVerifiedTlp.Content" xml:space="preserve">
+    <value>Verifikacija potpisa promenljivih podataka ({0})</value>
   </data>
   <data name="StateCtl.Header" xml:space="preserve">
     <value>Država</value>
@@ -344,6 +366,15 @@
   </data>
   <data name="SurnameCtl.Header" xml:space="preserve">
     <value>Prezime</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Tamna</value>
+  </data>
+  <data name="ThemeDefault" xml:space="preserve">
+    <value>Podrazumevana</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Svetla</value>
   </data>
   <data name="TypeApprovalNumberCtl.Header" xml:space="preserve">
     <value>Homologacijska oznaka</value>
@@ -372,10 +403,13 @@
   <data name="VehicleIdNumberCtl.Header" xml:space="preserve">
     <value>Broj šasije</value>
   </data>
-  <data name="VehicleIdReader.ErrorMessage" xml:space="preserve">
+  <data name="VehicleIdReaderButtonCtl.Content" xml:space="preserve">
+    <value>Saobraćajna</value>
+  </data>
+  <data name="VehicleIdReaderErrorMessage" xml:space="preserve">
     <value>Greška pri čitanju: {0}</value>
   </data>
-  <data name="VehicleIdReaderItem.Text" xml:space="preserve">
+  <data name="VehicleIdReaderItemName" xml:space="preserve">
     <value>Saobraćajna</value>
   </data>
   <data name="VehicleLoadCtl.Header" xml:space="preserve">

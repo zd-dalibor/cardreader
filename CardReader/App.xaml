@@ -1,6 +1,4 @@
-<!-- Copyright (c) Microsoft Corporation and Contributors. -->
-<!-- Licensed under the MIT License. -->
-
+<?xml version="1.0" encoding="utf-8"?>
 <Application
     x:Class="CardReader.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -17,15 +15,32 @@
             <SolidColorBrush x:Key="WindowCaptionBackgroundDisabled">Transparent</SolidColorBrush>
             <!--<SolidColorBrush x:Key="WindowCaptionForeground">Transparent</SolidColorBrush>
             <SolidColorBrush x:Key="WindowCaptionForegroundDisabled">Transparent</SolidColorBrush>-->
+            
 
             <!-- ReSharper disable Xaml.UnexpectedTextToken -->
             <!-- ReSharper disable Xaml.ConstructorWarning -->
-            <FontFamily x:Key="CardReader">ms-appx:///Assets/Fonts/CardReader.ttf#CardReader</FontFamily>
+            <FontFamily x:Key="CardReader">/Assets/Fonts/CardReader.ttf#CardReader</FontFamily>
             <!-- ReSharper restore Xaml.ConstructorWarning -->
             <!-- ReSharper restore Xaml.UnexpectedTextToken -->
 
             <!--<Thickness x:Key="NavigationViewHeaderMargin">20,44,0,0</Thickness>
             <Thickness x:Key="NavigationViewMinimalHeaderMargin">-60,44,0,0</Thickness>-->
+
+            <Style x:Key="Separator" TargetType="Border">
+                <Setter Property="BorderBrush" Value="{ThemeResource SeparatorBrush}" />
+                <Setter Property="BorderThickness" Value="0 0 0 1" />
+            </Style>
+
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="SeparatorBrush">Gray</SolidColorBrush>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="SeparatorBrush">White</SolidColorBrush>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
+
+        
     </Application.Resources>
 </Application>

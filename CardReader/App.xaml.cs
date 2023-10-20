@@ -1,40 +1,13 @@
-﻿// Copyright (c) Microsoft Corporation and Contributors.
-// Licensed under the MIT License.
-
-using CardReader.Service;
-using CardReader.UI;
-using CardReader.UI.ViewModel.MainPage;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Microsoft.UI.Xaml.Shapes;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
+﻿using System;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Globalization;
-using CardReader.UI.ViewModel;
-using CommunityToolkit.Mvvm.Messaging;
-using AutoMapper;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Serilog;
-using Serilog.Events;
-using CardReader.AutoMapper;
-using CardReader.UI.ViewModel.IdReaderPage;
-using CardReader.UI.ViewModel.VehicleIdReaderPage;
+using System.Reactive.Linq;
+using CardReader.Core.Service.Configuration;
+using Microsoft.UI.Xaml;
+using CardReader.Infrastructure.DependencyInjection;
+using CardReader.UI.Helper;
+using ReactiveUI;
+using Splat;
+using UnhandledExceptionEventArgs = Microsoft.UI.Xaml.UnhandledExceptionEventArgs;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -44,7 +17,7 @@ namespace CardReader
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -52,109 +25,106 @@ namespace CardReader
         /// </summary>
         public App()
         {
-            Services = ConfigureServices();
+            Infrastructure.DependencyInjection.Services.Configure();
 
             this.InitializeComponent();
-
-            // App.Current.RequestedTheme = ApplicationTheme.Light;
             UnhandledException += OnUnhandledException;
+            UpdateTheme();
+            ObserveThemeChange();
         }
 
         /// <summary>
         /// Invoked when the application is launched.
         /// </summary>
         /// <param name="args">Details about the launch request and process.</param>
-        protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            InitLocale();
+            Locator.Current
+                .InitLocale()
+                .StartResourceObserver();
 
-            Shell = Services.GetService<Shell>();
-            Shell.Init();
+            mWindow = new MainWindow();
+            mWindow.Activate();
         }
 
-        private void InitLocale()
+        private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            ChangeLocale("sr-Latn-RS");
-            // ChangeLocale("en-US");
-            
-        }
-
-        public void ChangeLocale(string locale)
-        {
-            //ApplicationLanguages.PrimaryLanguageOverride = locale;
-            CurrentLocale = new CultureInfo(locale);
-            CultureInfo.DefaultThreadCurrentCulture = CurrentLocale;
-            CultureInfo.CurrentCulture = CurrentLocale;
-            Thread.CurrentThread.CurrentCulture = CurrentLocale;
-            Thread.CurrentThread.CurrentUICulture = CurrentLocale;
-            //Windows.ApplicationModel.Resources.Core.ResourceContext.GetForCurrentView().Reset();
-            Windows.ApplicationModel.Resources.Core.ResourceContext.SetGlobalQualifierValue("Language", locale);
-            Windows.ApplicationModel.Resources.Core.ResourceContext.GetForViewIndependentUse().Reset();
-        }
-
-        private static void OnUnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
-        {
-            Log.Logger.Error(e.Exception, e.Message);
-            Log.CloseAndFlush();
-        }
-
-        private static IServiceProvider ConfigureServices()
-        {
-            var services = new ServiceCollection();
-
-            // logging
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.Debug()
-                .WriteTo.File("logs.txt", restrictedToMinimumLevel: LogEventLevel.Error, fileSizeLimitBytes: 1_000_000)
-                .CreateLogger();
-
-            services.AddLogging(builder =>
+            try
             {
-                builder.SetMinimumLevel(LogLevel.Debug)
-                    .AddSerilog();
-            });
+                LogHost.Default.Error(e.Exception, e.Message);
+            }
+            catch (LoggingException) { }
+        }
 
-            // auto mapper
-            services.Configure<MapperConfigurationExpression>(options => options.AddMaps(typeof(App).Assembly));
-            services.AddSingleton<IConfigurationProvider>(sp =>
+        public ElementTheme GetTheme()
+        {
+            return ((MainWindow)mWindow).GetTheme();
+        }
+
+        public void SetTheme(ElementTheme theme)
+        {
+            ((MainWindow)mWindow).SetTheme(theme);
+        }
+
+        public ElementTheme UserTheme()
+        {
+            return mUserTheme == ApplicationTheme.Dark
+                ? ElementTheme.Dark : ElementTheme.Light;
+        }
+
+        private static ElementTheme CurrentTheme()
+        {
+            var currentTheme = Locator.Current.GetRequiredService<IApplicationSettings>().AppTheme();
+            if (currentTheme == null) return ElementTheme.Default;
+
+            var availableThemes = Enum.GetNames(typeof(ElementTheme));
+            var themeStr = availableThemes.FirstOrDefault(x => x.Equals(currentTheme));
+            if (themeStr != null && Enum.TryParse(themeStr, out ElementTheme theme))
             {
-                var options = sp.GetRequiredService<IOptions<MapperConfigurationExpression>>();
-                var mc = new MapperConfiguration(options.Value);
-                mc.AssertConfigurationIsValid();
-                return mc;
-            });
-            services.AddTransient<IMapper>(sp =>
-                new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
-            services.AddTransient<IdReaderCardTypeResolver>();
-            services.AddTransient<IdReaderPortraitImageResolver>();
+                return theme;
+            }
 
-            // services
-            services.AddSingleton<Shell>();
-            services.AddSingleton<AppState>();
-            services.AddSingleton<IStringLoader, StringLoader>();
-            services.AddSingleton<IMessenger>(_ => WeakReferenceMessenger.Default);
-            services.AddSingleton<IMainNavigationService, MainNavigationService>();
-            services.AddSingleton<IAppSettingsService, AppSettingsService>();
-            services.AddSingleton<IIdReaderService, IdReaderService>();
-            services.AddSingleton<IVehicleIdReaderService, VehicleIdReaderService>();
-            services.AddSingleton<IReportingService, ReportingService>();
+            return ElementTheme.Default;
+        }
 
-            // view models
-            services.AddTransient<MainPageViewModel>();
-            services.AddTransient<HomePageViewModel>();
-            services.AddTransient<IdReaderPageViewModel>();
-            services.AddTransient<VehicleIdReaderPageViewModel>();
+        private void UpdateTheme()
+        {
+            mUserTheme = RequestedTheme;
+            var theme = CurrentTheme();
+            switch (theme)
+            {
+                case ElementTheme.Dark:
+                    RequestedTheme = ApplicationTheme.Dark;
+                    break;
+                case ElementTheme.Light:
+                    RequestedTheme = ApplicationTheme.Light;
+                    break;
+                case ElementTheme.Default:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
 
-            return services.BuildServiceProvider();
+        private void ObserveThemeChange()
+        {
+            Locator.Current.GetRequiredService<ThemeHelper>().Observe()
+                .DistinctUntilChanged()
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Subscribe(isDarkMode =>
+                {
+                    mUserTheme = isDarkMode ? ApplicationTheme.Dark : ApplicationTheme.Light;
+                    if (mWindow != null && CurrentTheme() == ElementTheme.Default)
+                    {
+                        SetTheme(UserTheme());
+                    }
+                });
         }
 
         public new static App Current => (App)Application.Current;
 
-        public IServiceProvider Services { get; }
+        private Window mWindow;
 
-        public Shell Shell { get; private set; }
-
-        public CultureInfo CurrentLocale { get; private set; }
+        private ApplicationTheme mUserTheme;
     }
 }

@@ -47,9 +47,13 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:CardReader">
-                    <StackPanel Orientation="Horizontal" Spacing="10">
-                        <ComboBox x:Name="CardReaderCmb" Header="{TemplateBinding Header}" Width="200"/>
-                        <Button x:Name="RefreshBtn" VerticalAlignment="Bottom">
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" MinWidth="200" MaxWidth="400"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" x:Name="CardReaderCmb" Header="{TemplateBinding Header}" HorizontalAlignment="Stretch"/>
+                        <Button Grid.Column="1" x:Name="RefreshBtn" VerticalAlignment="Bottom">
                             <ToolTipService.ToolTip>
                                 <ToolTip Content="{TemplateBinding RefreshTooltip}"></ToolTip>
                             </ToolTipService.ToolTip>
@@ -58,7 +62,7 @@
                                           FontFamily="{StaticResource CardReader}" Glyph="&#xea05;"/>
                             </Button.Content>
                         </Button>
-                    </StackPanel>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
