@@ -6,11 +6,16 @@ using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using CardReader.Core.Service.Configuration;
+using CardReader.Core.Service.Globalization;
+using CardReader.Core.Service.Reporting;
 using CardReader.Core.Service.Resources;
 using CardReader.Core.Service.VehicleIdReader;
 using CardReader.Core.State;
+using CardReader.Infrastructure.Events;
 using CardReader.Infrastructure.Exceptions;
+using CardReader.Services.Globalization;
 using Microsoft.UI.Xaml.Controls;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -64,17 +69,32 @@ namespace CardReader.UI.VehicleIdReader
         private readonly IApplicationState applicationState;
         private readonly IApplicationResources applicationResources;
         private readonly IVehicleIdReaderService vehicleIdReaderService;
+        private readonly IMapper mapper;
+        private readonly ILocaleService localeService;
+        private readonly IApplicationSettings settings;
+        private readonly IReportingService reportingService;
 
         public VehicleIdReaderViewModel(
             IApplicationState applicationState, 
             IApplicationResources applicationResources, 
-            IVehicleIdReaderService vehicleIdReaderService)
+            IVehicleIdReaderService vehicleIdReaderService,
+            IMapper mapper,
+            ILocaleService localeService,
+            IApplicationSettings settings,
+            IReportingService reportingService)
         {
             this.applicationState = applicationState;
             this.applicationResources = applicationResources;
             this.vehicleIdReaderService = vehicleIdReaderService;
+            this.mapper = mapper;
+            this.localeService = localeService;
+            this.settings = settings;
+            this.reportingService = reportingService;
             Activator = new ViewModelActivator();
             ReaderData = new VehicleIdData();
+
+            CardReaderId = applicationState.VehicleIdReaderCardReaderId;
+            UpdateReaderData(applicationState.LastVehicleIdReaderData);
 
             var canRad = this.WhenAnyValue(x => x.CanRead);
             BeginReadCommand = ReactiveCommand.CreateFromObservable(() =>
@@ -133,7 +153,9 @@ namespace CardReader.UI.VehicleIdReader
 
         private void UpdateReaderData(Core.Model.VehicleIdReader.VehicleIdData data)
         {
-            
+            applicationState.LastVehicleIdReaderData = data;
+            ReaderData = data != null ? mapper.Map<VehicleIdData>(data) : new VehicleIdData();
+            CanReport = data != null;
         }
 
         private void ClearReaderData()
@@ -147,7 +169,26 @@ namespace CardReader.UI.VehicleIdReader
 
         private async Task ReaderDataReportAsync(CancellationToken ct)
         {
-
+            CanReport = false;
+            var readerDate = applicationState.LastVehicleIdReaderData ?? new Core.Model.VehicleIdReader.VehicleIdData();
+            var currentLocale = settings.CurrentLocale(localeService.DefaultLocale);
+            try
+            {
+                await reportingService.VehicleIdReportAsync(readerDate, currentLocale, ct);
+            }
+            catch (OperationCanceledException)
+            {
+                this.Log().Info("Operation has been canceled.");
+            }
+            catch (Exception e)
+            {
+                this.Log().Error(e, "Reader data report error.");
+                MessageBus.Current.SendMessage(new ErrorEventArgs(e));
+            }
+            finally
+            {
+                CanReport = true;
+            }
         }
     }
 }

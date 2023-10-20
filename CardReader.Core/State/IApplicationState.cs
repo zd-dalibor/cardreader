@@ -1,4 +1,5 @@
 ﻿using CardReader.Core.Model.IdReader;
+using CardReader.Core.Model.VehicleIdReader;
 
 namespace CardReader.Core.State
 {
@@ -15,5 +16,7 @@ namespace CardReader.Core.State
         int VehicleIdReaderApiVersion { get; }
 
         IdReaderData? LastIdReaderData { get; set; }
+
+        VehicleIdData? LastVehicleIdReaderData { get; set; }
     }
 }

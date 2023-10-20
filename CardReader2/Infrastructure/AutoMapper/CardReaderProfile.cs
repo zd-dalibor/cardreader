@@ -10,8 +10,8 @@ namespace CardReader.Infrastructure.AutoMapper
                 .ForMember(dest => dest.CardType, opt => opt.MapFrom<IdReaderCardTypeResolver>())
                 .ForMember(dest => dest.Portrait, opt => opt.MapFrom<IdReaderPortraitImageResolver>());
 
-            //CreateMap<VehicleIdData, VehicleIdDataViewModel>();
-            //CreateMap<VehicleIdRegistrationData, VehicleIdRegistrationDataViewModel>();
+            CreateMap<Core.Model.VehicleIdReader.VehicleIdData, UI.VehicleIdReader.VehicleIdData>();
+            CreateMap<Core.Model.VehicleIdReader.VehicleIdRegistrationData, UI.VehicleIdReader.VehicleIdRegistrationData>();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CardReader.Core.Model.IdReader;
+using CardReader.Core.Model.VehicleIdReader;
 using CardReader.Core.Service.Configuration;
 using CardReader.Core.State;
 
@@ -25,6 +26,7 @@ namespace CardReader.Infrastructure.State
         public int VehicleIdReaderApiVersion => settings.VehicleIdReaderApiVersion();
 
         public IdReaderData LastIdReaderData { get; set; }
+        public VehicleIdData LastVehicleIdReaderData { get; set; }
 
         private readonly IApplicationSettings settings;
 
