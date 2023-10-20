@@ -117,7 +117,7 @@
       <PerUserRedirection>true</PerUserRedirection>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy $(ProjectDir)CelikApi_x64\CelikApi.dll $(OutDir) /d</Command>
+      <Command>xcopy $(ProjectDir)CelikApi_x64\CelikApi.dll $(OutDir) /D /Y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -155,7 +155,7 @@
       <PerUserRedirection>true</PerUserRedirection>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy $(ProjectDir)CelikApi_x86\CelikApi.dll $(OutDir) /d</Command>
+      <Command>xcopy $(ProjectDir)CelikApi_x86\CelikApi.dll $(OutDir) /D /Y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -195,7 +195,7 @@
       <PerUserRedirection>true</PerUserRedirection>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy $(ProjectDir)CelikApi_x86\CelikApi.dll $(OutDir) /d</Command>
+      <Command>xcopy $(ProjectDir)CelikApi_x86\CelikApi.dll $(OutDir) /D /Y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -234,7 +234,7 @@
       <PerUserRedirection>true</PerUserRedirection>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy $(ProjectDir)CelikApi_x64\CelikApi.dll $(OutDir) /d</Command>
+      <Command>xcopy $(ProjectDir)CelikApi_x64\CelikApi.dll $(OutDir) /D /Y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

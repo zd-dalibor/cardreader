@@ -84,7 +84,7 @@
       <AdditionalDependencies>eVehicleRegistrationAPI.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy $(ProjectDir)eVehicle_x86\eVehicleRegistrationAPI.dll $(OutDir) /d</Command>
+      <Command>xcopy $(ProjectDir)eVehicle_x86\eVehicleRegistrationAPI.dll $(OutDir) /D /Y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -124,7 +124,7 @@
       <AdditionalDependencies>eVehicleRegistrationAPI.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy $(ProjectDir)eVehicle_x86\eVehicleRegistrationAPI.dll $(OutDir) /d</Command>
+      <Command>xcopy $(ProjectDir)eVehicle_x86\eVehicleRegistrationAPI.dll $(OutDir) /D /Y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
