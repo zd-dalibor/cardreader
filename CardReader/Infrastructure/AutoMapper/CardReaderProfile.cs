@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DynamicData;
 
 namespace CardReader.Infrastructure.AutoMapper
 {
@@ -11,7 +12,8 @@ namespace CardReader.Infrastructure.AutoMapper
                 .ForMember(dest => dest.Portrait, opt => opt.MapFrom<IdReaderPortraitImageResolver>());
 
             CreateMap<Core.Model.VehicleIdReader.VehicleIdData, UI.VehicleIdReader.VehicleIdData>();
-            CreateMap<Core.Model.VehicleIdReader.VehicleIdRegistrationData, UI.VehicleIdReader.VehicleIdRegistrationData>();
+            CreateMap<Core.Model.VehicleIdReader.VehicleIdRegistrationData, UI.VehicleIdReader.VehicleIdRegistrationData>()
+                .ForMember(dest => dest.Tooltip, opt => opt.MapFrom<VehicleIdTooltipResolver>());
         }
     }
 }

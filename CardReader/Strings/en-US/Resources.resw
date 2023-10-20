@@ -412,6 +412,15 @@ Some element will not be refreshed until application restart.</value>
   <data name="VehicleIdReaderItemName" xml:space="preserve">
     <value>Vehicle ID</value>
   </data>
+  <data name="VehicleIdRegistrationDataEmpty" xml:space="preserve">
+    <value>Registration data {0} is empty.</value>
+  </data>
+  <data name="VehicleIdRegistrationDataInvalid" xml:space="preserve">
+    <value>Registration data {0} is invalid. ({1}, {2})</value>
+  </data>
+  <data name="VehicleIdRegistrationDataValid" xml:space="preserve">
+    <value>Registration data {0} is valid.</value>
+  </data>
   <data name="VehicleLoadCtl.Header" xml:space="preserve">
     <value>Vehicle Load</value>
   </data>

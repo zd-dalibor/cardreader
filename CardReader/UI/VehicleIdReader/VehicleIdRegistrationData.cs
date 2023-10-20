@@ -6,6 +6,9 @@ namespace CardReader.UI.VehicleIdReader
     public class VehicleIdRegistrationData : ReactiveObject
     {
         [Reactive]
+        public string Index { get; set; }
+
+        [Reactive]
         public bool? IsValid { get; set; }
 
         [Reactive]
@@ -13,5 +16,8 @@ namespace CardReader.UI.VehicleIdReader
 
         [Reactive]
         public string VerificationErrorDetails { get; set; }
+
+        [Reactive]
+        public string Tooltip { get; set; }
     }
 }

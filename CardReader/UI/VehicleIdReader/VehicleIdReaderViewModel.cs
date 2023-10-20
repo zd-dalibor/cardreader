@@ -111,6 +111,11 @@ namespace CardReader.UI.VehicleIdReader
 
             this.WhenActivated(disposables =>
             {
+                applicationResources.Observe()
+                    .ObserveOn(RxApp.MainThreadScheduler)
+                    .Subscribe(_ => UpdateReaderData(applicationState.LastVehicleIdReaderData))
+                    .DisposeWith(disposables);
+
                 Disposable.Create(() =>
                     {
                         endReadCommand.OnNext(Unit.Default);

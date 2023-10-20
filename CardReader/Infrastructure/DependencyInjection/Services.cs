@@ -68,7 +68,8 @@ namespace CardReader.Infrastructure.DependencyInjection
                 .RegisterConstantAnd<IConfigurationProvider>(mc)
                 .RegisterAnd<IMapper>(() => new Mapper(mc, type => Locator.Current.GetService(type)))
                 .RegisterAnd(() => new IdReaderCardTypeResolver(Locator.Current.GetRequiredService<IApplicationResources>()))
-                .RegisterAnd(() => new IdReaderPortraitImageResolver());
+                .RegisterAnd(() => new IdReaderPortraitImageResolver())
+                .RegisterAnd(() => new VehicleIdTooltipResolver(Locator.Current.GetRequiredService<IApplicationResources>()));
         }
 
         private static IMutableDependencyResolver RegisterServicesAnd(this IMutableDependencyResolver resolver)

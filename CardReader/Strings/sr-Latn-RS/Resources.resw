@@ -412,6 +412,15 @@ Neki element se nece osvežiti bez restrartovanja aplikacije.</value>
   <data name="VehicleIdReaderItemName" xml:space="preserve">
     <value>Saobraćajna</value>
   </data>
+  <data name="VehicleIdRegistrationDataEmpty" xml:space="preserve">
+    <value>Registracioni podaci {0} su prazni.</value>
+  </data>
+  <data name="VehicleIdRegistrationDataInvalid" xml:space="preserve">
+    <value>Registracioni podaci {0} nisu ispravni. ({1}, {2})</value>
+  </data>
+  <data name="VehicleIdRegistrationDataValid" xml:space="preserve">
+    <value>Registracioni podaci {0} su ispravni.</value>
+  </data>
   <data name="VehicleLoadCtl.Header" xml:space="preserve">
     <value>Nosivost vozila</value>
   </data>

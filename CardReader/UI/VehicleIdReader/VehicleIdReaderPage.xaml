@@ -131,6 +131,23 @@
                      Text="{x:Bind ViewModel.ReaderData.UsersName, Mode=OneWay}" IsReadOnly="True"/>
             <TextBox x:Name="UsersAddressCtl" x:Uid="UsersAddressCtl"
                      Text="{x:Bind ViewModel.ReaderData.UsersAddress, Mode=OneWay}" IsReadOnly="True"/>
+            <GridView ItemsSource="{x:Bind ViewModel.ReaderData.RegistrationData, Mode=OneWay}" SelectionMode="None">
+                <GridView.ItemContainerStyle>
+                    <Style TargetType="GridViewItem">
+                        <Setter Property="MinWidth" Value="30"/>
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
+                </GridView.ItemContainerStyle>
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="local:VehicleIdRegistrationData">
+                        <controls:ThreeStateCheck Width="30" State="{x:Bind IsValid, Mode=OneWay}">
+                            <ToolTipService.ToolTip>
+                                <ToolTip Content="{x:Bind Tooltip, Mode=OneWay}" />
+                            </ToolTipService.ToolTip>
+                        </controls:ThreeStateCheck>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
         </StackPanel>
     </Grid>
 </local:VehicleIdReaderPageBase>

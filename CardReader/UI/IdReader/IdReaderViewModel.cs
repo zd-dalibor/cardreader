@@ -108,6 +108,11 @@ namespace CardReader.UI.IdReader
 
             this.WhenActivated(disposables =>
             {
+                applicationResources.Observe()
+                    .ObserveOn(RxApp.MainThreadScheduler)
+                    .Subscribe(_ => UpdateReaderData(applicationState.LastIdReaderData))
+                    .DisposeWith(disposables);
+
                 Disposable.Create(() =>
                     {
                         endReadCommand.OnNext(Unit.Default);

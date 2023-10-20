@@ -2,6 +2,7 @@
 {
     public class VehicleIdRegistrationData
     {
+        public string? Index { get; set; }
         public byte[]? RegistrationData { get; set; }
         public byte[]? SignatureData { get; set; }
         public byte[]? IssuingAuthority { get; set; }

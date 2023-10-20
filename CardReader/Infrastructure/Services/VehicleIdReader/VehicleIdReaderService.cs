@@ -75,6 +75,7 @@ namespace CardReader.Infrastructure.Services.VehicleIdReader
                     var tmp = ReadRegistration(i, reader);
                     var regData = new VehicleIdRegistrationData
                     {
+                        Index = i.ToString(),
                         RegistrationData = CopyBytes(tmp.registrationData, tmp.registrationDataSize),
                         SignatureData = CopyBytes(tmp.signatureData, tmp.signatureDataSize),
                         IssuingAuthority = CopyBytes(tmp.issuingAuthority, tmp.issuingAuthoritySize)
@@ -93,6 +94,10 @@ namespace CardReader.Infrastructure.Services.VehicleIdReader
 
         private static void VerifyRegistrationData(VehicleIdRegistrationData regData)
         {
+            if (regData?.SignatureData == null
+                || regData.IssuingAuthority == null
+                || regData.RegistrationData == null) return;
+
             try
             {
                 var signature = regData.SignatureData.Take(256).ToArray();
@@ -223,7 +228,12 @@ namespace CardReader.Infrastructure.Services.VehicleIdReader
 
         public Task<VehicleIdData> ReadAsync(string cardReaderName, int apiVersion, CancellationToken token = default)
         {
-            return Task.Factory.StartNew(() => Read(cardReaderName, apiVersion), token);
+            return Task.Factory.StartNew(() =>
+            {
+                var result = Read(cardReaderName ?? throw new ArgumentNullException(nameof(cardReaderName)), apiVersion);
+                token.ThrowIfCancellationRequested();
+                return result;
+            }, token);
         }
     }
 }
