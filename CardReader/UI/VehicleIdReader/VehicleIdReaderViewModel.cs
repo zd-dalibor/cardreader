@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.NetworkInformation;
 using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
@@ -15,16 +14,14 @@ using CardReader.Core.Service.VehicleIdReader;
 using CardReader.Core.State;
 using CardReader.Infrastructure.Events;
 using CardReader.Infrastructure.Exceptions;
-using CardReader.Services.Globalization;
 using Microsoft.UI.Xaml.Controls;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using Serilog.Core;
 using Splat;
 
 namespace CardReader.UI.VehicleIdReader
 {
-    public class VehicleIdReaderViewModel : ReactiveObject, IActivatableViewModel, IEnableLogger
+    public class VehicleIdReaderViewModel : ReactiveObject, IActivatableViewModel
     {
         [Reactive]
         public bool ShowMessage { get; set; }
