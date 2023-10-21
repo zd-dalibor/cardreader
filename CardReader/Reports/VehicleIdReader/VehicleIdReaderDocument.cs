@@ -9,7 +9,7 @@ namespace CardReader.Reports.VehicleIdReader
 {
     internal class VehicleIdReaderDocument : IDocument
     {
-        public VehicleIdData Model { get; }
+        private VehicleIdData Model { get; }
 
         private readonly IApplicationResources resources;
 

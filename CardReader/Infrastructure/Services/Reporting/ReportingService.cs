@@ -8,6 +8,7 @@ using CardReader.Core.Model.IdReader;
 using CardReader.Core.Model.VehicleIdReader;
 using CardReader.Core.Service.Reporting;
 using CardReader.Core.Service.Resources;
+using CardReader.Reports.IdReader;
 using CardReader.Reports.VehicleIdReader;
 using QuestPDF.Drawing;
 using QuestPDF.Fluent;
@@ -47,12 +48,10 @@ namespace CardReader.Infrastructure.Services.Reporting
             VehicleIdReport(readerDate, ct);
         }
 
-        private static void IdReaderReport(IdReaderData readerDate, CancellationToken ct)
+        private void IdReaderReport(IdReaderData readerDate, CancellationToken ct)
         {
-            /*var localAppData = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
-            var resultFile = Path.Combine(localAppData, $@"Reports\{IdReaderReferenceName}.pdf");
-            
-            Process.Start(new ProcessStartInfo(resultFile) { UseShellExecute = true });*/
+            var document = new IdReaderDocument(readerDate, resources);
+            Report(document, IdReaderReferenceName, ct);
         }
         
         private void VehicleIdReport(VehicleIdData readerDate, CancellationToken ct)
@@ -63,7 +62,7 @@ namespace CardReader.Infrastructure.Services.Reporting
 
         private static void Report(IDocument document, string fileName, CancellationToken ct)
         {
-            var localAppData = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
+            var localAppData = ApplicationData.Current.LocalFolder.Path;
             var resultFile = Path.Combine(localAppData, $@"Reports\{fileName}.pdf");
             CreateParentDirectory(resultFile);
             document.GeneratePdf(resultFile);

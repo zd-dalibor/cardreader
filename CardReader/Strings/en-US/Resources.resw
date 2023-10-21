@@ -222,6 +222,102 @@
   <data name="HouseNumberCtl.Header" xml:space="preserve">
     <value>House Number</value>
   </data>
+  <data name="IdDocumentAddressDate" xml:space="preserve">
+    <value>Address Date</value>
+  </data>
+  <data name="IdDocumentAddressLabel" xml:space="preserve">
+    <value>Address Label</value>
+  </data>
+  <data name="IdDocumentApartmentNumber" xml:space="preserve">
+    <value>Apartment Number</value>
+  </data>
+  <data name="IdDocumentCardType" xml:space="preserve">
+    <value>Card Type</value>
+  </data>
+  <data name="IdDocumentChipSerialNumber" xml:space="preserve">
+    <value>Chip Serial Number</value>
+  </data>
+  <data name="IdDocumentCommunity" xml:space="preserve">
+    <value>Community</value>
+  </data>
+  <data name="IdDocumentCommunityOfBirth" xml:space="preserve">
+    <value>Community of Birth</value>
+  </data>
+  <data name="IdDocumentDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="IdDocumentDateOfBirth" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="IdDocumentDocRegNo" xml:space="preserve">
+    <value>Document Registration Number</value>
+  </data>
+  <data name="IdDocumentDocumentSerialNumber" xml:space="preserve">
+    <value>Serial Number</value>
+  </data>
+  <data name="IdDocumentDocumentType" xml:space="preserve">
+    <value>Document Type</value>
+  </data>
+  <data name="IdDocumentEntrance" xml:space="preserve">
+    <value>Entrance</value>
+  </data>
+  <data name="IdDocumentExpiryDate" xml:space="preserve">
+    <value>Expiry Date</value>
+  </data>
+  <data name="IdDocumentFloor" xml:space="preserve">
+    <value>Floor</value>
+  </data>
+  <data name="IdDocumentGivenName" xml:space="preserve">
+    <value>Given Name</value>
+  </data>
+  <data name="IdDocumentHouseLetter" xml:space="preserve">
+    <value>House Letter</value>
+  </data>
+  <data name="IdDocumentHouseNumber" xml:space="preserve">
+    <value>House Number</value>
+  </data>
+  <data name="IdDocumentIssuingAuthority" xml:space="preserve">
+    <value>Issuing Authority</value>
+  </data>
+  <data name="IdDocumentIssuingDate" xml:space="preserve">
+    <value>Issuing Date</value>
+  </data>
+  <data name="IdDocumentNationalityFull" xml:space="preserve">
+    <value>Nationality Full</value>
+  </data>
+  <data name="IdDocumentParentGivenName" xml:space="preserve">
+    <value>Parent Given Name</value>
+  </data>
+  <data name="IdDocumentPersonalNumber" xml:space="preserve">
+    <value>Personal Number</value>
+  </data>
+  <data name="IdDocumentPlace" xml:space="preserve">
+    <value>Place</value>
+  </data>
+  <data name="IdDocumentPlaceOfBirth" xml:space="preserve">
+    <value>Place of Birth</value>
+  </data>
+  <data name="IdDocumentSex" xml:space="preserve">
+    <value>Sex</value>
+  </data>
+  <data name="IdDocumentState" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="IdDocumentStateOfBirth" xml:space="preserve">
+    <value>State of Birth</value>
+  </data>
+  <data name="IdDocumentStatusOfForeigner" xml:space="preserve">
+    <value>Status of Foreigner</value>
+  </data>
+  <data name="IdDocumentStreet" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="IdDocumentSurname" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+  <data name="IdDocumentTitle" xml:space="preserve">
+    <value>ID</value>
+  </data>
   <data name="IdReaderButtonCtl.Content" xml:space="preserve">
     <value>ID</value>
   </data>
