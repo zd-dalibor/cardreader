@@ -142,7 +142,6 @@ namespace CardReader
 
         private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
         {
-            Debug.WriteLine("MainWindow_Activated, IsWindowMaximized: " + this.IsWindowMaximized());
             store.Dispatch(new ChangeMainWindowActivationAction
             {
                 IsActive = args.WindowActivationState != WindowActivationState.Deactivated

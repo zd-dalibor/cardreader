@@ -67,8 +67,6 @@ namespace CardReader.UI.VehicleIdReader
         private readonly IApplicationResources applicationResources;
         private readonly IVehicleIdReaderService vehicleIdReaderService;
         private readonly IMapper mapper;
-        private readonly ILocaleService localeService;
-        private readonly IApplicationSettings settings;
         private readonly IReportingService reportingService;
 
         public VehicleIdReaderViewModel(
@@ -76,16 +74,12 @@ namespace CardReader.UI.VehicleIdReader
             IApplicationResources applicationResources, 
             IVehicleIdReaderService vehicleIdReaderService,
             IMapper mapper,
-            ILocaleService localeService,
-            IApplicationSettings settings,
             IReportingService reportingService)
         {
             this.applicationState = applicationState;
             this.applicationResources = applicationResources;
             this.vehicleIdReaderService = vehicleIdReaderService;
             this.mapper = mapper;
-            this.localeService = localeService;
-            this.settings = settings;
             this.reportingService = reportingService;
             Activator = new ViewModelActivator();
             ReaderData = new VehicleIdData();
@@ -173,10 +167,9 @@ namespace CardReader.UI.VehicleIdReader
         {
             CanReport = false;
             var readerDate = applicationState.LastVehicleIdReaderData ?? new Core.Model.VehicleIdReader.VehicleIdData();
-            var currentLocale = settings.CurrentLocale(localeService.DefaultLocale);
             try
             {
-                await reportingService.VehicleIdReportAsync(readerDate, currentLocale, ct);
+                await reportingService.VehicleIdReportAsync(readerDate, ct);
             }
             catch (OperationCanceledException)
             {

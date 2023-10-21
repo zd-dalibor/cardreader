@@ -400,6 +400,123 @@ Some element will not be refreshed until application restart.</value>
   <data name="VehicleCategoryCtl.Header" xml:space="preserve">
     <value>Vehicle Category</value>
   </data>
+  <data name="VehicleIdDocumentAuthorityIssuing" xml:space="preserve">
+    <value>Authority Issuing</value>
+  </data>
+  <data name="VehicleIdDocumentColourOfVehicle" xml:space="preserve">
+    <value>Colour of Vehicle</value>
+  </data>
+  <data name="VehicleIdDocumentCommercialDescription" xml:space="preserve">
+    <value>Commercial Description</value>
+  </data>
+  <data name="VehicleIdDocumentCompetentAuthority" xml:space="preserve">
+    <value>Competent Authority</value>
+  </data>
+  <data name="VehicleIdDocumentDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="VehicleIdDocumentDateOfFirstRegistration" xml:space="preserve">
+    <value>Date of First Registration</value>
+  </data>
+  <data name="VehicleIdDocumentEngineCapacity" xml:space="preserve">
+    <value>Engine Capacity</value>
+  </data>
+  <data name="VehicleIdDocumentEngineIdNumber" xml:space="preserve">
+    <value>Engine ID Number</value>
+  </data>
+  <data name="VehicleIdDocumentExpiryDate" xml:space="preserve">
+    <value>Expiry Date</value>
+  </data>
+  <data name="VehicleIdDocumentIssuingDate" xml:space="preserve">
+    <value>Issuing Date</value>
+  </data>
+  <data name="VehicleIdDocumentMaximumNetPower" xml:space="preserve">
+    <value>Maximum Net Power</value>
+  </data>
+  <data name="VehicleIdDocumentMaximumPermissibleLadenMass" xml:space="preserve">
+    <value>Maximum Permissible Laden Mass</value>
+  </data>
+  <data name="VehicleIdDocumentNumberOfAxles" xml:space="preserve">
+    <value>Number of Axles</value>
+  </data>
+  <data name="VehicleIdDocumentNumberOfSeats" xml:space="preserve">
+    <value>Number of Seats</value>
+  </data>
+  <data name="VehicleIdDocumentNumberOfStandingPlaces" xml:space="preserve">
+    <value>Number of Standing Places</value>
+  </data>
+  <data name="VehicleIdDocumentOwnerAddress" xml:space="preserve">
+    <value>Owner Address</value>
+  </data>
+  <data name="VehicleIdDocumentOwnerName" xml:space="preserve">
+    <value>Owner Name</value>
+  </data>
+  <data name="VehicleIdDocumentOwnersPersonalNo" xml:space="preserve">
+    <value>Owners Personal No</value>
+  </data>
+  <data name="VehicleIdDocumentOwnersSurnameOrBusinessName" xml:space="preserve">
+    <value>Owners Surname or Business Name</value>
+  </data>
+  <data name="VehicleIdDocumentPowerWeightRatio" xml:space="preserve">
+    <value>Power Weight Ratio</value>
+  </data>
+  <data name="VehicleIdDocumentRegistrationNumberOfVehicle" xml:space="preserve">
+    <value>Registration Number of Vehicle</value>
+  </data>
+  <data name="VehicleIdDocumentRestrictionToChangeOwner" xml:space="preserve">
+    <value>Restriction to Change Owner</value>
+  </data>
+  <data name="VehicleIdDocumentSerialNumber" xml:space="preserve">
+    <value>Serial Number</value>
+  </data>
+  <data name="VehicleIdDocumentStateIssuing" xml:space="preserve">
+    <value>State Issuing</value>
+  </data>
+  <data name="VehicleIdDocumentTitle" xml:space="preserve">
+    <value>Vehicle ID</value>
+  </data>
+  <data name="VehicleIdDocumentTypeApprovalNumber" xml:space="preserve">
+    <value>TypeApproval Number</value>
+  </data>
+  <data name="VehicleIdDocumentTypeOfFuel" xml:space="preserve">
+    <value>Type of Fuel</value>
+  </data>
+  <data name="VehicleIdDocumentUnambiguousNumber" xml:space="preserve">
+    <value>Unambiguous Number</value>
+  </data>
+  <data name="VehicleIdDocumentUsersAddress" xml:space="preserve">
+    <value>Users Address</value>
+  </data>
+  <data name="VehicleIdDocumentUsersName" xml:space="preserve">
+    <value>Users Name</value>
+  </data>
+  <data name="VehicleIdDocumentUsersPersonalNo" xml:space="preserve">
+    <value>Users Personal No</value>
+  </data>
+  <data name="VehicleIdDocumentUsersSurnameOrBusinessName" xml:space="preserve">
+    <value>Users Surname or Business Name</value>
+  </data>
+  <data name="VehicleIdDocumentVehicleCategory" xml:space="preserve">
+    <value>Vehicle Category</value>
+  </data>
+  <data name="VehicleIdDocumentVehicleIdNumber" xml:space="preserve">
+    <value>VehicleId Number</value>
+  </data>
+  <data name="VehicleIdDocumentVehicleLoad" xml:space="preserve">
+    <value>Vehicle Load</value>
+  </data>
+  <data name="VehicleIdDocumentVehicleMake" xml:space="preserve">
+    <value>Vehicle Make</value>
+  </data>
+  <data name="VehicleIdDocumentVehicleMass" xml:space="preserve">
+    <value>Vehicle Mass</value>
+  </data>
+  <data name="VehicleIdDocumentVehicleType" xml:space="preserve">
+    <value>Vehicle Type</value>
+  </data>
+  <data name="VehicleIdDocumentYearOfProduction" xml:space="preserve">
+    <value>Year of Production</value>
+  </data>
   <data name="VehicleIdNumberCtl.Header" xml:space="preserve">
     <value>VehicleId Number</value>
   </data>

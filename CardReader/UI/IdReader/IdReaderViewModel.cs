@@ -7,8 +7,6 @@ using System.Reactive.Subjects;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using CardReader.Core.Service.Configuration;
-using CardReader.Core.Service.Globalization;
 using CardReader.Core.Service.IdReader;
 using CardReader.Core.Service.Reporting;
 using CardReader.Core.Service.Resources;
@@ -66,8 +64,6 @@ namespace CardReader.UI.IdReader
         private readonly IApplicationResources applicationResources;
         private readonly IIdReaderService idReaderService;
         private readonly IReportingService reportingService;
-        private readonly ILocaleService localeService;
-        private readonly IApplicationSettings settings;
         private readonly IMapper mapper;
 
         public IdReaderViewModel(
@@ -75,8 +71,6 @@ namespace CardReader.UI.IdReader
             IApplicationResources applicationResources,
             IIdReaderService idReaderService,
             IReportingService reportingService,
-            ILocaleService localeService,
-            IApplicationSettings settings,
             IMapper mapper)
         {
             this.applicationState = applicationState;
@@ -84,8 +78,6 @@ namespace CardReader.UI.IdReader
             this.idReaderService = idReaderService;
             this.mapper = mapper;
             this.reportingService = reportingService;
-            this.settings = settings;
-            this.localeService = localeService;
 
             Activator = new ViewModelActivator();
             ReaderData = new IdReaderData();
@@ -181,10 +173,9 @@ namespace CardReader.UI.IdReader
         {
             CanReport = false;
             var readerDate = applicationState.LastIdReaderData ?? new Core.Model.IdReader.IdReaderData();
-            var currentLocale = settings.CurrentLocale(localeService.DefaultLocale);
             try
             {
-                await reportingService.IdReaderReportAsync(readerDate, currentLocale, ct);
+                await reportingService.IdReaderReportAsync(readerDate, ct);
             }
             catch (OperationCanceledException)
             {

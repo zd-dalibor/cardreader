@@ -400,6 +400,123 @@ Neki element se nece osvežiti bez restrartovanja aplikacije.</value>
   <data name="VehicleCategoryCtl.Header" xml:space="preserve">
     <value>Vrsta vozila</value>
   </data>
+  <data name="VehicleIdDocumentAuthorityIssuing" xml:space="preserve">
+    <value>Organ izdavanja saobraćajne dozvole</value>
+  </data>
+  <data name="VehicleIdDocumentColourOfVehicle" xml:space="preserve">
+    <value>Boja vozila</value>
+  </data>
+  <data name="VehicleIdDocumentCommercialDescription" xml:space="preserve">
+    <value>Komercijalna oznaka (model)</value>
+  </data>
+  <data name="VehicleIdDocumentCompetentAuthority" xml:space="preserve">
+    <value>Ovlašćeni organ</value>
+  </data>
+  <data name="VehicleIdDocumentDate" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="VehicleIdDocumentDateOfFirstRegistration" xml:space="preserve">
+    <value>Datum prve registracije</value>
+  </data>
+  <data name="VehicleIdDocumentEngineCapacity" xml:space="preserve">
+    <value>Radna zapremina motora</value>
+  </data>
+  <data name="VehicleIdDocumentEngineIdNumber" xml:space="preserve">
+    <value>Broj motora</value>
+  </data>
+  <data name="VehicleIdDocumentExpiryDate" xml:space="preserve">
+    <value>Datum isteka</value>
+  </data>
+  <data name="VehicleIdDocumentIssuingDate" xml:space="preserve">
+    <value>Datum izdavanja</value>
+  </data>
+  <data name="VehicleIdDocumentMaximumNetPower" xml:space="preserve">
+    <value>Snaga motora u kW</value>
+  </data>
+  <data name="VehicleIdDocumentMaximumPermissibleLadenMass" xml:space="preserve">
+    <value>Najvćeda dozvoljena masa</value>
+  </data>
+  <data name="VehicleIdDocumentNumberOfAxles" xml:space="preserve">
+    <value>Broj osovina</value>
+  </data>
+  <data name="VehicleIdDocumentNumberOfSeats" xml:space="preserve">
+    <value>Broj mesta za sedenje uključujući i mesto vozača</value>
+  </data>
+  <data name="VehicleIdDocumentNumberOfStandingPlaces" xml:space="preserve">
+    <value>Broj mesta za stajanje</value>
+  </data>
+  <data name="VehicleIdDocumentOwnerAddress" xml:space="preserve">
+    <value>Prebivalište (sedište) i adresa vlasnika vozila</value>
+  </data>
+  <data name="VehicleIdDocumentOwnerName" xml:space="preserve">
+    <value>Ime vlasnika</value>
+  </data>
+  <data name="VehicleIdDocumentOwnersPersonalNo" xml:space="preserve">
+    <value>JMBG, odnosno matični broj vlasnika vozila</value>
+  </data>
+  <data name="VehicleIdDocumentOwnersSurnameOrBusinessName" xml:space="preserve">
+    <value>Prezime vlasnika (firma odnosno naziv za pravna lica)</value>
+  </data>
+  <data name="VehicleIdDocumentPowerWeightRatio" xml:space="preserve">
+    <value>Odnos snaga/masa u kg/kW (samo za motocikle)</value>
+  </data>
+  <data name="VehicleIdDocumentRegistrationNumberOfVehicle" xml:space="preserve">
+    <value>Registarski broj vozila</value>
+  </data>
+  <data name="VehicleIdDocumentRestrictionToChangeOwner" xml:space="preserve">
+    <value>Zabrana otuđenja vozila do</value>
+  </data>
+  <data name="VehicleIdDocumentSerialNumber" xml:space="preserve">
+    <value>Serijski broj saobraćajne dozvole</value>
+  </data>
+  <data name="VehicleIdDocumentStateIssuing" xml:space="preserve">
+    <value>Država izdavanja</value>
+  </data>
+  <data name="VehicleIdDocumentTitle" xml:space="preserve">
+    <value>Saobraćajna</value>
+  </data>
+  <data name="VehicleIdDocumentTypeApprovalNumber" xml:space="preserve">
+    <value>Homologacijska oznaka</value>
+  </data>
+  <data name="VehicleIdDocumentTypeOfFuel" xml:space="preserve">
+    <value>Vrsta goriva ili pogona</value>
+  </data>
+  <data name="VehicleIdDocumentUnambiguousNumber" xml:space="preserve">
+    <value>Jedinstveni broj pod kojim je vozilo upisano u registar</value>
+  </data>
+  <data name="VehicleIdDocumentUsersAddress" xml:space="preserve">
+    <value>Prebivalište (sedište) i adresa korisnika vozila</value>
+  </data>
+  <data name="VehicleIdDocumentUsersName" xml:space="preserve">
+    <value>Ime korisnika vozila</value>
+  </data>
+  <data name="VehicleIdDocumentUsersPersonalNo" xml:space="preserve">
+    <value>JMBG, odnosno matični broj korisnika vozila</value>
+  </data>
+  <data name="VehicleIdDocumentUsersSurnameOrBusinessName" xml:space="preserve">
+    <value>Prezime korisnika vozila (firma odnosno naziv za pravna lica)</value>
+  </data>
+  <data name="VehicleIdDocumentVehicleCategory" xml:space="preserve">
+    <value>Vrsta vozila</value>
+  </data>
+  <data name="VehicleIdDocumentVehicleIdNumber" xml:space="preserve">
+    <value>Broj šasije</value>
+  </data>
+  <data name="VehicleIdDocumentVehicleLoad" xml:space="preserve">
+    <value>Nosivost vozila</value>
+  </data>
+  <data name="VehicleIdDocumentVehicleMake" xml:space="preserve">
+    <value>Marka</value>
+  </data>
+  <data name="VehicleIdDocumentVehicleMass" xml:space="preserve">
+    <value>Masa</value>
+  </data>
+  <data name="VehicleIdDocumentVehicleType" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="VehicleIdDocumentYearOfProduction" xml:space="preserve">
+    <value>Godina proizvodnje</value>
+  </data>
   <data name="VehicleIdNumberCtl.Header" xml:space="preserve">
     <value>Broj šasije</value>
   </data>
