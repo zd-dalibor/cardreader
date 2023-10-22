@@ -6,7 +6,7 @@ Available modes:
     UnregServerPerUser - unregister local server per user
     RegServerPerUser   - register local server per user
 #>
-$Mode = 'RegServerPerUser'
+$Mode = 'UnregServerPerUser'
 
 $Server1 = Join-Path "$ScriptDir" "IdReader.exe" | Resolve-Path
 $Server2 = Join-Path "$ScriptDir" "VehicleIdReader.exe" | Resolve-Path

@@ -9,7 +9,7 @@ SET SCRIPT_DIR=%~dp0
 ::    UnregServerPerUser - unregister local server per user
 ::    RegServerPerUser   - register local server per user
 ::
-SET MODE=RegServerPerUser
+SET MODE=UnregServerPerUser
 
 SET SERVER1=%SCRIPT_DIR%\IdReader.exe
 for %%i in ("%SERVER1%") do SET "SERVER1=%%~fi"

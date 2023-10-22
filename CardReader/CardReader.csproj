@@ -19,30 +19,33 @@
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Auto</AppxBundle>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
     <PackageCertificateKeyFile>$(SolutionDir)Doc\signing.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
 
-  <ItemGroup>
+    <PropertyGroup Condition="'$(Platform)' == 'x64' Or '$(Platform)' == 'ARM64'">
+	    <DefineConstants>WIN64;$(DefineConstants)</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
     <COMReference Include="IdReaderLib">
-      <WrapperTool>tlbimp</WrapperTool>
-      <VersionMinor>0</VersionMinor>
-      <VersionMajor>1</VersionMajor>
-      <Guid>280de70d-0847-4e73-89c1-c3b43da1a0e8</Guid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <VersionMinor>0</VersionMinor>
+        <VersionMajor>1</VersionMajor>
+        <Guid>280de70d-0847-4e73-89c1-c3b43da1a0e8</Guid>
       <Lcid>0</Lcid>
       <Isolated>false</Isolated>
       <EmbedInteropTypes>true</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="VehicleIdReaderLib">
-      <WrapperTool>tlbimp</WrapperTool>
-      <VersionMinor>0</VersionMinor>
-      <VersionMajor>1</VersionMajor>
-      <Guid>4c275aff-dea2-47ef-9ba3-5dcca319dccc</Guid>
-      <Lcid>0</Lcid>
-      <Isolated>false</Isolated>
-      <EmbedInteropTypes>true</EmbedInteropTypes>
-    </COMReference>
-  </ItemGroup>
+      </COMReference>
+      <COMReference Include="VehicleIdReaderLib">
+        <WrapperTool>tlbimp</WrapperTool>
+        <VersionMinor>0</VersionMinor>
+        <VersionMajor>1</VersionMajor>
+        <Guid>4c275aff-dea2-47ef-9ba3-5dcca319dccc</Guid>
+        <Lcid>0</Lcid>
+        <Isolated>false</Isolated>
+        <EmbedInteropTypes>true</EmbedInteropTypes>
+      </COMReference>
+    </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />

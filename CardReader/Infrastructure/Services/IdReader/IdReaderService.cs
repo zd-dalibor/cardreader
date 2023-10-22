@@ -150,10 +150,17 @@ namespace CardReader.Infrastructure.Services.IdReader
             return Encoding.UTF8.GetString(data.Take(size).Select(x => (byte)x).ToArray());
         }
 
+        #if WIN64
         private static void SetOption(IMainReader reader, int optionId, ulong optionValue)
         {
             VerifyResult(reader.EidSetOption(optionId, optionValue));
         }
+        #else
+        private static void SetOption(IMainReader reader, int optionId, uint optionValue)
+        {
+            VerifyResult(reader.EidSetOption(optionId, optionValue));
+        }
+        #endif
 
         private static void Startup(IMainReader reader, int apiVersion)
         {
