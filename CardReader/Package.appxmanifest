@@ -9,8 +9,8 @@
 
   <Identity
     Name="b3d4a541-612c-4a1a-b3b4-2ce97fb25d40"
-    Publisher="E=office@myhome.lan, CN=z_dalibor, OU=IT, O=My Home, L=Belgrade, S=City of Belgrade, C=RS"
-    Version="1.0.1.0" />
+    Publisher="CN=z_dalibor, O=My Home, L=Belgrade, S=RS-00, C=RS"
+    Version="1.0.6.0" />
 
   <mp:PhoneIdentity PhoneProductId="b3d4a541-612c-4a1a-b3b4-2ce97fb25d40" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -31,12 +31,12 @@
   </Resources>
 
   <Applications>
-    <Application Id="App"
+    <Application Id="CardReader"
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="ms-resource:AppDisplayName"
-        Description="ms-resource:AppDescription"
+        DisplayName="Card Reader"
+        Description="Card Reader Appliation"
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">

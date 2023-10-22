@@ -7,11 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IdReader", "IdReader\IdRead
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VehicleIdReader", "VehicleIdReader\VehicleIdReader.vcxproj", "{28252E6A-3C99-4721-B656-DE1151107E25}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{96302C3D-A938-4CB4-B8FC-B29C29EEAD23}"
-	ProjectSection(SolutionItems) = preProject
-		README.md = README.md
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardReader.Core", "CardReader.Core\CardReader.Core.csproj", "{61D67684-313B-46B5-90BC-0F3FFD015A7F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardReader.Tests", "CardReader.Tests\CardReader.Tests.csproj", "{EF2BFF5A-24B9-43D4-AD25-D9F89A6AB8A6}"

@@ -21,4 +21,3 @@ Appliation for reading:
 ## Signing
 
 * Certificate `Doc\signing.pfx`
-* Password `Passw0rd`
