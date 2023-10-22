@@ -132,4 +132,4 @@ Copy-Item -Path ".\README.md" -Destination $DestDir -Force
 
 Write-Host "###### Compress Files ######"
 
-Compress-Archive -Path "$DestDir\*" -DestinationPath "$DestDir.zip"
+Compress-Archive -Path "$DestDir\*" -DestinationPath "$DestDir.zip" -Force
