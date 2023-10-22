@@ -2,8 +2,8 @@
 
 Appliation for reading:
 
-	* eIDs (Electronic identification) in Serbia - IdReader
-	* Vehicle electronic identification in Serbia - VehicleIdReader
+  * eIDs (Electronic identification) in Serbia - IdReader
+  * Vehicle electronic identification in Serbia - VehicleIdReader
 
 ## Structure
 
@@ -39,9 +39,9 @@ Quick build and packaging: use scripts in `Scripts` folder.
 
 Build order:
 
-	* Build `IdReader` and register COM component
-	* Build `VehicleIdReader` and register COM component
-	* Build `CardReader` and run application
+  * Build `IdReader` and register COM component
+  * Build `VehicleIdReader` and register COM component
+  * Build `CardReader` and run application
 
 For registering and deregistering COM components check `reg.(ps1,cmd)` & `unreg.(ps1,cmd)` scripts in `Script` folder.
 
