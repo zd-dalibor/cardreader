@@ -59,6 +59,7 @@ namespace CardReader
 
             UpdateTheme();
             UpdateWindowSize();
+            UpdateWindowIcon();
         }
 
         
@@ -117,6 +118,11 @@ namespace CardReader
             {
                 this.MaximizeWindow();
             }
+        }
+
+        private void UpdateWindowIcon()
+        {
+            AppWindow.SetIcon("Assets/AppIcon.ico");
         }
 
         private void MainWindow_SizeChanged(object sender, WindowSizeChangedEventArgs args)

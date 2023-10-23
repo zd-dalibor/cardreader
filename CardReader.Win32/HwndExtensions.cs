@@ -27,6 +27,5 @@ namespace CardReader.Win32
         {
             return PInvoke.SendMessage(new HWND(hwnd), PInvoke.WM_SYSCOMMAND, PInvoke.SC_MAXIMIZE, 0);
         }
-
     }
 }

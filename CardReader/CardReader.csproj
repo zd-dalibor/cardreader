@@ -20,6 +20,7 @@
     <AppxBundle>Auto</AppxBundle>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <PackageCertificateKeyFile>$(SolutionDir)Doc\signing.pfx</PackageCertificateKeyFile>
+    <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
     <PropertyGroup Condition="'$(Platform)' == 'x64' Or '$(Platform)' == 'ARM64'">
