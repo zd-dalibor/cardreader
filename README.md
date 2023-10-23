@@ -1,6 +1,6 @@
 # CardReader
 
-Appliation for reading:
+Application for reading:
 
 * eIDs (Electronic identification) in Serbia - IdReader
 * Vehicle electronic identification in Serbia - VehicleIdReader
