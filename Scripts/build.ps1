@@ -100,7 +100,8 @@ $ComRegistrationFiles = @(
 
 Write-Host "###### Prepare Build ######"
 
-& $msbuild .\CardReader.sln "/t:Clean;Restore"
+
+& $msbuild .\CardReader.sln "/t:Clean;Restore" "/p:Configuration=$Configuartion"
 
 Write-Host "###### Building IdReader ######"
 
