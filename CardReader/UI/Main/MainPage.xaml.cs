@@ -46,6 +46,7 @@ namespace CardReader.UI.Main
                     .DisposeWith(disposables);
 
                 MessageBus.Current.Listen<ErrorEventArgs>()
+                    .ObserveOn(RxApp.MainThreadScheduler)
                     .Select(args => Observable.FromAsync(async () => await OnError(args)))
                     .Concat()
                     .Subscribe()
@@ -66,7 +67,7 @@ namespace CardReader.UI.Main
                 Title = resources.GetString("ErrorDialogTitle"),
                 Content = resources.GetString(("ErrorDialogContent"), obj.Error.Message),
                 CloseButtonText = resources.GetString("ErrorDialogCloseText"),
-                XamlRoot = Content.XamlRoot
+                XamlRoot = XamlRoot
             };
             await dialog.ShowAsync();
         }

@@ -5,6 +5,9 @@ using CardReader.Infrastructure.DependencyInjection;
 using ReactiveUI;
 using Splat;
 using System.Reactive.Linq;
+using CardReader.UI.About;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -39,6 +42,19 @@ namespace CardReader.UI.Settings
             SelectLanguageCtl.Header = resources.GetString("SelectLanguageCtl/Header");
             SelectThemeCtl.Header = resources.GetString("SelectThemeCtl/Header");
             SelectThemeMsg.Text = resources.GetString("SelectThemeMsg/Text");
+            AboutBtnCtl.Content = resources.GetString("AboutBtnCtl/Content");
+        }
+
+        private async void AboutBtnCtl_OnClick(object sender, RoutedEventArgs e)
+        {
+            var dialog = new ContentDialog
+            {
+                Title = resources.GetString("AboutDialogTitle"),
+                Content = new AboutPage(),
+                CloseButtonText = resources.GetString("AboutDialogCloseText"),
+                XamlRoot = XamlRoot
+            };
+            await dialog.ShowAsync();
         }
     }
 }

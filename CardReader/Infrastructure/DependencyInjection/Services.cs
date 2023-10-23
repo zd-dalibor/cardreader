@@ -27,6 +27,7 @@ using CardReader.Core.Service.VehicleIdReader;
 using CardReader.Infrastructure.AutoMapper;
 using CardReader.Infrastructure.Services.Reporting;
 using CardReader.Infrastructure.Services.VehicleIdReader;
+using CardReader.UI.About;
 using CardReader.UI.Helper;
 
 namespace CardReader.Infrastructure.DependencyInjection
@@ -117,7 +118,8 @@ namespace CardReader.Infrastructure.DependencyInjection
                     Locator.Current.GetRequiredService<IApplicationResources>(),
                     Locator.Current.GetRequiredService<IVehicleIdReaderService>(),
                     Locator.Current.GetRequiredService<IMapper>(),
-                    Locator.Current.GetRequiredService<IReportingService>()));
+                    Locator.Current.GetRequiredService<IReportingService>()))
+                .RegisterAnd(() => new AboutViewModel());
         }
     }
 }

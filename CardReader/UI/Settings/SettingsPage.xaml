@@ -22,6 +22,7 @@
                 <TextBlock x:Name="SelectThemeMsg" x:Uid="SelectThemeMsg"
                            FontStyle="Italic"/>
             </StackPanel>
+            <Button x:Name="AboutBtnCtl" x:Uid="AboutBtnCtl" Click="AboutBtnCtl_OnClick"/>
         </StackPanel>
     </Grid>
 </local:SettingsPageBase>

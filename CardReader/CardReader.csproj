@@ -27,6 +27,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="UI\About\AboutPage.xaml" />
+    </ItemGroup>
+
+    <ItemGroup>
     <COMReference Include="IdReaderLib">
         <WrapperTool>tlbimp</WrapperTool>
         <VersionMinor>0</VersionMinor>
@@ -107,6 +111,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Fonts\Open_Sans\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UI\About\AboutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <!-- 
