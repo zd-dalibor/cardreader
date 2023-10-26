@@ -61,7 +61,7 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.231008000" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="QuestPDF" Version="2023.9.1" />
+    <PackageReference Include="QuestPDF" Version="2023.10.0" />
     <PackageReference Include="ReactiveUI.Fody" Version="19.5.1" />
     <PackageReference Include="ReactiveUI.WinUI" Version="19.5.1" />
     <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
