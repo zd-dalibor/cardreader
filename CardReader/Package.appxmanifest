@@ -10,7 +10,7 @@
   <Identity
     Name="b3d4a541-612c-4a1a-b3b4-2ce97fb25d40"
     Publisher="CN=z_dalibor, O=My Home, L=Belgrade, S=RS-00, C=RS"
-    Version="1.0.7.0" />
+    Version="1.0.9.0" />
 
   <mp:PhoneIdentity PhoneProductId="b3d4a541-612c-4a1a-b3b4-2ce97fb25d40" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
